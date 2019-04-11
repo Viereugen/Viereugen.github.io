@@ -1,5 +1,5 @@
 
-body {background-color: #6d6d6d}
+body {background-color: #585858}
 
 h1  {font-size: 4em;
     color: #000000;
@@ -14,15 +14,15 @@ h2  {font-size: 3em;
     
 
 p   {font-size: 1,5em;
-color: #e6e6e6;
+color: #dbdbdb;
 font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-section {background-color: #1f001b;
+section {background-color: #47003e;
 width: 85%;
 }
 
-article {background-color: #47003e;
+article {background-color: #1f001b;
 width: 80%;
 }
 
