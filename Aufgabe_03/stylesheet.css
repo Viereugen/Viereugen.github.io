@@ -1,21 +1,21 @@
 
-body {background-color: #252525}
+body {background-color: #6d6d6d}
 
 p {font-size: 1,5em;
-color: #585858;
+color: #e6e6e6;
 font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 section {background-color: #1f001b;
-width: 70%;
+width: 90%;
 }
 
-article {background-color: #630000;
+article {background-color: #2e0028;
 width: 80%;
 }
 
 img {height: 200px;
-width: 50%;
+width: 80%;
 border-width: 5px;
 border-style: solid;
 border-color: #ffffff;
