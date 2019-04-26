@@ -77,7 +77,7 @@ img{
     img:hover{
         opacity: 0,7;
         width: 100%;
-        position: relative;
+        position: absolute;
     }
 
 
