@@ -4,17 +4,19 @@
 header  {
         width: 100%;
         clear: left;
+        color: #99AABB
         }
 
 ul+li{
     clear:left;
 }
 li li{
-    float:left
+    float:left;
+    margin:
 }
 
 body    {
-        background-color: #585858;
+        background-color: #14181c;
         }
 
 main{
