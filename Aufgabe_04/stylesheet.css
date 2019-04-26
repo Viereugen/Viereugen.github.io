@@ -41,6 +41,7 @@ aside{
 }
     header + aside{
         clear: left;
+        position: fixed;
         width: 20%;
     }
 
@@ -50,6 +51,11 @@ section{
     width: 33.33%;
     width: calc(100% / 3);
 }
+section :hover{
+    background-color: #052db38a
+
+}
+
     section:nth-child(3n+1){
         clear:left;
     }
