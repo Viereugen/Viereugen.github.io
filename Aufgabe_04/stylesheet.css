@@ -10,27 +10,35 @@ header{
 
 li{
     float:left;
-    padding: 15px 7px 16px;
+    padding: 20px 7px 20px;
 }
 
 body{
+    clear:left;
     background-color: #14181c;
+}
+
+header + aside{
+    clear: left;
+    width: 20%;
 }
 
 main{
     float: left;
     width: 60%;
 }
- 
-header + aside{
-    clear: left;
-    width: 20%;
-}
 
 aside{
     float:left;
     width:20%;
 }
+
+section{
+    float:left
+    background-color:#1f001b;
+    width: 20%;
+}
+
 
 h1{
     font-size: 4em;
@@ -55,11 +63,6 @@ p{
     font-size: 1,5em;
     color: #dbdbdb;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-section{
-    background-color:#1f001b;
-    width: 20%;
 }
 
 img{
