@@ -38,7 +38,9 @@ body{
 }
 
 
-
+header + aside{
+    clear: left;
+    width: 20%;
 }
 aside{
     float:left;
@@ -46,9 +48,8 @@ aside{
     background-color: rgb(60, 66, 71);
     color:#99AABB
 }
-    header + aside{
-        clear: left;
-    }
+
+
 
 main{
     float: left;
