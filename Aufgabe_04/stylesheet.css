@@ -1,6 +1,5 @@
 
 
-
 header{
     width: 100%;
     clear: left;
@@ -26,7 +25,8 @@ li{
 }
     li:hover{
         background-color: rgb(60, 66, 71);
-        border: #ffffff
+        border: #ffffff;
+        color:white;
     }
 
 
