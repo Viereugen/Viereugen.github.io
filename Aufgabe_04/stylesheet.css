@@ -9,7 +9,7 @@ header{
 }
 
 ul{
-    align-content: center;
+    text-align: center;
     list-style-type: none;
     background-color: #99AABB;
 }
@@ -27,11 +27,6 @@ body{
     margin: 0;
 }
 
-header + aside{
-    clear: left;
-    width: 20%;
-}
-
 main{
     float: left;
     width: 60%;
@@ -40,15 +35,19 @@ main{
 
 aside{
     float:left;
-    width:15%;
+    width:20%;
     background-color: rgb(60, 66, 71);
-    padding: 10px 10px 10px;
 }
+    header + aside{
+        clear: left;
+        width: 20%;
+    }
 
 section{
     float:left;
     background-color:#14171b;
-    width: 33%;
+    width: 33.33%;
+    width: calc(100% / 3);
 }
     section:nth-child(3n+1){
         clear:left;
@@ -83,7 +82,11 @@ h3{
 p{
     font-size: 1em;
     color: #dbdbdb;
-    font-family: Arial, Helvetica, sans-serif
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+article p{
+    margin:5px;
 }
 
 img{
