@@ -9,7 +9,7 @@ header{
 }
 
 ul{
-    align-content: center;
+    text-align: center;
     list-style-type: none;
     background-color: #99AABB;
 }
@@ -46,7 +46,8 @@ aside{
 section{
     float:left;
     background-color:#14171b;
-    width: 33%;
+    width: 33.33%;
+    width: calc(100% / 3);
 }
     section:nth-child(3n+1){
         clear:left;
