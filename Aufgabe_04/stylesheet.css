@@ -35,7 +35,7 @@ main{
 
 aside{
     float:left;
-    width:15%;
+    width:20%;
     background-color: rgb(60, 66, 71);
 }
     header + aside{
