@@ -6,7 +6,7 @@ header  {
         clear: left;
         }
 
-ul li{
+ul>li{
     float:left;
 }
 
@@ -21,7 +21,7 @@ main{
  
 header + aside {
     clear: left;
-    width: 20%;
+    width: 20%;}
 }
 
 aside{
