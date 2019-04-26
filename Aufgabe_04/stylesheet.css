@@ -69,9 +69,10 @@ section{
     }
 
 img{
-    width: 95%;
+    display: block;
     margin-left: auto;
     margin-right: auto;
+    width: 90%;
 }
     img:hover{
         opacity: 0,8;
