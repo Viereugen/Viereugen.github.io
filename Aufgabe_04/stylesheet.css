@@ -50,7 +50,7 @@ section{
     background-color:#14171b;
     width: 33%;
 }
-    section:nth-child(3n+1){
+    section:nth-child(4n+1){
         clear:left;
     }
 
