@@ -6,8 +6,11 @@ header  {
         clear: left;
         }
 
-ul>li{
-    float:left;
+ul+li{
+    clear:left;
+}
+li li{
+    float:left
 }
 
 body    {
