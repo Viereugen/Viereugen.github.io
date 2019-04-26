@@ -8,6 +8,9 @@ header{
     background-color: rgb(60, 66, 71);
 }
 
+
+
+
 ul{
     text-align: center;
     margin: 0;
@@ -21,11 +24,13 @@ li{
     margin: 0;
     font-size: 2em;
 }
-
     li:hover{
         background-color: rgb(60, 66, 71);
         border: #ffffff
     }
+
+
+
 
 body{
     clear:left;
@@ -39,6 +44,8 @@ main{
     align-content: center;
 }
 
+
+
 aside{
     float:left;
     width:20%;
@@ -49,16 +56,25 @@ aside{
         width: 20%;
     }
 
+
+
 section{
     float:left;
     background-color:#0d1013;
     width: 33.33%;
     width: calc(100% / 3);
 }
-
     section:nth-child(3n+1){
         clear:left;
     }
+
+img{
+    width: 100%;
+}
+    img:hover{
+        opacity: 0.5;
+    }
+
 
 
 h1{
@@ -67,25 +83,22 @@ h1{
     font-family:Arial, Helvetica, sans-serif;
     text-align: center;
     margin:0;
-}
-
-    
+} 
 h2{
     font-size: 2em;
     color: #ffffff;
     font-family:Arial, Helvetica, sans-serif;
     text-align: center;
-
 }
-
 h3{
     font-size: 1em;
     color: #ffffff;
     font-family:Arial, Helvetica, sans-serif;
     text-align: center;
     text-decoration: underline;
-
 }
+
+
 
 p{
     font-size: 1em;
@@ -94,13 +107,6 @@ p{
     margin:10px;
 }
 
-img{
-    width: 100%;
-}
-
-    img:hover{
-        opacity: 0.5;
-    }
 
 
 footer{
