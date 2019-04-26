@@ -22,9 +22,9 @@ li{
     font-size: 2em;
 }
 
-li:hover{
-    background-color: rgb(60, 66, 71);
-}
+    li:hover{
+        background-color: rgb(60, 66, 71);
+    }
 
 body{
     clear:left;
@@ -53,8 +53,6 @@ section{
     background-color:#14171b;
     width: 33.33%;
     width: calc(100% / 3);
-}
-
 }
 
     section:nth-child(3n+1){
@@ -97,12 +95,13 @@ p{
 
 img{
     width: 100%;
-
 }
 
-a{
+    img:hover{
+        opacity: 0.5;
+    }
 
-}
+
 footer{
     width: 100%;
     clear: left;
