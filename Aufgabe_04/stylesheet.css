@@ -17,6 +17,7 @@ ul{
 li{
     float:left;
     padding: inherit;
+    margin: inherit;
     font-size: 2em;
 }
 
