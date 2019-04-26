@@ -10,6 +10,7 @@ header{
 
 ul{
     align-content: center;
+    list-style-type: none;
 }
 
 li{
