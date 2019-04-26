@@ -37,26 +37,26 @@ body{
     margin: 0;
 }
 
-main{
-    float: left;
-    width: 60%;
-    align-content: center;
+
+header + aside{
+    clear: left;
+    width: 20%;
+    position:fixed;
 }
-
-
-
 aside{
     float:left;
     width:20%;
     background-color: rgb(60, 66, 71);
     color:#99AABB
 }
-    header + aside{
-        clear: left;
-        width: 20%;
-    }
 
 
+
+main{
+    float: left;
+    width: 60%;
+    align-content: center;
+}
 
 section{
     float:left;
