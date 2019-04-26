@@ -34,7 +34,7 @@ aside{
 }
 
 section{
-    float:left
+    float:left;
     background-color:#1f001b;
     width: 20%;
 }
@@ -73,6 +73,6 @@ img{
 }
 
 footer{
-        width: 100%;
-        clear: left;
+    width: 100%;
+    clear: left;
 }
