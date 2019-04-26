@@ -69,11 +69,13 @@ section{
     }
 
 img{
-    width: 100%;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 }
     img:hover{
         opacity: 0,8;
-        transform: scale(1,5);
+        width: 100%;
         z-index: 10;
     }
 
