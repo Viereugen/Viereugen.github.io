@@ -73,7 +73,6 @@ img{
 }
     img:hover{
         opacity: 0,8;
-        position: relative;
         transform: scale(1,5);
         z-index: 10;
     }
