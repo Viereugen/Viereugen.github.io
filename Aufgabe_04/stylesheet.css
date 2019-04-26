@@ -23,7 +23,7 @@ li{
 }
 
 li:hover{
-    background-color: #ff0000
+    background-color: rgb(60, 66, 71);
 }
 
 body{
@@ -45,7 +45,6 @@ aside{
 }
     header + aside{
         clear: left;
-        position: fixed;
         width: 20%;
     }
 
@@ -98,6 +97,7 @@ p{
 
 img{
     width: 100%;
+
 }
 
 a{
