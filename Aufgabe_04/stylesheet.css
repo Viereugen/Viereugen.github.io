@@ -1,31 +1,27 @@
 
 
 
-header  {
-        width: 100%;
-        clear: left;
-        color: #99AABB
-        }
-
-ul+li{
-    clear:left;
-    padding: 15px 7px 16px;
+header{
+    width: 100%;
+    clear: left;
+    color: #99AABB
 }
-li li{
+
+li{
     float:left;
     padding: 15px 7px 16px;
 }
 
-body    {
-        background-color: #14181c;
-        }
+body{
+    background-color: #14181c;
+}
 
 main{
     float: left;
     width: 60%
 }
  
-header + aside {
+header + aside{
     clear: left;
     width: 20%;}
 }
@@ -35,52 +31,50 @@ aside{
     width:20%;
 }
 
-h1  {
+h1{
     font-size: 4em;
-    color: #000000;
+    color: #100d20;
     font-family:Arial, Helvetica, sans-serif;
-    }
+}
 
     
-h2  {
+h2{
     font-size: 2.5em;
     color: #000000;
     font-family:Arial, Helvetica, sans-serif;
-    }
+}
 
     
-h3  {
+h3{
     font-size: 2em;
     color: #ffffff;
     font-family:Arial, Helvetica, sans-serif;
-    }
+}
 
-p   {
+p{
     font-size: 1,5em;
     color: #dbdbdb;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    }
+}
 
-section {
-        background-color:#1f001b;
-        width: 85%;
-        }
+section{
+    background-color:#1f001b;
+}
 
-article {
+article{
         background-color:#47003e;
-        width: 80%;
-        }
+}
 
-img {
+img{
     height: 200px;
     width: 30%;
     border-width: 5px;
     border-style: solid;
     border-color: #000000;
     border-radius: 5px;
-    }
+}
 
-    footer{
+footer{
         width: 20%;
         clear: left;
-    }
+}
