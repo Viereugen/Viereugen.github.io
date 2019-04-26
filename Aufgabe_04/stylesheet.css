@@ -6,6 +6,10 @@ header  {
         clear: left;
         }
 
+ul li{
+    float:left;
+}
+
 body    {
         background-color: #585858;
         }
