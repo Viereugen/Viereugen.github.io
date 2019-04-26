@@ -41,7 +41,7 @@ body{
 header + aside{
     clear: left;
     width: 20%;
-    position:fixed;
+    position: absolute;
 }
 aside{
     float:left;
