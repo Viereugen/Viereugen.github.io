@@ -10,14 +10,15 @@ header{
 
 ul{
     text-align: center;
+    margin: 0;
     list-style-type: none;
     background-color: #99AABB;
 }
 
 li{
     float:left;
-    padding: inherit;
-    margin: inherit;
+    padding: 10px;
+    margin: 0;
     font-size: 2em;
 }
 
