@@ -49,7 +49,7 @@ aside{
     float:left;
     width:20%;
     background-color: rgb(60, 66, 71);
-    color:white;
+    color:#99AABB
 }
     header + aside{
         clear: left;
