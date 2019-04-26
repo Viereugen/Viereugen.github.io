@@ -11,15 +11,16 @@ header{
 
 ul{
     text-align: center;
+    margin: 0;
     list-style-type: none;
     background-color: #99AABB;
 }
 
 li{
-    margin-left: auto;
-    margin-right: auto;
     color:black;
+    float:left;
     padding: 1%;
+    margin: 0;
     font-size: 2em;
 }
     li:hover{
