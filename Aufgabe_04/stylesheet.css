@@ -8,6 +8,10 @@ header{
     background-color: #99AABB;
 }
 
+ul{
+    align-content: center;
+}
+
 li{
     float:left;
     padding: 1em 1em;
