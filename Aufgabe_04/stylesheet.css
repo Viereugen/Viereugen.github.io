@@ -6,8 +6,6 @@ header{
     clear: left;
     color: #000000;
     background-color: rgb(60, 66, 71);
-    margin:0;
-    padding:20px;
 }
 
 ul{
@@ -53,7 +51,7 @@ section{
     width: 33%;
 }
     section:nth-child(3n+1){
-        clear:left
+        clear:left;
     }
 
 
@@ -62,6 +60,7 @@ h1{
     color: #100d20;
     font-family:Arial, Helvetica, sans-serif;
     text-align: center;
+    margin:0;
 }
 
     
