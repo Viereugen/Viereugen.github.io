@@ -14,7 +14,7 @@ ul{
 
 li{
     float:left;
-    padding: 1em 1em;
+    padding: 5px 5px;
     font-size: 1,5em;
 }
 
@@ -86,6 +86,7 @@ img{
     border-style: solid;
     border-color: #000000;
     border-radius: 5px;
+    width: 100%
 }
 
 footer{
