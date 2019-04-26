@@ -23,6 +23,7 @@ li{
 body{
     clear:left;
     background-color: #99AABB;
+    margin: none;
 }
 
 header + aside{
