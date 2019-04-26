@@ -9,10 +9,11 @@ header  {
 
 ul+li{
     clear:left;
+    padding: 15px 7px 16px;
 }
 li li{
     float:left;
-    margin:
+    padding: 15px 7px 16px;
 }
 
 body    {
