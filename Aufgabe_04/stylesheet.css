@@ -22,6 +22,10 @@ li{
     font-size: 2em;
 }
 
+li:hover{
+    background-color: #ff0000
+}
+
 body{
     clear:left;
     background-color: #99AABB;
@@ -51,8 +55,6 @@ section{
     width: 33.33%;
     width: calc(100% / 3);
 }
-section :hover{
-    background-color: #052db38a
 
 }
 
