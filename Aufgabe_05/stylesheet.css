@@ -67,10 +67,11 @@ main{
 section{
     float:left;
     background-color:#0d1013;
-    width: 23%;
-    margin: 1%;
+    width: 24%;
+    margin: 0.5%;
     max-height: 25em;
     overflow:auto;
+    border-radius: 5px;
 }
     section:nth-child(4n+1){
         clear:left;
