@@ -37,7 +37,7 @@ body{
 }
 
 
-.ExtraAside{
+aside{
     float:left;
     width:20%;
     background-color:black;
@@ -50,7 +50,6 @@ body{
 
 .MainAside:hover{
     width: 40%;
-
 }
 
 main{
