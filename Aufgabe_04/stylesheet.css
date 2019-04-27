@@ -65,9 +65,15 @@ section{
     background-color:#0d1013;
     width: 23%;
     margin: 1%;
+    max-height: 20em;
+    overflow: hidden;
 }
     section:nth-child(4n+1){
         clear:left;
+    }
+
+    section :hover{
+        overflow: scroll
     }
 
 img{
