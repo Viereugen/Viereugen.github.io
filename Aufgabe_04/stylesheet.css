@@ -127,6 +127,7 @@ p{
 footer{
     width: 100%;
     clear: left;
+    padding-top: 30px;
     background-color: black;
     color:white;
 }
