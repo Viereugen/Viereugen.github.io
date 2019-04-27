@@ -39,18 +39,23 @@ body{
 }
 
 
-header + aside{
-    clear: left;
-    width: 20%;
-}
 aside{
     float:left;
     width:20%;
     background-color: rgb(60, 66, 71);
-    color:#99AABB
+    color:#99AABB;
+    position: absolute;
+
+}
+header + aside{
+    clear: left;
 }
 
+aside:hover{
+    position:absolute;
+    width: 40%;
 
+}
 
 main{
     float: left;
