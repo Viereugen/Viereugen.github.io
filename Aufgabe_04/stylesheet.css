@@ -40,7 +40,7 @@ body{
 aside{
     float:left;
     width:20%;
-    background-color:black;
+    background-color:rgb(45, 69, 136);
     color:#99AABB;
 
 }
@@ -51,6 +51,11 @@ aside{
 .MainAside:hover{
     width: 40%;
 }
+
+.ExtraAside{
+    margin-bottom:10px;
+}
+
 
 main{
     float: left;
