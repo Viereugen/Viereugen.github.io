@@ -130,7 +130,8 @@ footer{
     clear: left;
     background-color: black;
     color:white;
-    padding:20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 footer p{
