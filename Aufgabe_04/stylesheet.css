@@ -67,20 +67,21 @@ section{
     margin: 1%;
     max-height: 25em;
     overflow: hidden;
+    border-radius: 5px;
 }
     section:nth-child(4n+1){
         clear:left;
     }
 
     section :hover{
-        overflow:auto;
+        overflow:visible;
     }
 
 img{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: 95%;
     border-radius: 5px; 
 }
     img:hover{
