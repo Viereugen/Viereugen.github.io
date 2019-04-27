@@ -69,7 +69,7 @@ section{
     background-color:#0d1013;
     width: 24%;
     margin: 0.5%;
-    max-height: 29em;
+    max-height: 20em;
     overflow:auto;
     border-radius: 5px;
 }
