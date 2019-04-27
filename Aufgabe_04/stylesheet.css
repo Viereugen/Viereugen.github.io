@@ -73,7 +73,7 @@ section{
     }
 
     section :hover{
-        overflow: scroll
+        overflow:auto;
     }
 
 img{
