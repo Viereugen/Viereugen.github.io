@@ -30,8 +30,6 @@ li{
     }
 
 
-
-
 body{
     clear:left;
     background-color: #99AABB;
@@ -59,13 +57,13 @@ main{
     float: left;
     width: 60%;
     align-content: center;
-    background-color:#ff0000;
+    background-color:rgb(60, 66, 71);
 }
 
 section{
     float:left;
     background-color:#0d1013;
-    width: 25%;
+    width: 23%;
     margin: 1%;
 }
     section:nth-child(4n+1){
