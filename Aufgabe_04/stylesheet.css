@@ -66,10 +66,7 @@ section{
     width: 23%;
     margin: 1%;
     max-height: 25em;
-    border-radius: 5px;
     overflow:scroll;
-    margin-right:-30px;
-    padding-right: 30px;
 }
     section:nth-child(4n+1){
         clear:left;
@@ -79,8 +76,8 @@ img{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: auto;
     width: 95%;
-    height: 95%;
     border-radius: 5px; 
 }
     img:hover{
