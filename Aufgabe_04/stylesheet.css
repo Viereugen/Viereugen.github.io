@@ -55,6 +55,7 @@ main{
     float: left;
     width: 60%;
     align-content: center;
+    background-color:#0d1013;
 }
 
 section{
@@ -63,7 +64,7 @@ section{
     width: 33.33%;
     width: calc(100% / 3);
 }
-    section:nth-child(3n+1){
+    section:nth-child(4n+1){
         clear:left;
     }
 
@@ -104,13 +105,15 @@ h3{
 
 
 p{
-    font-size: 1em;
+    font-size: 20px;
     color: #dbdbdb;
     font-family: Arial, Helvetica, sans-serif;
     margin:10px;
 }
 
-
+    article p{
+        font-size: 13px;
+    }
 
 footer{
     width: 100%;
