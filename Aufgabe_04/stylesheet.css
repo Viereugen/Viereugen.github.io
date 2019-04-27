@@ -51,7 +51,6 @@ header + aside{
 }
 
 aside:hover{
-    position:absolute;
     width: 40%;
 
 }
