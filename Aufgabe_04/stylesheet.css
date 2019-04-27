@@ -126,5 +126,6 @@ p{
 footer{
     width: 100%;
     clear: left;
+    padding-top: 30px;
     background-color: rgb(60, 66, 71);
 }
