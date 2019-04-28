@@ -50,8 +50,6 @@ aside{
 
 .MainAside:hover{
     width: 40%;
-    position:absolute;
-    clear:left
 }
 
 .ExtraAside{
