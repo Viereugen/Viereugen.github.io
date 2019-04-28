@@ -46,6 +46,7 @@ aside{
 }
 .MainAside{
     clear: left;
+    height:100%;
 }
 
 .MainAside:hover{
