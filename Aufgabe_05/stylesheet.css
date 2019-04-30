@@ -27,8 +27,6 @@ li{
     li:hover{
         text-decoration: underline;
         cursor: pointer;
-        background-color: rgb(60, 66, 71);
-
     }
 
 
