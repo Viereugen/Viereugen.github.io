@@ -11,23 +11,22 @@ header{
 ul{
     text-align: center;
     margin: 0;
-    padding: 0;
     list-style-type: none;
     background-color: #99AABB;
 }
 
 li{
     color:black;
-    float:left;
+    display: inline;
     padding: 1%;
     margin: 0;
     font-size: 2em;
     text-align: center;
 }
     li:hover{
-        background-color: rgb(60, 66, 71);
         text-decoration: underline;
         cursor: pointer;
+
     }
 
 
@@ -43,13 +42,10 @@ aside{
     width:20%;
     background-color:black;
     color:#99AABB;
-}
 
+}
 .MainAside{
     clear: left;
-    min-height: 94em;
-    max-height: 94em;
-    overflow: auto;
 }
 
 .MainAside:hover{
