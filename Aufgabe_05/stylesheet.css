@@ -43,7 +43,9 @@ aside{
     width:20%;
     background-color:black;
     color:#99AABB;
-    min-height: 30em;
+    min-height: 94em;
+    max-height: 94em;
+    overflow: auto;
 
 }
 .MainAside{
