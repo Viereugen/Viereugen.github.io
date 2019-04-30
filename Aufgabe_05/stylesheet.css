@@ -43,11 +43,11 @@ aside{
     width:20%;
     background-color:black;
     color:#99AABB;
+    min-height: 30em;
 
 }
 .MainAside{
     clear: left;
-    min-height: 30em;
 }
 
 .MainAside:hover{
