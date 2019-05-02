@@ -7,7 +7,6 @@ header{
 }
 
 
-
 ul{
     text-align: center;
     margin: 0;
@@ -44,22 +43,6 @@ aside{
 
 }
 
-/*
-MainAside pushes ExtraAsides
-
-.MainAside{
-    clear: left;
-    min-height: 90em;
-    max-height: 90em;
-    overflow: auto;
-}
-
-.MainAside:hover{
-    width: 40%;
-}
-*/
-
-
 .MainAside{
     clear: left;
     min-height: 90em;
@@ -83,6 +66,7 @@ main{
     width: 60%;
     align-content: center;
     background-color:rgb(60, 66, 71);
+    margin-left:20%;
 }
 
 section{
@@ -162,3 +146,25 @@ footer{
 footer p{
     margin: auto;
 }
+
+/*
+MainAside pushes ExtraAsides
+
+.MainAside{
+    clear: left;
+    min-height: 90em;
+    max-height: 90em;
+    overflow: auto;
+}
+
+.MainAside:hover{
+    width: 40%;
+}
+
+main{
+    float: left;
+    width: 60%;
+    align-content: center;
+    background-color:rgb(60, 66, 71);
+}
+*/
