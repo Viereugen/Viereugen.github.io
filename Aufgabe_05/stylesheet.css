@@ -36,7 +36,6 @@ body{
     margin: 0;
 }
 
-
 aside{
     float:left;
     width:20%;
@@ -44,6 +43,10 @@ aside{
     color:#99AABB;
 
 }
+
+/*
+MainAside pushes ExtraAsides
+
 .MainAside{
     clear: left;
     min-height: 90em;
@@ -53,6 +56,21 @@ aside{
 
 .MainAside:hover{
     width: 40%;
+}
+*/
+
+
+.MainAside{
+    clear: left;
+    min-height: 90em;
+    max-height: 90em;
+    position:absolute;
+    overflow: auto;
+}
+
+
+.MainAside:hover{
+    width: 35%;
 }
 
 .ExtraAside{
