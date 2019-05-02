@@ -49,6 +49,7 @@ aside{
     max-height: 70em;
     position:absolute;
     overflow: auto;
+    transition: width 0.3s;
 }
 
 
@@ -88,10 +89,11 @@ img{
     width: 94%;
     border-radius: 5px; 
     max-height: 345px;
-    max-width: 230px
+    max-width: 230px;
+    transition: opacity 0.5s;
 }
     img:hover{
-        opacity: 0.7;
+        opacity: 0.5;
         cursor: pointer;
     }
 
