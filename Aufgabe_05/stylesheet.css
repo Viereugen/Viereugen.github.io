@@ -45,8 +45,8 @@ aside{
 
 .MainAside{
     clear: left;
-    min-height: 90em;
-    max-height: 90em;
+    min-height: 80em;
+    max-height: 80em;
     position:absolute;
     overflow: auto;
 }
