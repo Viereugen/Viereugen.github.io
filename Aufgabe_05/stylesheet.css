@@ -90,7 +90,6 @@ img{
     border-radius: 5px; 
     max-height: 345px;
     max-width: 230px;
-    transition: opacity 0.5s;
 }
     img:hover{
         opacity: 0.5;
