@@ -38,7 +38,7 @@ body{
 aside{
     float:left;
     width:20%;
-    background-color:rgb(32, 27, 34);
+    background-color:rgb(27, 23, 29);
     color:#99AABB;
 
 }
@@ -58,6 +58,7 @@ aside{
 
 .ExtraAside{
     margin-bottom:10px;
+    height:23em;
 }
 
 
