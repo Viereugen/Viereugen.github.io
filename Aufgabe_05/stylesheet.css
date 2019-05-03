@@ -19,9 +19,7 @@ li{
     color:rgb(43, 35, 53);
     display: inline;
     padding: 1%;
-    margin: 0;
     font-size: 2em;
-    text-align: center;
 }
     li:hover{
         text-decoration: underline;
