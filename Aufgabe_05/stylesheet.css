@@ -45,8 +45,7 @@ aside{
 
 .MainAside{
     clear: left;
-    min-height: 70em;
-    max-height: 70em;
+    height: 70em;
     position:absolute;
     overflow: auto;
     transition: width 0.3s;
@@ -75,7 +74,7 @@ section{
     background-color:#0d1013;
     width: 24%;
     margin: 0.5%;
-    max-height: 23em;
+    height: 23em;
     overflow:auto;
     border-radius: 5px;
 }
@@ -153,8 +152,7 @@ MainAside pushes ExtraAsides
 
 .MainAside{
     clear: left;
-    min-height: 90em;
-    max-height: 90em;
+    height: 90em;
     overflow: auto;
 }
 
