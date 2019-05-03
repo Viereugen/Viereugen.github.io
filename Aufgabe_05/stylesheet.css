@@ -40,14 +40,13 @@ aside{
     width:20%;
     background-color:rgb(27, 23, 29);
     color:#99AABB;
-
+    overflow: auto;
 }
 
 .MainAside{
     clear: left;
     height: 70em;
     position:absolute;
-    overflow: auto;
     transition: width 0.3s;
 }
 
