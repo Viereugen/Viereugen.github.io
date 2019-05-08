@@ -7,22 +7,22 @@ header{
 }
 
 
-nav{
+ul{
     text-align: center;
     list-style-type: none;
     background-color: rgb(27, 23, 29);
+    color:#99AABB;
     position:absolute;
     width:20%;
     overflow: hidden;
-    height: 3em;
+    height: 20em;
 }
 
-nav :hover{
-    height: fit-content;
+ul :hover{
+    height: 60em;
 }
 
 li{
-    color:rgb(27, 23, 29);
     padding: 1%;
     font-size: 2em;
 }
