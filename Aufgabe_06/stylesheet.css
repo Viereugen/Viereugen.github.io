@@ -190,10 +190,10 @@ section{
 
 
 /*Desktop*/
-@media screen and (min-width: 73em) {
+@media screen and (min-width: 90em) {
 
    header{
-      background-color: rebeccapurple;
+      background-color: burlywood;
    }
 
 ul{
