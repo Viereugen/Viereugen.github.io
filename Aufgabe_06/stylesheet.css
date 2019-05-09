@@ -18,7 +18,7 @@ header{
     position:fixed;
     padding:0;
     margin-top:2em;
-    width:100%;
+    width:10%;
     overflow: hidden;
     height: 2.5em;
     border-radius: 5px;
@@ -28,8 +28,6 @@ header{
  
     background-color: black;
     border-radius: 5px;
-    width:10%;
-
  }
  
  li{
@@ -56,6 +54,7 @@ header{
     width:80%;
     margin-left:10%;
     margin-right:10%;
+    margin-bottom: 1em;
     background-color:rgb(27, 23, 29);
     color:#99AABB;
     overflow: auto;
