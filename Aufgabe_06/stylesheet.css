@@ -62,7 +62,8 @@ header{
  
  main{
     float: left;
-    width: 100%;
+    width: 90%%;
+    margin-left: 10%;
     background-color:rgb(60, 66, 71);
     margin-bottom: 5em;
     border-radius: 5px;
@@ -71,11 +72,12 @@ header{
  section{
     float:left;
     background-color:#0d1013;
-    width: 99%%;
+    width: 99%;
     margin: 0.5%;
     height: 23em;
     overflow:auto;
     border-radius: 5px;
+    text-align: center;
  }
     section:nth-child(4n+1){
         clear:left;
