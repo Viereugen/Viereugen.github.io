@@ -181,6 +181,10 @@ section{
 /*Desktop*/
 @media screen and (min-width: 60em) {
 
+   header{
+      background-color: aqua;
+   }
+
 ul{
    width:20%;
 }
