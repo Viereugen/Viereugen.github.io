@@ -190,7 +190,7 @@ section{
 
 
 /*Desktop*/
-@media screen and (min-width: 75em) {
+@media screen and (min-width: 78em) {
 
    header{
       background-color: burlywood;
