@@ -192,13 +192,14 @@ section{
    }
 
 ul{
-   width:20%;
+   margin-left:1%;
+   width:19%;
 }
 
 aside{
    width:20%;
    margin-left:0%;
-   margin-right:0%;
+   margin-right:1%;
 }
 
 main{
