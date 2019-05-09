@@ -167,6 +167,12 @@ main{
    margin-right: 5%;
 }
 
+aside{
+   width:70%;
+   margin-left:25%;
+   margin-right:5%;
+}
+
 section{
    width: 49%;
 }
@@ -195,7 +201,9 @@ aside{
 
 
 main{
-   width: 60%;
+   width: 55%;
+   margin-left: 20%;
+   margin-right: 5%;
 }
 
 section{
@@ -204,6 +212,10 @@ section{
 }
    section:nth-child(4n+1){
        clear:left;
+   }
+
+   section:nth-child(2n+1){
+      float:left
    }
 
 }
