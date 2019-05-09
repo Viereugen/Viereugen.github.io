@@ -4,7 +4,7 @@
 header{
     width: 100%;
     clear: left;
-    background-color: darkmagenta;
+    background-color: rgb(27, 23, 29);
     margin-bottom:2em;
  }
  
@@ -29,7 +29,7 @@ header{
  
  ul :first-child{
  
-    background-color: black;
+    background-color: rgb(27, 23, 29);;
     border-radius: 5px;
  }
  
@@ -101,7 +101,7 @@ header{
  
  
  h1{
-    font-size: 5em;
+    font-size: 3.5em;
     color: #ffffff;
     font-family:'Times New Roman', Times, serif;
     text-align: center;
@@ -154,11 +154,7 @@ header{
 
 /*Tablet*/
 @media screen and (min-width: 768px) {
-
-header{
-   background-color:palegreen;
-}
-
+   
 ul{
    width:24%;
    margin-left:1%;
@@ -191,10 +187,6 @@ section{
 
 /*Desktop*/
 @media screen and (min-width: 992px) {
-
-   header{
-      background-color: saddlebrown;
-   }
 
 ul{
    margin-left:1%;
