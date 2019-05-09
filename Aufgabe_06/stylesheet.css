@@ -197,8 +197,9 @@ ul{
 
 aside{
    width:20%;
+   margin-left:0%;
+   margin-right:0%;
 }
-
 
 main{
    width: 55%;
