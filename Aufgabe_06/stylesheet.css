@@ -157,7 +157,7 @@ header{
 
 
 /*Tablet*/
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 30em) {
 
 header{
    width: 100%;
@@ -314,7 +314,7 @@ footer p{
 
 
 /*Desktop*/
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 60em) {
 
 header{
    width: 100%;
