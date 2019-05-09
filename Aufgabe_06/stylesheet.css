@@ -188,7 +188,7 @@ section{
 @media screen and (min-width: 60em) {
 
    header{
-      background-color: aqua;
+      background-color: rebeccapurple;
    }
 
 ul{
@@ -204,7 +204,7 @@ aside{
 main{
    width: 55%;
    margin-left: 20%;
-   margin-right: 5%;
+   margin-right: 0%;
 }
 
 section{
