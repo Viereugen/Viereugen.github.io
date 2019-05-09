@@ -1,9 +1,8 @@
 /*Phone*/
-
 header{
     width: 100%;
     clear: left;
-    background-color: green;
+    background-color: blue;
     margin-bottom:2em;
  }
  
@@ -17,11 +16,10 @@ header{
     position:fixed;
     padding:0;
     margin-top:2em;
-    width:100%;
+    width:20%;
     overflow: hidden;
     height: 2.5em;
     border-radius: 5px;
-    clear:left;
  }
  
  ul :first-child{
@@ -46,23 +44,26 @@ header{
     clear:left;
     background-color: #99AABB;
     margin: 0;
-    width:
  }
  
  aside{
-    clear:left;
-    width:100%;
+    float:left;
+    width:20%;
     background-color:rgb(27, 23, 29);
     color:#99AABB;
     overflow: auto;
+ }
+ 
+ 
+ .ExtraAside{
     margin-bottom: 0.5%;
     height:23em;
  }
  
  
  main{
-    clear: left;
-    width: 100%;
+    float: left;
+    width: 60%;
     background-color:rgb(60, 66, 71);
     margin-left: 20%;
     margin-bottom: 5em;
@@ -70,14 +71,17 @@ header{
  }
  
  section{
-    clear:left;
+    float:left;
     background-color:#0d1013;
-    width:99%%;
+    width: 24%;
     margin: 0.5%;
     height: 23em;
     overflow:auto;
     border-radius: 5px;
  }
+    section:nth-child(4n+1){
+        clear:left;
+    }
  
  img{
     margin:3%;
@@ -143,7 +147,6 @@ header{
  footer p{
     margin: auto;
  }
- 
 
 
 /*Tablet*/
