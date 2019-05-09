@@ -17,12 +17,14 @@ header{
     background-color: rgb(27, 23, 29);
     color:#99AABB;
     position:fixed;
-    padding:0;
-    margin-top:2em;
-    width:10%;
     overflow: hidden;
     height: 2.5em;
     border-radius: 5px;
+    padding: 0;
+    margin-top: 2em;
+    width: 19%;
+    margin-left: 1%;
+    margin-right: 0%;
  }
  
  ul :first-child{
@@ -52,9 +54,9 @@ header{
  
  aside{
     float:left;
-    width:80%;
-    margin-left:10%;
-    margin-right:10%;
+    width:78%;
+    margin-left:21%;
+    margin-right:1%;
     margin-bottom: 1em;
     background-color:rgb(27, 23, 29);
     color:#99AABB;
@@ -65,9 +67,9 @@ header{
  
  main{
     float: left;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 78%;
+    margin-left: 21%;
+    margin-right: 1%;
     background-color:rgb(60, 66, 71);
     margin-bottom: 1em;
     border-radius: 5px;
@@ -188,7 +190,7 @@ section{
 
 
 /*Desktop*/
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 73em) {
 
    header{
       background-color: rebeccapurple;
