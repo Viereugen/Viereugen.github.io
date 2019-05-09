@@ -16,20 +16,21 @@ ul{
     margin:0;
     width:20%;
     overflow: hidden;
-    height: 20em;
+    height: 3em;
 }
 
-ul :hover{
-    height: 60em;
+nav :hover{
+    height:30em;
 }
-
 li{
     padding: 1%;
     font-size: 2em;
+    height:1.1em;
 }
     li:hover{
         text-decoration: underline;
         cursor: pointer;
+        height:1.1em;
     }
 
 
