@@ -4,7 +4,7 @@
 header{
     width: 100%;
     clear: left;
-    background-color: rgb(27, 23, 29);
+    background-color: black;
     margin-bottom:2em;
  }
  
@@ -154,7 +154,7 @@ header{
 
 /*Tablet*/
 @media screen and (min-width: 768px) {
-   
+
 ul{
    width:24%;
    margin-left:1%;
