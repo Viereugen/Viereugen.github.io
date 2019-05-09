@@ -20,7 +20,7 @@ ul{
 }
 
 nav :hover{
-    height:30em;
+    height:fit-content;
 }
 li{
     padding: 1%;
