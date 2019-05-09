@@ -6,7 +6,9 @@ header{
     background-color: rgb(60, 66, 71);
 }
 
-
+nav :hover{
+    height:fit-content;
+}
 ul{
     text-align: center;
     background-color: rgb(27, 23, 29);
@@ -16,12 +18,16 @@ ul{
     margin:0;
     width:20%;
     overflow: hidden;
-    height: 3em;
+    height: 2.5em;
+    border-radius: 5px;
 }
 
-nav :hover{
-    height:fit-content;
+ul :first-child{
+
+    background-color: black;
+    border-radius: 5px;
 }
+
 li{
     padding: 1%;
     font-size: 2em;
