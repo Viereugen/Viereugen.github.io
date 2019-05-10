@@ -63,11 +63,11 @@ header{
       height:1.1em;
    }
  
-a:link{
+a{
    color:#99AABB
 }
-a:visited{
-   color:#99AABB
+a :hover{
+   color:white;
 }
  
 
