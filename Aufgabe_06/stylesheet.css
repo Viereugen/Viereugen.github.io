@@ -61,15 +61,14 @@ header{
  }
    li:hover{
       height:1.1em;
+      background-color:white;
    }
  
 a{
    color:#99AABB
 }
-a :hover{
-   color:white;
-}
  
+
 
    /* Aside*/
 
