@@ -61,7 +61,6 @@ li{
 }
   li:hover{
      height:1.1em;
-     background-color:white;
   }
 
 a{
@@ -91,7 +90,8 @@ aside{
 
 main{
    float: left;
-   width: 78%;
+   width: 77%;
+   padding: 0.5%;
    margin-left: 21%;
    margin-right: 1%;
    background-color:rgb(60, 66, 71);
@@ -144,6 +144,16 @@ img{
 100%  {background-color: #ff0000cc;}
 }
 
+#LiFarben :hover  {background-color: white;}
+#LiRot :hover     {background-color: #ff0000cc;}   
+#LiOrange :hover  {background-color: #ff6400a1;}
+#LiGelb :hover    {background-color: #e5ce00a1;}
+#LiGrün :hover    {background-color: #12b512c2;}
+#LiBlau :hover    {background-color: #0000ffa1;}
+#LiLila :hover    {background-color: #ad17adba;}
+#LiWeiß :hover    {background-color: white}
+#LiSchwarz :hover {background-color: #000000a1;}
+#LiAside :hover   {background-color: white}
 
 
 /* Überschrifften*/
@@ -199,9 +209,10 @@ p{
   }
 
   main{
-  width: 73%;
+  width: 72%;
   margin-left: 26%;
   margin-right: 1%;
+  padding: 0.5%;
   }
 
   aside{
@@ -232,9 +243,10 @@ p{
   }
 
   main{
-  width: 58%;
+  width: 57%;
   margin-left: 21%;
   margin-right: 1%;
+  padding: 0.5%;
   }
 
   aside{
