@@ -48,7 +48,7 @@ ul{
 
 nav :hover{
   height:25.5em;
-  transition: height 0.7s;
+  transition: height 0.4s;
   transition-timing-function: ease-out;
 }
 
