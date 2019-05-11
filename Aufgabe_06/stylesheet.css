@@ -47,8 +47,8 @@ ul{
 }
 
 nav :hover{
-  height:25.5em;
-  transition: height 0.4s;
+  height:25em;
+  transition: height 0.2s;
   transition-timing-function: ease-out;
 }
 
@@ -61,6 +61,7 @@ li{
 }
   li:hover{
      height:1.1em;
+     background-color:white;
   }
 
 a{
@@ -131,29 +132,26 @@ img{
 /*animation*/
 
 @keyframes regenbogen {
-  0%  {background-color: #ff0000cc;}
- 10%  {background-color: #ce7135a1;}
- 20%  {background-color: #ff6400a1;}
- 30%  {background-color: #e5ce00a1;}
- 40%  {background-color: #12b512c2;}
- 50%  {background-color: #5fcef1a1;}
- 60%  {background-color: #0000ffa1;}
- 70%  {background-color: #ad17adba;}
- 80%  {background-color: #ff0093c2;}
- 90%  {background-color: #000000a1;}
-100%  {background-color: #ff0000cc;}
+  0%  {background-color: #ff0000;}
+ 10%  {background-color: #ce7135;}
+ 20%  {background-color: #ff6400;}
+ 30%  {background-color: #e5ce00;}
+ 40%  {background-color: #12b512;}
+ 50%  {background-color: #5fcef1;}
+ 60%  {background-color: #0000ff;}
+ 70%  {background-color: #ad17ad;}
+ 80%  {background-color: #ff0093;}
+ 90%  {background-color:rgb(27, 23, 29);}
+100%  {background-color: #ff0000;}
 }
 
-#LiFarben :hover  {background-color: white;}
-#LiRot :hover     {background-color: #ff0000cc;}   
-#LiOrange :hover  {background-color: #ff6400a1;}
-#LiGelb :hover    {background-color: #e5ce00a1;}
-#LiGrün :hover    {background-color: #12b512c2;}
-#LiBlau :hover    {background-color: #0000ffa1;}
-#LiLila :hover    {background-color: #ad17adba;}
-#LiWeiß :hover    {background-color: white}
-#LiSchwarz :hover {background-color: #000000a1;}
-#LiAside :hover   {background-color: white}
+#LiRot :hover     {color: #ff0000; text-shadow: 0 0 3px #000000;}   
+#LiOrange :hover  {color: #ff6400; text-shadow: 0 0 3px #000000;}
+#LiGelb :hover    {color: #e5ce00; text-shadow: 0 0 3px #000000;}
+#LiGrün :hover    {color: #12b512; text-shadow: 0 0 3px #000000;}
+#LiBlau :hover    {color: #0000ff; text-shadow: 0 0 3px #000000;}
+#LiLila :hover    {color: #ad17ad; text-shadow: 0 0 3px #000000;}
+#LiWeiß :hover    {color: #ffffff; text-shadow: 0 0 3px #000000;}
 
 
 /* Überschrifften*/
