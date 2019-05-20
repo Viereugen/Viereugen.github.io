@@ -1,12 +1,7 @@
 
-
 //Ich hoffe Alles ist verständlich und ich habe nicht zu viel rumgespielt.
 //Ich wollte alles mal ausprobieren.
 //Es sollten jedoch alle Aufgaben erfüllt sein.
-
-
-
-
 
 console.log('Dieser Check kommt vor dem Laden');
 //Beim Laden die Event-Listener erzeugen-----
@@ -60,7 +55,6 @@ function ZifferTasteGedrückt(A:number)
     console.log("AktuelleZahl: " + AktuelleZahl);                                       
     console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
 }
-
 
 //Wenn "+","-", "*", oder "/" geklickt wird
 function OperatorTasteGedrückt(GedrückterOperator:string)
@@ -117,7 +111,6 @@ function Reset()                                                                
     console.log("Das steht in ZwischenSpeicher: " + Zwischenspeicher);
     console.log("Das steht in AktuelleZahl: " + AktuelleZahl);
 }
-
 
 //Funktionen die simple Rechnungen durchführen
 function Addition(x : number , y : number)                                              
