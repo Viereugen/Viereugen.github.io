@@ -97,7 +97,7 @@ function Addition(x, y) { let z = x + y; return z; }
 function Subtraktion(x, y) { let z = x - y; return z; }
 function Multiplikation(x, y) { let z = x * y; return z; }
 function Division(x, y) { let z = x / y; return z; }
-//Wenn "RESET" geklickt wird
+//Wenn 'RESET' geklickt wird
 function Reset() {
     OperatorTyp = ""; //Reset alle Variablen und die Taschenrechner-Anzeige
     AktuelleZahl = 0;

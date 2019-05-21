@@ -57,7 +57,7 @@ function ZifferTasteGedrückt(A:number)
     }else{                                                                      
         document.getElementById("Anzeige").innerHTML=""+AktuelleZahl;                                           
     }
-    console.log("/////////////// TASTE '"+A+"' GEDRÜCKT ///////////////");                  //Kontrollausgaben
+    console.log("/////////////// TASTE '"+A+"' GEDRÜCKT ///////////////");              //Kontrollausgaben
     console.log("Zwischenspeicher: " + Zwischenspeicher);                               
     console.log("AktuelleZahl: " + AktuelleZahl);                                       
     console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
@@ -117,7 +117,7 @@ function Multiplikation(x : number , y : number)
 function Division(x : number , y : number)
 {let z= x/y;   return z;}
 
-//Wenn "RESET" geklickt wird
+//Wenn 'RESET' geklickt wird
 function Reset()                                                                     
 {
     OperatorTyp = "";                                                                   //Reset alle Variablen und die Taschenrechner-Anzeige
