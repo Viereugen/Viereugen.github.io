@@ -92,20 +92,6 @@ function ErgebnisTasteGedrückt() {
     console.log("Das steht in AktuelleZahl: " + AktuelleZahl);
     console.log("");
 }
-//Wenn "RESET" geklickt wird
-function Reset() {
-    OperatorTyp = ""; //Reset alle Variablen und die Taschenrechner-Anzeige
-    AktuelleZahl = 0;
-    Zwischenspeicher = 0;
-    OperatorGeklickt = false;
-    document.getElementById("Anzeige").innerHTML = '--------------------';
-    console.log("/////////////// TASTE 'RESET' GEDRÜCKT ///////////////");
-    console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
-    console.log("Das steht in OperatorTyp: '" + OperatorTyp + "'");
-    console.log("Das steht in ZwischenSpeicher: " + Zwischenspeicher);
-    console.log("Das steht in AktuelleZahl: " + AktuelleZahl);
-    console.log("");
-}
 //Funktionen die simple Rechnungen durchführen
 function Addition(x, y) {
     let z = x + y;
@@ -122,6 +108,20 @@ function Multiplikation(x, y) {
 function Division(x, y) {
     let z = x / y;
     return z;
+}
+//Wenn "RESET" geklickt wird
+function Reset() {
+    OperatorTyp = ""; //Reset alle Variablen und die Taschenrechner-Anzeige
+    AktuelleZahl = 0;
+    Zwischenspeicher = 0;
+    OperatorGeklickt = false;
+    document.getElementById("Anzeige").innerHTML = '--------------------';
+    console.log("/////////////// TASTE 'RESET' GEDRÜCKT ///////////////");
+    console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
+    console.log("Das steht in OperatorTyp: '" + OperatorTyp + "'");
+    console.log("Das steht in ZwischenSpeicher: " + Zwischenspeicher);
+    console.log("Das steht in AktuelleZahl: " + AktuelleZahl);
+    console.log("");
 }
 ////////////////////Gerade Zahlen Test////////////////////
 function CheckGeradeZahl() {
