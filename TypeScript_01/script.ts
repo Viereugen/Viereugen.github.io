@@ -1,3 +1,4 @@
+////////////////////TS-Aufgabe_01////////////////////
 
 //Ich hoffe Alles ist verständlich und ich habe nicht zu viel rumgespielt.
 //Ich wollte alles mal ausprobieren.
@@ -11,15 +12,15 @@ let AktuelleZahl : number = 0;                                                  
 let Zwischenspeicher : number = 0;                                                      //Speichert die erste eingegebene Zahl
 let OperatorGeklickt : boolean = false;                                                 //Speichert ob Operator-Taste bereits gedrückt wurde
 let OperatorTyp : string = "";                                                          //Speichert welcher Operator geklickt wurde
-console.log('Dieser Check kommt vor dem Laden');
+console.log("/////////////// Dieser Check kommt vor dem Laden ///////////////");
 
 
 
 ////////////////////Beim Laden die Event-Listener erzeugen////////////////////
 
 window.onload = function () {
-    console.log('Dieser Check kommt nach dem Laden');
-    console.log("");
+    console.log("/////////////// Dieser Check kommt nach dem Laden ///////////////");
+
     document.getElementById("Taste0").addEventListener("click", function() {ZifferTasteGedrückt(0);});
     document.getElementById("Taste1").addEventListener("click", function() {ZifferTasteGedrückt(1);});
     document.getElementById("Taste2").addEventListener("click", function() {ZifferTasteGedrückt(2);});
@@ -34,6 +35,7 @@ window.onload = function () {
     document.getElementById("Taste-").addEventListener("click", function() {OperatorTasteGedrückt("-");});
     document.getElementById("Taste*").addEventListener("click", function() {OperatorTasteGedrückt("*");});
     document.getElementById("Taste/").addEventListener("click", function() {OperatorTasteGedrückt("/");});
+
     document.getElementById("ErgebnisTaste").addEventListener("click", ErgebnisTasteGedrückt);
     document.getElementById("ResetTaste").addEventListener("click", Reset);
     document.getElementById("GeradeZahlTaste").addEventListener("click", CheckGeradeZahl);
@@ -55,14 +57,15 @@ function ZifferTasteGedrückt(A:number)
     }else{                                                                      
         document.getElementById("Anzeige").innerHTML=""+AktuelleZahl;                                           
     }
-    console.log("///////////////TASTE "+A+" GEDRÜCKT///////////////");                  //Kontrollausgaben
+    console.log("/////////////// TASTE '"+A+"' GEDRÜCKT ///////////////");                  //Kontrollausgaben
     console.log("Zwischenspeicher: " + Zwischenspeicher);                               
     console.log("AktuelleZahl: " + AktuelleZahl);                                       
     console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
+    console.log("Das steht in OperatorTyp: '" + OperatorTyp +"'");
     console.log("");
 }
 
-//Wenn +,-,*, oder / geklickt wird
+//Wenn '+','-','*', oder '/' geklickt wird
 function OperatorTasteGedrückt(GedrückterOperator:string)
 {
     if(OperatorGeklickt==false){                                                        //Nur beim ersten Operator-Klick auführen
@@ -73,19 +76,18 @@ function OperatorTasteGedrückt(GedrückterOperator:string)
         OperatorTyp = GedrückterOperator;                                               //Merke den gewählten OperatorTyp
         document.getElementById("Anzeige").innerHTML=Zwischenspeicher+" "+OperatorTyp;  //Ausgabe
 
-        console.log("///////////////TASTE "+OperatorTyp+" GEDRÜCKT///////////////");
+        console.log("/////////////// TASTE '"+OperatorTyp+"' GEDRÜCKT ///////////////");
         console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
-        console.log("Das steht in OperatorTyp: " + OperatorTyp);
+        console.log("Das steht in OperatorTyp: '" + OperatorTyp + "'");
         console.log("Das steht in ZwischenSpeicher: " + Zwischenspeicher);
         console.log("Das steht in AktuelleZahl: " + AktuelleZahl);
-        console.log("");
-
+    }else{
+        console.log("//////////////// OPERATOR WURDE BEREITS FESTGELEGT ///////////////");
     }
-    console.log("////////////////OPERATOR WURDE BEREITS FESTGELEGT///////////////");
     console.log("");
 }
 
-//Wenn "=" geklickt wird
+//Wenn '=' geklickt wird
 function ErgebnisTasteGedrückt()                                                        //Ruft die zum Operator passende Rechnung auf 
 {                                                                                       //und schreibt das Ergebnis(Return) in AktuelleZahl
     switch (OperatorTyp){                                                               
@@ -99,13 +101,13 @@ function ErgebnisTasteGedrückt()                                               
     OperatorTyp = "";
     Zwischenspeicher = 0;
     document.getElementById("Anzeige").innerHTML = ""+AktuelleZahl;                     //Ausgabe
-    console.log("///////////////ERGEBNIS-TASTE GEDRÜCKT///////////////");
+    console.log("/////////////// TASTE 'ERGEBNIS'GEDRÜCKT ///////////////");
     console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
     console.log("Das steht in AktuelleZahl: " + AktuelleZahl);
     console.log("");
 }
 
-//Wenn "CC" geklickt wird
+//Wenn "RESET" geklickt wird
 function Reset()                                                                     
 {
     OperatorTyp = "";                                                                   //Reset alle Variablen und die Taschenrechner-Anzeige
@@ -114,9 +116,9 @@ function Reset()
     OperatorGeklickt = false;
     document.getElementById("Anzeige").innerHTML = '--------------------';
 
-    console.log("///////////////TASTE RESET GEDRÜCKT///////////////");
+    console.log("/////////////// TASTE 'RESET' GEDRÜCKT ///////////////");
     console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
-    console.log("Das steht in OperatorTyp: " + OperatorTyp);
+    console.log("Das steht in OperatorTyp: '" + OperatorTyp + "'");
     console.log("Das steht in ZwischenSpeicher: " + Zwischenspeicher);
     console.log("Das steht in AktuelleZahl: " + AktuelleZahl);
     console.log("");
@@ -144,7 +146,8 @@ function Division(x : number , y : number)
     return z;
 }
 
-//Gerade Zahlen Test
+////////////////////Gerade Zahlen Test////////////////////
+
 function CheckGeradeZahl()
 {
     if (AktuelleZahl != 0){
@@ -153,9 +156,9 @@ function CheckGeradeZahl()
         }else{
             document.getElementById("GeradeZahlTaste").innerHTML = "Die Zahl ist ungerade";
         }
-        console.log("////////////////ES WURDE GECHECKT OB ZAHL GERADE IST///////////////");
+        console.log("//////////////// ES WURDE GECHECKT OB ZAHL GERADE IST ///////////////");
     }else{
-        console.log("////////////////KEINE GÜLTIGE ZAHL AUF DER ANZEIGE///////////////");
+        console.log("//////////////// KEINE GÜLTIGE ZAHL AUF DER ANZEIGE ///////////////");
     }
     console.log("");
 }
@@ -173,22 +176,24 @@ function CreateNewButton()
     NeuesDiv.appendChild(NeuerButton);                                                  //Neuer <button> ist child von <div>
     NeuerButton.addEventListener("click", TestFunktion);                                //Gibt neuem Button einen Event-Listener
 
-    NeuerButton.innerHTML = "Ich wurde über TypeSkript erstellt und wurde "+ButtonCounter+"-mal geklickt<br>Wenn du mich klickst ändere ich meine Klasse und gib die Ergebnisse einiger Rechnungen in der Konsole aus"; 
-    console.log("///////////////Der Neue Button wurder erstellt///////////////");                                                          
+    NeuerButton.innerHTML = "Ich wurde über TypeSkript erstellt und wurde "+ButtonCounter+"-mal geklickt<br>Wenn du mich klickst ändere ich meine Klasse und gib die Ergebnisse einiger Rechnungen in der Konsole aus";
 
+    console.log("/////////////// Der Neue Button wurder erstellt ///////////////");  
+    console.log("");                                                        
 
+    //Funktion für Testrechnungen und Klassenänderung
     function TestFunktion()                                                             
     {
         let Z1 : number = 1;                                                            //Einige Deklarationen
         let Z2 : number = 2;
-        let Wort1 : string = "Das ist ein Satz.";
-        let Wort2 : string = "Das ist ein weiterer Satz.";
+        let Wort1 : string = "Das ist ein Satz. ";
+        let Wort2 : string = "Das ist ein weiterer Satz. ";
         NeuerButton.className = "GeklickterButton";                                     //Ändert die Klasse des neuen Buttons zu "GeklickterButton"
 
         ButtonCounter += 1;
         NeuerButton.innerHTML = "Ich wurde über TypeSkript erstellt und wurde "+ButtonCounter+"-mal geklickt<br>Meine neue Klasse ist "+NeuerButton.className; 
-        console.log("///////////////TESTRECHNUNGS ERGEBNISSE:///////////////");        
-        console.log("Meine neue Klasse ist \""+NeuerButton.className+"\"");
+        console.log("/////////////// TESTRECHNUNGS ERGEBNISSE: ///////////////");        
+        console.log('Meine neue Klasse ist "'+NeuerButton.className+'"');
                               
         console.log(Wort1 + Wort2);                                                     //string+string
         console.log(Wort1 + Z1);                                                        //string+number
