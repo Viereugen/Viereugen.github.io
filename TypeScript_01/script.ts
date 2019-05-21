@@ -109,25 +109,13 @@ function ErgebnisTasteGedrückt()                                               
 
 //Funktionen die simple Rechnungen durchführen
 function Addition(x : number , y : number)                                              
-{
-    let z= x+y;
-    return z;
-}
+{let z= x+y;   return z;}
 function Subtraktion(x : number , y : number)
-{
-    let z= x-y;
-    return z;
-}
+{let z= x-y;   return z;}
 function Multiplikation(x : number , y : number)
-{
-    let z= x*y;
-    return z;
-}
+{let z= x*y;   return z;}
 function Division(x : number , y : number)
-{
-    let z= x/y;
-    return z;
-}
+{let z= x/y;   return z;}
 
 //Wenn "RESET" geklickt wird
 function Reset()                                                                     
@@ -136,7 +124,7 @@ function Reset()
     AktuelleZahl = 0;
     Zwischenspeicher = 0;
     OperatorGeklickt = false;
-    document.getElementById("Anzeige").innerHTML = '--------------------';
+    document.getElementById("Anzeige").innerHTML = "-----------------------------------"
 
     console.log("/////////////// TASTE 'RESET' GEDRÜCKT ///////////////");
     console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
