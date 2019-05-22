@@ -1,39 +1,39 @@
 ////////////////////TS-Aufgabe_01////////////////////
 //Ich hoffe Alles ist verständlich und ich habe nicht zu viel rumgespielt.
-//Ich wollte alles mal ausprobieren.
+//Ich wollte Alles mal ausprobieren.
 //Es sollten jedoch alle Aufgaben erfüllt sein.
 ////////////////////DEKLARATIONEN////////////////////
 let AktuelleZahl = 0; //Zahl die aktuell Eingegeben wird
 let Zwischenspeicher = 0; //Speichert die erste eingegebene Zahl
 let OperatorGeklickt = false; //Speichert ob Operator-Taste bereits gedrückt wurde
 let OperatorTyp = ""; //Speichert welcher Operator geklickt wurde
-console.log("/////////////// Dieser Check kommt vor dem Laden ///////////////");
 ////////////////////Beim Laden die Event-Listener erzeugen////////////////////
+console.log("/////////////// Dieser Check kommt vor dem Laden ///////////////");
 window.onload = function () {
-    console.log("/////////////// Dieser Check kommt nach dem Laden ///////////////");
-    document.getElementById("Taste0").addEventListener("click", function () { ZifferTasteGedrückt(0); });
-    document.getElementById("Taste1").addEventListener("click", function () { ZifferTasteGedrückt(1); });
-    document.getElementById("Taste2").addEventListener("click", function () { ZifferTasteGedrückt(2); });
-    document.getElementById("Taste3").addEventListener("click", function () { ZifferTasteGedrückt(3); });
-    document.getElementById("Taste4").addEventListener("click", function () { ZifferTasteGedrückt(4); });
-    document.getElementById("Taste5").addEventListener("click", function () { ZifferTasteGedrückt(5); });
-    document.getElementById("Taste6").addEventListener("click", function () { ZifferTasteGedrückt(6); });
-    document.getElementById("Taste7").addEventListener("click", function () { ZifferTasteGedrückt(7); });
-    document.getElementById("Taste8").addEventListener("click", function () { ZifferTasteGedrückt(8); });
-    document.getElementById("Taste9").addEventListener("click", function () { ZifferTasteGedrückt(9); });
-    document.getElementById("Taste+").addEventListener("click", function () { OperatorTasteGedrückt("+"); });
-    document.getElementById("Taste-").addEventListener("click", function () { OperatorTasteGedrückt("-"); });
-    document.getElementById("Taste*").addEventListener("click", function () { OperatorTasteGedrückt("*"); });
-    document.getElementById("Taste/").addEventListener("click", function () { OperatorTasteGedrückt("/"); });
+    document.getElementById("Taste0").addEventListener("click", function () { ZifferTasteGeklickt(0); });
+    document.getElementById("Taste1").addEventListener("click", function () { ZifferTasteGeklickt(1); });
+    document.getElementById("Taste2").addEventListener("click", function () { ZifferTasteGeklickt(2); });
+    document.getElementById("Taste3").addEventListener("click", function () { ZifferTasteGeklickt(3); });
+    document.getElementById("Taste4").addEventListener("click", function () { ZifferTasteGeklickt(4); });
+    document.getElementById("Taste5").addEventListener("click", function () { ZifferTasteGeklickt(5); });
+    document.getElementById("Taste6").addEventListener("click", function () { ZifferTasteGeklickt(6); });
+    document.getElementById("Taste7").addEventListener("click", function () { ZifferTasteGeklickt(7); });
+    document.getElementById("Taste8").addEventListener("click", function () { ZifferTasteGeklickt(8); });
+    document.getElementById("Taste9").addEventListener("click", function () { ZifferTasteGeklickt(9); });
+    document.getElementById("Taste+").addEventListener("click", function () { OperatorTasteGeklickt("+"); });
+    document.getElementById("Taste-").addEventListener("click", function () { OperatorTasteGeklickt("-"); });
+    document.getElementById("Taste*").addEventListener("click", function () { OperatorTasteGeklickt("*"); });
+    document.getElementById("Taste/").addEventListener("click", function () { OperatorTasteGeklickt("/"); });
     document.getElementById("ErgebnisTaste").addEventListener("click", ErgebnisTasteGedrückt);
     document.getElementById("ResetTaste").addEventListener("click", Reset);
     document.getElementById("GeradeZahlTaste").addEventListener("click", CheckGeradeZahl);
     CreateNewButton(); //Starte Funktion die Neue HTML Elemente erzeugt
+    console.log("/////////////// Dieser Check kommt nach dem Laden ///////////////");
 };
 ////////////////////TASCHENRECHNER////////////////////
 //Wenn eine Ziffer geklickt wird
-function ZifferTasteGedrückt(A) {
-    AktuelleZahl = AktuelleZahl * 10 + A; //Schreibt neue Ziffern an die richtige Dezimalstelle
+function ZifferTasteGeklickt(A) {
+    AktuelleZahl = AktuelleZahl * 10 + A; //Schreibt neue Ziffer an die richtige Dezimalstelle
     if (OperatorGeklickt == true) { //Ausgabe
         document.getElementById("Anzeige").innerHTML = Zwischenspeicher + " " + OperatorTyp + " " + AktuelleZahl;
     }
@@ -41,29 +41,24 @@ function ZifferTasteGedrückt(A) {
         document.getElementById("Anzeige").innerHTML = "" + AktuelleZahl;
     }
     console.log("/////////////// TASTE '" + A + "' GEDRÜCKT ///////////////"); //Kontrollausgaben
-    console.log("Zwischenspeicher: " + Zwischenspeicher);
     console.log("AktuelleZahl: " + AktuelleZahl);
-    console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
-    console.log("Das steht in OperatorTyp: '" + OperatorTyp + "'");
     console.log("");
 }
 //Wenn '+','-','*', oder '/' geklickt wird
-function OperatorTasteGedrückt(GedrückterOperator) {
+function OperatorTasteGeklickt(GedrückterOperator) {
     if (OperatorGeklickt == false) { //Nur beim ersten Operator-Klick auführen
         OperatorGeklickt = true;
-        Zwischenspeicher = AktuelleZahl; //Speicher die erste Eingabe
-        AktuelleZahl = 0; //Resets die AktuelleZahl für die zweite Eingabe
+        Zwischenspeicher = AktuelleZahl; //Speichert die erste Eingabe
+        AktuelleZahl = 0; //Reset AktuelleZahl für die zweite Eingabe
         OperatorTyp = GedrückterOperator; //Merke den gewählten OperatorTyp
         document.getElementById("Anzeige").innerHTML = Zwischenspeicher + " " + OperatorTyp; //Ausgabe
         console.log("/////////////// TASTE '" + OperatorTyp + "' GEDRÜCKT ///////////////");
-        console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
-        console.log("Das steht in OperatorTyp: '" + OperatorTyp + "'");
-        console.log("Das steht in ZwischenSpeicher: " + Zwischenspeicher);
-        console.log("Das steht in AktuelleZahl: " + AktuelleZahl);
     }
     else {
         console.log("//////////////// OPERATOR WURDE BEREITS FESTGELEGT ///////////////");
     }
+    console.log("OperatorGeklicktt: " + OperatorGeklickt);
+    console.log("OperatorTyp: '" + OperatorTyp + "'");
     console.log("");
 }
 //Wenn '=' geklickt wird
@@ -88,8 +83,7 @@ function ErgebnisTasteGedrückt() {
     Zwischenspeicher = 0;
     document.getElementById("Anzeige").innerHTML = "" + AktuelleZahl; //Ausgabe
     console.log("/////////////// TASTE 'ERGEBNIS'GEDRÜCKT ///////////////");
-    console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
-    console.log("Das steht in AktuelleZahl: " + AktuelleZahl);
+    console.log("AktuelleZahl: " + AktuelleZahl);
     console.log("");
 }
 //Funktionen die simple Rechnungen durchführen
@@ -105,15 +99,15 @@ function Reset() {
     OperatorGeklickt = false;
     document.getElementById("Anzeige").innerHTML = "-----------------------------------";
     console.log("/////////////// TASTE 'RESET' GEDRÜCKT ///////////////");
-    console.log("Das steht in OperatorGedrückt: " + OperatorGeklickt);
-    console.log("Das steht in OperatorTyp: '" + OperatorTyp + "'");
-    console.log("Das steht in ZwischenSpeicher: " + Zwischenspeicher);
-    console.log("Das steht in AktuelleZahl: " + AktuelleZahl);
+    console.log("OperatorGeklickt: " + OperatorGeklickt);
+    console.log("OperatorTyp: '" + OperatorTyp + "'");
+    console.log("ZwischenSpeicher: " + Zwischenspeicher);
+    console.log("AktuelleZahl: " + AktuelleZahl);
     console.log("");
 }
 ////////////////////Gerade Zahlen Test////////////////////
 function CheckGeradeZahl() {
-    if (AktuelleZahl != 0) {
+    if (AktuelleZahl != 0) { //Nur ausführen wenn auch eine Zahl angezeigt wird
         if (AktuelleZahl % 2 == 0) {
             document.getElementById("GeradeZahlTaste").innerHTML = "Die Zahl ist gerade";
         }
