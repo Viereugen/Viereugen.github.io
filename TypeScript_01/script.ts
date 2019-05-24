@@ -2,24 +2,24 @@
 
 //Ich hoffe Alles ist verständlich und ich habe nicht zu viel rumgespielt.
 //Ich wollte Alles mal ausprobieren.
-//Es sollten jedoch alle Aufgaben erfüllt sein.
+//Es sollten jedoch alle Aufgaben erfüllt sein.                                                                     
 
 
 
 ////////////////////DEKLARATIONEN////////////////////
 
-let AktuelleZahl : number = 0;                                                          //Zahl die aktuell Eingegeben wird
-let Zwischenspeicher : number = 0;                                                      //Speichert die erste eingegebene Zahl
-let OperatorGeklickt : boolean = false;                                                 //Speichert ob Operator-Taste bereits gedrückt wurde
-let OperatorTyp : string = "";                                                          //Speichert welcher Operator geklickt wurde
+let AktuelleZahl : number = 0;                                                          //Zahl die aktuell Eingegeben wird                  // 🗹 Mindestanforderung Nr.10
+let Zwischenspeicher : number = 0;                                                      //Speichert die erst eingegebene Zahl
+let OperatorGeklickt : boolean = false;                                                 //Wurde ein Operator geklickt?                      // 🗹 Optionales Ziel Nr.3
+let OperatorTyp : string = "";                                                          //Welcher Operator wurde geklickt?
 
+console.log("/////////////// Dieser Check kommt vor dem Laden ///////////////");                                                            // 🗹 Mindestanforderung Nr.1                             
 
 
 ////////////////////Beim Laden die Event-Listener erzeugen////////////////////
 
-console.log("/////////////// Dieser Check kommt vor dem Laden ///////////////");
 window.onload = function () {
-    document.getElementById("Taste0").addEventListener("click", function() {ZifferTasteGeklickt(0);});
+    document.getElementById("Taste0").addEventListener("click", function() {ZifferTasteGeklickt(0);});                          
     document.getElementById("Taste1").addEventListener("click", function() {ZifferTasteGeklickt(1);});
     document.getElementById("Taste2").addEventListener("click", function() {ZifferTasteGeklickt(2);});
     document.getElementById("Taste3").addEventListener("click", function() {ZifferTasteGeklickt(3);});
@@ -35,8 +35,8 @@ window.onload = function () {
     document.getElementById("Taste/").addEventListener("click", function() {OperatorTasteGeklickt("/");});
     document.getElementById("ErgebnisTaste").addEventListener("click", ErgebnisTasteGedrückt);
     document.getElementById("ResetTaste").addEventListener("click", Reset);
-    document.getElementById("GeradeZahlTaste").addEventListener("click", CheckGeradeZahl);
-    CreateNewButton();                                                                  //Starte Funktion die Neue HTML Elemente erzeugt
+    document.getElementById("GeradeZahlTaste").addEventListener("click", CheckGeradeZahl);                                                  // 🗹 Mindestanforderung Nr.4
+    CreateNewButton();                                                                                                                      // 🗹 Mindestanforderung Nr.3
     console.log("/////////////// Dieser Check kommt nach dem Laden ///////////////");
 }
 
@@ -47,7 +47,7 @@ window.onload = function () {
 //Wenn eine Ziffer geklickt wird
 function ZifferTasteGeklickt(A:number)
 {
-    AktuelleZahl = AktuelleZahl* 10 + A;                                                //Schreibt neue Ziffer an die richtige Dezimalstelle
+    AktuelleZahl = AktuelleZahl* 10 + A;                                                //Neue Ziffer an die richtige Dezimalstelle
 
     if(OperatorGeklickt == true){                                                       //Ausgabe
         document.getElementById("Anzeige").innerHTML=Zwischenspeicher +" "+ OperatorTyp +" "+ AktuelleZahl;
@@ -61,7 +61,7 @@ function ZifferTasteGeklickt(A:number)
 }
 
 //Wenn '+','-','*', oder '/' geklickt wird
-function OperatorTasteGeklickt(GedrückterOperator:string)
+function OperatorTasteGeklickt(GedrückterOperator:string)                                                                                   // 🗹 Mindestanforderung Nr.2
 {
     if(OperatorGeklickt==false){                                                        //Nur beim ersten Operator-Klick auführen
         OperatorGeklickt=true;                                                          
@@ -81,7 +81,7 @@ function OperatorTasteGeklickt(GedrückterOperator:string)
 
 //Wenn '=' geklickt wird
 function ErgebnisTasteGedrückt()                                                        //Ruft die zum Operator passende Rechnung auf 
-{                                                                                       //und schreibt das Ergebnis(Return) in AktuelleZahl
+{                                                                                       //und schreibt das Ergebnis in AktuelleZahl
     switch (OperatorTyp){                                                               
         case "+": AktuelleZahl = Addition(Zwischenspeicher,AktuelleZahl); break; 
         case "-": AktuelleZahl = Subtraktion(Zwischenspeicher,AktuelleZahl); break; 
@@ -99,7 +99,7 @@ function ErgebnisTasteGedrückt()                                               
 }
 
 //Funktionen die simple Rechnungen durchführen
-function Addition(x : number , y : number)                                              
+function Addition(x : number , y : number)                                                                                                  // 🗹 Optionales Ziel Nr.2
 {let z= x+y;   return z;}
 function Subtraktion(x : number , y : number)
 {let z= x-y;   return z;}
@@ -111,7 +111,7 @@ function Division(x : number , y : number)
 //Wenn 'RESET' geklickt wird
 function Reset()                                                                     
 {
-    OperatorTyp = "";                                                                   //Reset alle Variablen und die Taschenrechner-Anzeige
+    OperatorTyp = "";                                                                   //Reset alle Variablen + Anzeige
     AktuelleZahl = 0;
     Zwischenspeicher = 0;
     OperatorGeklickt = false;
@@ -131,7 +131,7 @@ function Reset()
 
 function CheckGeradeZahl()
 {
-    if (AktuelleZahl != 0){                                                             //Nur ausführen wenn auch eine Zahl angezeigt wird
+    if (AktuelleZahl != 0){                                                            
         if (AktuelleZahl % 2 == 0){
             document.getElementById("GeradeZahlTaste").innerHTML = "Die Zahl ist gerade";
         }else{
@@ -148,10 +148,10 @@ function CheckGeradeZahl()
 
 ////////////////////ERSTELLT TESTRECHNUNGS-BUTTON MIT EVENT-LISTENER////////////////////
 
-function CreateNewButton()
-{
+function CreateNewButton()                                                                                                                  // 🗹 Optionales Ziel Nr.1
+{                                                                                                                               
     let ButtonCounter : number = 0;                                                     //Zählt wie oft der neue Button gedrückt wird
-    let NeuesDiv = document.createElement("div");                                       //Erzeugt neues <div>
+    let NeuesDiv = document.createElement("div");                                       //Erzeugt neues <div>                               // 🗹 Mindestanforderung Nr.9
     let NeuerButton = document.createElement("button");                                 //Erzeugt neuen <Button>
     document.body.appendChild(NeuesDiv);                                                //Neues <div> ist child von <body>
     NeuesDiv.appendChild(NeuerButton);                                                  //Neuer <button> ist child von <div>
@@ -168,17 +168,18 @@ function CreateNewButton()
         let Z1 : number = 1;                                                            //Einige Deklarationen
         let Z2 : number = 2;
         let Wort1 : string = "Das ist ein Satz. ";
-        let Wort2 : string = "Das ist ein weiterer Satz. ";
-        NeuerButton.className = "GeklickterButton";                                     //Ändert die Klasse des neuen Buttons zu "GeklickterButton"
+        let Wort2 : string = "Das ist ein weiterer Satz. ";                                                                                 // 🗹 Mindestanforderung Nr.6
+        Z1 = 5;                                                                         //Neuer Wert für deklarierte Variable               // 🗹 Mindestanforderung Nr.7
+        NeuerButton.className = "GeklickterButton";                                     //Ändert die Klasse                                 // 🗹 Mindestanforderung Nr.5
 
         ButtonCounter += 1;
         NeuerButton.innerHTML = "Ich wurde über TypeSkript erstellt und wurde "+ButtonCounter+"-mal geklickt<br>Meine neue Klasse ist "+NeuerButton.className; 
         
         console.log("/////////////// TESTRECHNUNGS ERGEBNISSE: ///////////////");        
         console.log('Meine neue Klasse ist "'+NeuerButton.className+'"');
-        console.log(Wort1 + Wort2);                                                     //string+string
+        console.log(Wort1 + Wort2);                                                     //string+string                         
         console.log(Wort1 + Z1);                                                        //string+number
-        console.log(Z1 + Z2);                                                           //number+number
+        console.log(Z1 + Z2);                                                           //number+number                                     // 🗹 Mindestanforderung Nr.8
         console.log("");
     }
 }
