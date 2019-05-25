@@ -32,15 +32,15 @@ window.onload = function () {
 };
 ////////////////////TASCHENRECHNER////////////////////
 //Wenn eine Ziffer geklickt wird
-function ZifferTasteGeklickt(A) {
-    AktuelleZahl = AktuelleZahl * 10 + A; //Neue Ziffer an die richtige Dezimalstelle
+function ZifferTasteGeklickt(Ziffer) {
+    AktuelleZahl = AktuelleZahl * 10 + Ziffer; //Neue Ziffer an die richtige Dezimalstelle schreiben
     if (OperatorGeklickt == true) { //Ausgabe
         document.getElementById("Anzeige").innerHTML = Zwischenspeicher + " " + OperatorTyp + " " + AktuelleZahl;
     }
     else {
         document.getElementById("Anzeige").innerHTML = "" + AktuelleZahl;
     }
-    console.log("/////////////// TASTE '" + A + "' GEDRÜCKT ///////////////"); //Kontrollausgaben
+    console.log("/////////////// TASTE '" + Ziffer + "' GEDRÜCKT ///////////////"); //Kontrollausgaben
     console.log("AktuelleZahl: " + AktuelleZahl);
     console.log("");
 }
