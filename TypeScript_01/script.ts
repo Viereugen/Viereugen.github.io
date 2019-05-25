@@ -82,6 +82,7 @@ function OperatorTasteGeklickt(GedrückterOperator:string)                      
 //Wenn '=' geklickt wird
 function ErgebnisTasteGedrückt()                                                        //Ruft die zum Operator passende Rechnung auf 
 {                                                                                       //und schreibt das Ergebnis in AktuelleZahl
+    console.log("/////////////// TASTE 'ERGEBNIS'GEDRÜCKT ///////////////");
     switch (OperatorTyp){                                                               
         case "+": AktuelleZahl = Addition(Zwischenspeicher,AktuelleZahl); break; 
         case "-": AktuelleZahl = Subtraktion(Zwischenspeicher,AktuelleZahl); break; 
@@ -93,8 +94,7 @@ function ErgebnisTasteGedrückt()                                               
     OperatorTyp = "";
     Zwischenspeicher = 0;
     document.getElementById("Anzeige").innerHTML = ""+AktuelleZahl;                     //Ausgabe
-    console.log("/////////////// TASTE 'ERGEBNIS'GEDRÜCKT ///////////////");
-    console.log("AktuelleZahl: " + AktuelleZahl);
+    
     console.log("");
 }
 
