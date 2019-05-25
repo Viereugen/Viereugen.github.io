@@ -70,12 +70,12 @@ function OperatorTasteGeklickt(GedrückterOperator:string)                      
         OperatorTyp = GedrückterOperator;                                               //Merke den gewählten OperatorTyp
         document.getElementById("Anzeige").innerHTML=Zwischenspeicher+" "+OperatorTyp;  //Ausgabe
 
-        console.log("/////////////// TASTE '"+OperatorTyp+"' GEDRÜCKT ///////////////");
+        console.log("/////////////// TASTE '"+OperatorTyp+"' GEDRÜCKT ///////////////");  
+        console.log("OperatorGeklicktt: " + OperatorGeklickt);
+        console.log("OperatorTyp: '" + OperatorTyp + "'");
     }else{
         console.log("//////////////// OPERATOR WURDE BEREITS FESTGELEGT ///////////////");
     }
-    console.log("OperatorGeklicktt: " + OperatorGeklickt);
-    console.log("OperatorTyp: '" + OperatorTyp + "'");
     console.log("");
 }
 
