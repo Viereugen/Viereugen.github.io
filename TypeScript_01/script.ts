@@ -19,6 +19,7 @@ console.log("/////////////// Dieser Check kommt vor dem Laden ///////////////");
 ////////////////////Beim Laden die Event-Listener erzeugen////////////////////
 
 window.onload = function () {
+    console.log("/////////////// Dieser Check kommt nach dem Laden ///////////////");
     document.getElementById("Taste0").addEventListener("click", function() {ZifferTasteGeklickt(0);});                          
     document.getElementById("Taste1").addEventListener("click", function() {ZifferTasteGeklickt(1);});
     document.getElementById("Taste2").addEventListener("click", function() {ZifferTasteGeklickt(2);});
@@ -37,7 +38,6 @@ window.onload = function () {
     document.getElementById("ResetTaste").addEventListener("click", Reset);
     document.getElementById("GeradeZahlTaste").addEventListener("click", CheckGeradeZahl);                                                  // 🗹 Mindestanforderung Nr.4
     CreateNewButton();                                                                                                                      // 🗹 Mindestanforderung Nr.3
-    console.log("/////////////// Dieser Check kommt nach dem Laden ///////////////");
 }
 
 
