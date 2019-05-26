@@ -90,21 +90,7 @@ function Addition(x, y) { let z = x + y; return z; }
 function Subtraktion(x, y) { let z = x - y; return z; }
 function Multiplikation(x, y) { let z = x * y; return z; }
 function Division(x, y) { let z = x / y; return z; }
-//Wenn 'RESET' geklickt wird
-function Reset() {
-    OperatorTyp = ""; //Reset alle Variablen + Anzeige
-    AktuelleZahl = 0;
-    Zwischenspeicher = 0;
-    OperatorGeklickt = false;
-    document.getElementById("Anzeige").innerHTML = "-----------------------------------";
-    console.log("/////////////// TASTE 'RESET' GEDRÜCKT ///////////////");
-    console.log("OperatorGeklickt: " + OperatorGeklickt);
-    console.log("OperatorTyp: '" + OperatorTyp + "'");
-    console.log("ZwischenSpeicher: " + Zwischenspeicher);
-    console.log("AktuelleZahl: " + AktuelleZahl);
-    console.log("");
-}
-////////////////////Gerade Zahlen Test////////////////////
+//Gerade Zahlen Test
 function CheckGeradeZahl() {
     if (AktuelleZahl != 0) {
         if (AktuelleZahl % 2 == 0) {
@@ -120,6 +106,21 @@ function CheckGeradeZahl() {
     }
     console.log("");
 }
+//Wenn 'RESET' geklickt wird
+function Reset() {
+    OperatorTyp = ""; //Reset alle Variablen + Anzeige
+    AktuelleZahl = 0;
+    Zwischenspeicher = 0;
+    OperatorGeklickt = false;
+    document.getElementById("Anzeige").innerHTML = "-----------------------------------";
+    document.getElementById("GeradeZahlTaste").innerHTML = "Ist das eine Gerade Zahl?";
+    console.log("/////////////// TASTE 'RESET' GEDRÜCKT ///////////////");
+    console.log("OperatorGeklickt: " + OperatorGeklickt);
+    console.log("OperatorTyp: '" + OperatorTyp + "'");
+    console.log("ZwischenSpeicher: " + Zwischenspeicher);
+    console.log("AktuelleZahl: " + AktuelleZahl);
+    console.log("");
+}
 ////////////////////ERSTELLT TESTRECHNUNGS-BUTTON MIT EVENT-LISTENER////////////////////
 function CreateNewButton() {
     let ButtonCounter = 0; //Zählt wie oft der neue Button gedrückt wird
@@ -128,7 +129,8 @@ function CreateNewButton() {
     document.body.appendChild(NeuesDiv); //Neues <div> ist child von <body>
     NeuesDiv.appendChild(NeuerButton); //Neuer <button> ist child von <div>
     NeuerButton.addEventListener("click", TestFunktion); //Gibt neuem Button einen Event-Listener
-    NeuerButton.innerHTML = "Ich wurde über TypeSkript erstellt und wurde " + ButtonCounter + "-mal geklickt<br>Wenn du mich klickst ändere ich meine Klasse und gib die Ergebnisse einiger Rechnungen in der Konsole aus";
+    NeuerButton.innerHTML = "Ich wurde über TypeSkript erstellt und wurde " + ButtonCounter + "-mal geklickt<br>" +
+        "Wenn du mich klickst ändere ich meine Klasse und gib einige Ergebnisse in der Konsole aus";
     console.log("/////////////// Der Neue Button wurder erstellt ///////////////");
     console.log("");
     //Funktion für Testrechnungen und Klassenänderung
@@ -140,7 +142,8 @@ function CreateNewButton() {
         Z1 = 5; //Neuer Wert für deklarierte Variable               // 🗹 Mindestanforderung Nr.7
         NeuerButton.className = "GeklickterButton"; //Ändert die Klasse                                 // 🗹 Mindestanforderung Nr.5
         ButtonCounter += 1;
-        NeuerButton.innerHTML = "Ich wurde über TypeSkript erstellt und wurde " + ButtonCounter + "-mal geklickt<br>Meine neue Klasse ist " + NeuerButton.className;
+        NeuerButton.innerHTML = "Ich wurde über TypeSkript erstellt und wurde " + ButtonCounter + "-mal geklickt<br>" +
+            "Meine neue Klasse ist " + NeuerButton.className;
         console.log("/////////////// TESTRECHNUNGS ERGEBNISSE: ///////////////");
         console.log('Meine neue Klasse ist "' + NeuerButton.className + '"');
         console.log(Wort1 + Wort2); //string+string                         
