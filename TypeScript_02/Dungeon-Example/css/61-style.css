@@ -18,7 +18,7 @@ h1 {
 }
 
 .monster {
-	width: 20em;
+	width: 12.5%;
 }
 
 .monster img {
@@ -26,6 +26,7 @@ h1 {
 }
 
 .monster button {
+	width: 80%;
 	text-align: center;
 	display: block;
 	margin: auto;
@@ -60,7 +61,7 @@ button {
   overflow: hidden;
 
 	display: inline-block;
-  width:10em; 	
+  width:13em; 	
 
   border-width: 0;
   outline: none;
