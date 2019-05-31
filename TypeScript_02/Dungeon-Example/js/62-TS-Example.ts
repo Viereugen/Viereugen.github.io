@@ -304,7 +304,7 @@ function updatePlayer()
     // Falls der Spieler Level 10 erreicht hat er gewonnen.
     if(tempLevel>=10){                                                          
         window.alert("Du hast Gewonnen und du hast dabei: " + playerMoney + "$ gesammelt!!!");
-        document.getElementById("Kopfzeile").innerHTML = "Mario's Dungeon           Highscore:" + playerMoney + "$";
+        document.getElementById("highscoreDisplay").innerHTML = "Highscore: " + playerMoney + "$";
         //Variablen-Reset um eine neuer Runde zu spielen
         playerXP = 0;                                                           
         playerMoney = 100;
