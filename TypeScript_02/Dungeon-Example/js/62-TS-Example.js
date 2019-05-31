@@ -60,12 +60,14 @@ function generateMonster() {
             monsterIcon: newMonsterIcon
         };
         monsterArray.push(newMonster); // Monster wird erst in diesem Schritt zu dem Array hinzugefügt 
-        console.log("XP vom neuen Monster: " + monsterArray[monsterArray.length - 1].monsterExperience); //FEHLER 3 GEFUNDEN!: So geändert dass es die XP des neuen Monsters ausgibt // Man kann nur auf Array-Teile zugreifen, welche definiert sind. -1 ist nicht definitiert (und wird es auch nie sein).
+        console.log("XP vom neuen Monster: " + monsterArray[monsterArray.length - 1].monsterExperience +
+            ", Geld vom neuen Monster: " + monsterArray[monsterArray.length - 1].monsterMoney); //FEHLER 3 GEFUNDEN!: So geändert dass es die XP des neuen Monsters ausgibt // Man kann nur auf Array-Teile zugreifen, welche definiert sind. -1 ist nicht definitiert (und wird es auch nie sein).
         monsterGenerateHTML(); // Triggere die Generierung von HTML
     }
     else {
         window.alert("Du hast nicht genug Geld!"); // Alert falls nicht genug Geld vorhanden ist
         let givingUpButton = document.createElement("BUTTON"); // Generiere einen <buton> mit dem man Aufgeben kann
+        givingUpButton.setAttribute("id", "givingUpButton");
         givingUpButton.innerHTML = "Aufgeben";
         document.getElementById("buttonsDiv").appendChild(givingUpButton); // Füge den <button> dem <main> Element dazu
         console.log("Selbstmord-Button erstellt");
@@ -194,6 +196,7 @@ function fightMonster(_index) {
         monsterArray = []; // monsterArray wird geleert
         document.getElementById("monsterHoldingCell").innerHTML = ""; // HTML wird geleert
         window.alert("Das Monster wurde besiegt! Alle anderen Monster sind geflohen!"); //🗹 Optionales Ziel Nr. 2
+        console.log("Spieler: " + playerName + " hat das jetzt das Item: " + playerItem);
     }
     else // Falls der Spieler nicht das richtige Item hat verliert er den Kampf
      {
@@ -214,9 +217,9 @@ function updatePlayer() {
     document.getElementById("playerHPCounter").innerHTML = "HP: " + playerHealthPoints;
     document.getElementById("moneyCounter").innerHTML = "Geld: " + playerMoney;
     document.getElementById("itemHolder").innerHTML = "Item: " + playerItem;
-    // Falls der Spieler Level 10 erreicht hat er gewonnen.
+    // Spieler hat gewonnen!
     if (tempLevel >= 10) {
-        window.alert("Du hast Gewonnen und du hast dabei: " + playerMoney + "$ gesammelt!!!");
+        window.alert("Du hast gewonnen und du hast dabei: " + playerMoney + "$ gesammelt!!!");
         document.getElementById("highscoreDisplay").innerHTML = "Highscore: " + playerMoney + "$";
         //Variablen-Reset um eine neuer Runde zu spielen
         playerXP = 0;
@@ -227,7 +230,7 @@ function updatePlayer() {
         monsterArray = [];
         updatePlayer();
     }
-    // Falls der Spieler weniger als 1 HP erreicht hat er verloren.
+    // Spieler hat verloren.
     if (playerHealthPoints < 1) {
         window.alert("Du bist leider gestorben.");
         //Variablen-Reset um eine neuer Runde zu spielen                              
@@ -237,10 +240,11 @@ function updatePlayer() {
         playerHealthPoints = 100;
         document.getElementById("monsterHoldingCell").innerHTML = "";
         monsterArray = [];
+        document.getElementById("buttonsDiv").removeChild(document.getElementById("givingUpButton")); // Löscht den givingUpButton 
+        console.log("Spieler: " + playerName + " ist gestorben");
         updatePlayer();
     }
-    console.log("Spieler: " + playerName + " hat nun Level " + tempLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)"); // Spieler-Level in der Konsole.
-    console.log("Spieler: " + playerName + " hat das Item: " + playerItem);
+    //console.log("Spieler: " + playerName + " hat nun Level " + tempLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)"); // Spieler-Level in der Konsole.
 }
 //🗹 Aufgabe: Weitere zu implementierende Funktionen-->                         
 let drinksCounter = 1;
