@@ -66,7 +66,7 @@ function generateMonster() {
         window.alert("Du hast nicht genug Geld!"); // Alert falls nicht genug Geld vorhanden ist
         let givingUpButton = document.createElement("BUTTON"); // Generiere einen <buton> mit dem man Aufgeben kann
         givingUpButton.innerHTML = "Ich gebe auf";
-        document.getElementById(monsterHolder).appendChild(givingUpButton); // Füge den <button> dem <main> Element dazu
+        document.getElementById("buttonsDiv").appendChild(givingUpButton); // Füge den <button> dem <main> Element dazu
         console.log("Selbstmord-Button erstellt");
         givingUpButton.addEventListener("click", killPlayer); // Gib <button> einen Event-Listener der eine Funktion ausführt die den Spieler tötet
     }
@@ -119,8 +119,8 @@ function generateMonsterType() {
 // Diese Funktion gibt einen zusammengewürfelten Namen zurück.
 // Wird für die Monster-generierung verwendet!
 // Liefert einen zusammengesetzten String zurück.                               //Leicht geändert durch die umfunktion von "Prefix" zu "Type"
-function generateMonsterName(typeAsPrefix) {
-    let generatedMonsterName = typeAsPrefix + "-"; //Der Name wird deklariert. Er beginnt mit dem Typ und einem Bindestrich
+function generateMonsterName(Prefix) {
+    let generatedMonsterName = Prefix + "-"; //Der Name wird deklariert. Er beginnt mit dem Typ und einem Bindestrich
     // Monster-Mittelname
     let rngNumber = getRNGNumber(monsterName.length); // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Mitte) zu generieren.
     generatedMonsterName += monsterName[rngNumber]; // Füge den Monsternamen zusammen: nimm aus dem entsprechenden Array mit der zufallsgenerierten Zahl den entsprechenden Eintrag
@@ -243,11 +243,11 @@ function updatePlayer() {
 //🗹 Aufgabe: Weitere zu implementierende Funktionen-->                         
 let drinksCounter = 1;
 function arrayPusher() {
-    console.log("Array vorher:"); //Konsolenausgabe vorher
+    console.log("Array vorher:"); // Konsolenausgabe vorher
     console.log(monsterModifers);
     monsterModifers.push("Hat schon " + drinksCounter + " Kaffee getrunken");
     monsterModifers.push("Hat schon " + drinksCounter + " Bier getrunken");
-    console.log("Array danach:"); //Konsolenausgabe danach
+    console.log("Array danach:"); // Konsolenausgabe danach
     console.log(monsterModifers);
     drinksCounter += 1;
 }
