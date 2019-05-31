@@ -25,7 +25,7 @@ let monsterIcons = ["imgs/MonsterIcon1.png", "imgs/MonsterIcon2.png", "imgs/Mons
 let monsterArray = []; // Das Haupt-Array wurde erstellt und initialisiert!
 console.log(monsterArray); // Gebe das Monster-Array einmal zu beginn aus. Es sollte leer sein.
 // ----------- Funktionen ----------- //
-// INSGESAMT EINGEBAUTE FEHLER bei den Funktionen: IIIII (5 / fünf) // Alle Fehler gefunden! (+ 2 zusätzliche "Fehler"?)
+// INSGESAMT EINGEBAUTE FEHLER bei den Funktionen: IIIII (5 / fünf) // Alle Fehler gefunden!
 // Generelle onload-funktion um Event-Listener zum Dokument hinzuzufügen
 window.onload = function () {
     document.getElementById("monsterSpawner").addEventListener("click", generateMonster, false);
@@ -114,7 +114,7 @@ function getRNGNumber(_maxNumber) {
 // Wird für den Monster-Typ aufgerufen.
 // Liefert einen String zurück.
 function generateMonsterType() {
-    return type[getRNGNumber(type.length - 1)];
+    return type[getRNGNumber(type.length)];
 }
 // Diese Funktion gibt einen zusammengewürfelten Namen zurück.
 // Wird für die Monster-generierung verwendet!
@@ -122,11 +122,11 @@ function generateMonsterType() {
 function generateMonsterName(typeAsPrefix) {
     let generatedMonsterName = typeAsPrefix + "-"; //Der Name wird deklariert. Er beginnt mit dem Typ und einem Bindestrich
     // Monster-Mittelname
-    let rngNumber = getRNGNumber(monsterName.length - 1); // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Mitte) zu generieren.
+    let rngNumber = getRNGNumber(monsterName.length); // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Mitte) zu generieren.
     generatedMonsterName += monsterName[rngNumber]; // Füge den Monsternamen zusammen: nimm aus dem entsprechenden Array mit der zufallsgenerierten Zahl den entsprechenden Eintrag
     //generatedMonsterName += monsterName[0];//FEHLER 5 GEFUNDEN!: Keine Ahnung was hier versucht wurde, aber es funktioniert so nicht
     // Monster-Titel
-    rngNumber = getRNGNumber(suffix.length - 1); // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Ende) zu generieren.
+    rngNumber = getRNGNumber(suffix.length); // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Ende) zu generieren.
     generatedMonsterName += suffix[rngNumber]; // Füge den Monsternamen zusammen: nimm aus dem entsprechenden Array mit der zufallsgenerierten Zahl den entsprechenden Eintrag.
     // 🗹 Mindestanforderung Nr.6
     return generatedMonsterName;
@@ -135,38 +135,38 @@ function generateMonsterName(typeAsPrefix) {
 // Liefert eine variierende Zahl zurück.
 function generateMonsterHitPoints() {
     // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 10) + 5 zurück.
-    let tempMonsterHP = 5 + getRNGNumber(10); // Da HP jetzt als Hit-Points genutzt werden, wurde der Wert ein wenig angepasst
+    let tempMonsterHP = 5 + getRNGNumber(11); // Da HP jetzt als Hit-Points genutzt werden, wurde der Wert ein wenig angepasst
     return tempMonsterHP;
 }
 // Wird für die Erstellung der Monster-XP aufgerufen.
 // Liefert eine variierende Zahl zurück.
 function generateMonsterXP() {
     // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 900) + 100 zurück.
-    let tempMonsterXP = 100 + getRNGNumber(900); // Wert wurde angepasst     // 🗹 Mindestanforderung Nr. 7
+    let tempMonsterXP = 100 + getRNGNumber(901); // Wert wurde angepasst     // 🗹 Mindestanforderung Nr. 7
     return tempMonsterXP;
 }
 // Wird für die Erstellung der Monster-Modifizierer aufgerufen.
 // Liefert ein Array mit zwei Einträgen zurück.
 function generateMonsterModifer() {
     let tempMonsterMod = []; // Initialisiere ein leeres Array (verhindert Folge-Fehler)
-    tempMonsterMod[0] = monsterModifers[getRNGNumber(monsterModifers.length - 1)]; // Setze Schublade 0 des Arrays auf einen Wert. //Zusätzlicher Fehler gefunden?: "-1" zugefügt damit nur gefüllte Schubladen angesprochen werden
-    tempMonsterMod[1] = monsterModifers[getRNGNumber(monsterModifers.length - 1)]; // Setze Schublade 1 des Arrays auf einen Wert. //Zusätzlicher Fehler gefunden?: "-1" zugefügt damit nur gefüllte Schubladen angesprochen werden
+    tempMonsterMod[0] = monsterModifers[getRNGNumber(monsterModifers.length)]; // Setze Schublade 0 des Arrays auf einen Wert.
+    tempMonsterMod[1] = monsterModifers[getRNGNumber(monsterModifers.length)]; // Setze Schublade 1 des Arrays auf einen Wert.
     return tempMonsterMod; // Gebe das hier zusammengesetzte Array wieder zurück.
 }
 // Wird für die Erstellung von Monster-Money aufgerufen.
 // Liefert eine variierende Zahl zurück.
 function generateMonsterMoney() {
-    let tempMonsterMoney = 100 + getRNGNumber(400); // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 400) + 100 zurück.
+    let tempMonsterMoney = 100 + getRNGNumber(401); // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 400) + 100 zurück.
     return tempMonsterMoney;
 }
 // Wird für die Erstellung vom Monster-Item aufgerufen
 // Liefert einen String zurück.
 function generateMonsterItem() {
-    let rngNumber = getRNGNumber(items.length - 1); // Diese Funktion gibt einen zufälligen String aus dem Items-Array zurück.
+    let rngNumber = getRNGNumber(items.length); // Diese Funktion gibt einen zufälligen String aus dem Items-Array zurück.
     return items[rngNumber];
 }
 function generateMonsterIcon() {
-    let rngNumber = getRNGNumber(monsterIcons.length - 1); // Diese Funktion gibt einen zufälligen Bild-Pfad zurück.
+    let rngNumber = getRNGNumber(monsterIcons.length); // Diese Funktion gibt einen zufälligen Bild-Pfad zurück.
     return monsterIcons[rngNumber];
 }
 // Aufgerufen, wenn man auf den Button klickt.
