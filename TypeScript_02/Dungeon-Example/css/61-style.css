@@ -91,6 +91,7 @@ footer {
 }
 
 footer a {
+	clear: left;
 	color: #ddd;
 	text-decoration: none;
 }
