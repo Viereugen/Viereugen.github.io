@@ -104,7 +104,7 @@ function generateMonster()
         window.alert("Du hast nicht genug Geld!");                              // Alert falls nicht genug Geld vorhanden ist
 
         let givingUpButton : HTMLElement = document.createElement("BUTTON");    // Generiere einen <buton> mit dem man Aufgeben kann
-        givingUpButton.innerHTML = "Ich gebe auf";    
+        givingUpButton.innerHTML = "Aufgeben";    
         document.getElementById("buttonsDiv").appendChild(givingUpButton);     // Füge den <button> dem <main> Element dazu
         console.log("Selbstmord-Button erstellt");
         givingUpButton.addEventListener("click", killPlayer);                     // Gib <button> einen Event-Listener der eine Funktion ausführt die den Spieler tötet
