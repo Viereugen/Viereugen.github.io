@@ -14,10 +14,12 @@ button > img {
 
 h1 {
 	text-align: center;
+	margin-top: 2em;
 }
 
 .monster {
-	width: 12.5%;
+	width: 12em;
+	margin-bottom: 0.5em;
 }
 
 .monster img {
