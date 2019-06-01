@@ -227,7 +227,7 @@ function fightMonster(index) {
         playerXP += monsterArray[index - 1].monsterExperience; // index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
         playerMoney += monsterArray[index - 1].monsterMoney; // Spieler bekommt das Geld des besiegten Monsters.
         playerItem = monsterArray[index - 1].monsterItem; // Spieler tauscht sein Item gegen das des besiegten Monsters.
-        window.alert("Das Monster wurde besiegt! Alle anderen Monster sind geflohen!"); //🗹 Optionales Ziel Nr. 2
+        window.alert("Das Monster wurde besiegt!\nAlle anderen Monster sind geflohen!"); //🗹 Optionales Ziel Nr. 2
         console.log(playerName + " + " + monsterArray[index - 1].monsterMoney + "Geld");
         console.log(playerName + " + " + monsterArray[index - 1].monsterExperience + "XP");
         console.log(playerName + " hat das jetzt das Item: " + playerItem);
@@ -242,7 +242,7 @@ function fightMonster(index) {
      {
         playerMoney -= 40; // Der Spieler verliert Geld
         playerHealthPoints -= monsterArray[index - 1].monsterHitPoints; // Der Spieler verliert HealthPoints in höhe der HitPoints des Monsters
-        window.alert("Du kannst " + monsterArray[index - 1].monsterType + "-Monster nicht mit einer/einem " + playerItem + " besiegen. Du nimmst " + monsterArray[index - 1].monsterHitPoints + " Schaden und verlierst 40$");
+        window.alert("Du kannst " + monsterArray[index - 1].monsterType + "-Monster nicht mit einer/einem " + playerItem + " besiegen.\nDu nimmst " + monsterArray[index - 1].monsterHitPoints + " Schaden und verlierst 40$");
     }
     updatePlayer();
 }
@@ -268,7 +268,7 @@ function updatePlayer() {
 }
 // Aufgerufen falls Win-Conditions erfüllt sind
 function winTheGame() {
-    window.alert("Du hast gewonnen und du hast dabei: " + playerMoney + "$ gesammelt!!!");
+    window.alert("!!!GLÜCKWUNSCH!!!\n!!!DU HAST GEWONNEN!!!\nDu hast dabei: " + playerMoney + "$ gesammelt!");
     if (playerMoney > highScore) { // Fals ein neuer Highscore erreicht wurde
         highScore = playerMoney;
         document.getElementById("highscoreDisplay").innerHTML = "Highscore: " + highScore + " $"; // Schreib neuen Highscore in HTML
