@@ -65,7 +65,7 @@ window.onload = function () {
 // Ruft eine Funktion auf, welche dann das entsprechende HTML erzeugt.
 function generateMonster()
 {
-    if(playerMoney>=10)                                                         // Nur ausführen wenn noch genug Geld vorhanden ist (Neue Monster kosten 20$)
+    if(playerMoney>=20)                                                         // Nur ausführen wenn noch genug Geld vorhanden ist (Neue Monster kosten 20$)
     {
         playerMoney -= 20;                                                      // 20$ werden vom Geld abgezogen
         updatePlayer();                                                     
