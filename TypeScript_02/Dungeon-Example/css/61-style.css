@@ -17,7 +17,7 @@ h1 {
 }
 
 .monster {
-	width: 13em;
+	width: 10em;
 	margin-bottom: 0.5em;
 }
 
@@ -83,6 +83,18 @@ button {
 
 #button-red {
 	background-color: #cc2e69;
+}
+
+#moneyCounter{
+	display:inline;
+}
+
+#playerHPCounter{
+	display:inline;
+}
+
+#itemHolder{
+  	font-weight: bold;
 }
 
 footer {
