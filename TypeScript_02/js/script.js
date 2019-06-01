@@ -314,6 +314,7 @@ function getränkeVerteilen() {
     console.log(monsterModifers);
     drinksCounter += 1;
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //----------CHEAT-SHEET----------//
 //
 //  Welche Monster kann man wie besiegen?:
