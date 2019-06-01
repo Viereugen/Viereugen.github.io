@@ -126,7 +126,7 @@ function generateMonsterType() {
 }
 // Diese Funktion gibt einen zusammengewürfelten Namen zurück.
 // Wird für die Monster-generierung verwendet!
-// Liefert einen zusammengesetzten String zurück.                               //Leicht geändert durch die umfunktion von "Prefix" zu "Type"
+// Liefert einen zusammengesetzten String zurück.                               // Leicht geändert durch die umfunktion von "Prefix" zu "Type"
 function generateMonsterName(Prefix) {
     let generatedMonsterName = Prefix + "-"; //Der Name wird deklariert. Er beginnt mit dem Typ und einem Bindestrich
     // Monster-Mittelname

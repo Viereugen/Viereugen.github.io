@@ -182,8 +182,8 @@ function generateMonsterType() : string                                         
 
 // Diese Funktion gibt einen zusammengewürfelten Namen zurück.
 // Wird für die Monster-generierung verwendet!
-// Liefert einen zusammengesetzten String zurück.                               //Leicht geändert durch die umfunktion von "Prefix" zu "Type"
-function generateMonsterName(Prefix : string) : string                          //Der Funktion wird der Monster-Typ mitgegeben , um diesen als Prefix zu benutzen>
+// Liefert einen zusammengesetzten String zurück.                               // Leicht geändert durch die umfunktion von "Prefix" zu "Type"
+function generateMonsterName(Prefix : string) : string                          // Der Funktion wird der Monster-Typ mitgegeben , um diesen als Prefix zu benutzen>
 {
     let generatedMonsterName : string = Prefix + "-";                           //Der Name wird deklariert. Er beginnt mit dem Typ und einem Bindestrich
     
@@ -376,7 +376,7 @@ function loseTheGame()                                                          
 
 //🗹 Aufgabe: Weitere zu implementierende Funktionen-->                         
 let drinksCounter : number = 1;
-function getränkeVerteilen()                                                          // Diese Funktion pusht 2 neue Strings in das monsterModifers-Array
+function getränkeVerteilen()                                                    // Diese Funktion pusht 2 neue Strings in das monsterModifers-Array
 {
     console.log("Array vorher:");                                               // Konsolenausgabe vorher
     console.log(monsterModifers);
