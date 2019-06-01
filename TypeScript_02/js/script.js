@@ -284,7 +284,7 @@ function loseTheGame() {
     window.alert("Du bist leider gestorben.");
     //Variablen-Reset um eine neuer Runde zu spielen                              
     playerXP = 0;
-    playerMoney = 100;
+    playerMoney = 200;
     playerItem = "Allmächtiges Schwert";
     playerHealthPoints = 100;
     document.getElementById("monsterHoldingCell").innerHTML = "";
