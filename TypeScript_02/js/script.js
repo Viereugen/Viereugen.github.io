@@ -214,15 +214,15 @@ function fightMonster(index) {
         playerItem == items[7] && monsterArray[index - 1].monsterType == type[7] ||
         playerItem == items[8] && monsterArray[index - 1].monsterType == type[8] ||
         playerItem == items[9] && monsterArray[index - 1].monsterType == type[9] ||
-        playerItem == "Allmächtiges Schwert" || monsterArray[index - 1].monsterType == "Schwächling") //"Allmächtige Schwert" besiegt alle Typen. "Schwächling" kann mit allen Items besiegt werden.
+        playerItem == "Allmächtiges Schwert" || monsterArray[index - 1].monsterType == "Schwächling") //"Allmächtiges Schwert" besiegt alle Typen. "Schwächling" kann mit allen Items besiegt werden.
      {
         playerXP += monsterArray[index - 1].monsterExperience; // index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
         playerMoney += monsterArray[index - 1].monsterMoney; // Spieler bekommt das Geld des besiegten Monsters.
         playerItem = monsterArray[index - 1].monsterItem; // Spieler tauscht sein Item gegen das des besiegten Monsters.
         window.alert("Das Monster wurde besiegt!\nAlle anderen Monster sind geflohen!\n\n+ " +
             monsterArray[index - 1].monsterMoney + " $\n+ " + monsterArray[index - 1].monsterExperience + " XP\n+ " + "Neues Item: " + playerItem);
-        console.log(playerName + " + " + monsterArray[index - 1].monsterMoney + "Geld");
-        console.log(playerName + " + " + monsterArray[index - 1].monsterExperience + "XP");
+        console.log("+ " + monsterArray[index - 1].monsterMoney + " $");
+        console.log("+ " + monsterArray[index - 1].monsterExperience + " XP");
         console.log(playerName + " hat das jetzt das Item: " + playerItem);
         monsterArray = []; // monsterArray wird geleert    
         document.getElementById("monsterHoldingCell").innerHTML = ""; // HTML wird geleert    //🗹 Optionales Ziel Nr. 2
