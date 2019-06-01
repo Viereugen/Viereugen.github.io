@@ -39,7 +39,7 @@ let playerHealthPoints : number = 100;                                          
 let type : string[] = ["Holz", "Wasser", "Rentner", "Metall", "Feuer", "Mini", "Idioten", "Vampir", "Baby", "Alkoholiker", "Schwächling"]; // length = 11, da 11 Einträge. Von 0-10.    //Wurde von "Prefix" zu "Typ" umfunktioniert    
 let monsterName : string[] = ["Ratte", "Spinne", "Käfer", "Hund", "Student", "Gremlin", "Roboter", "Geist"]; // length = 8, da 8 Einträge. Von 0-7.         // 🗹 Mindestanforderung Nr.5
 let suffix : string[] = [" des Verderbens", " aus der Hölle", " des Grauens", " mit Rheuma", " aus Furtwangen", " mit Minderwertigkeits-Komplexen", " vom Dorf", " aus der Wüste", " aus dem Wald", " aus Mordor", " des Todes"]; // length = 11, da hier 11 Einträge sind. Von 0-10.
-let monsterModifers : string[] = ["Super stark", "Super schwach","Super arm", "Super reich", "Bier-Connoisseur", "Verfehlt häufig", "Müde", "Nervig", "Verwirrt", "Linkshänder", "Freundlich"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster. length = 11 VOn 0-10
+let monsterModifers : string[] = ["Super stark", "Super schwach","Super arm", "Super reich", "Bier-Connoisseur", "Verfehlt häufig", "Müde", "Nervig", "Verwirrt", "Linkshänder", "Harmlos"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster. length = 11 VOn 0-10
 let items : string[] = ["Flammenwerfer", "Fön", "IPhone", "Magnet", "Wasserpistole", "Fliegenklatsche", "Buch", "Knoblauch", "Schnuller", "Alkoholfreies-Bier", "Allmächtiges Schwert"]; //Eine Reihe von zufälligen "Verstärkern" für das Monster. leghth = 11 Von 0-10.
 let monsterIcons : string[] = ["imgs/MonsterIcon1.png", "imgs/MonsterIcon2.png", "imgs/MonsterIcon3.png", "imgs/MonsterIcon4.png", "imgs/MonsterIcon5.png", "imgs/MonsterIcon6.png", "imgs/MonsterIcon7.png", "imgs/MonsterIcon8.png", "imgs/MonsterIcon9.png", "imgs/MonsterIcon10.png",               // 🗹 Mindestanforderung Nr.2+3
 "imgs/MonsterIcon11.png", "imgs/MonsterIcon12.png", "imgs/MonsterIcon13.png", "imgs/MonsterIcon14.png", "imgs/MonsterIcon15.png", "imgs/MonsterIcon16.png", "imgs/MonsterIcon17.png", "imgs/MonsterIcon18.png", "imgs/MonsterIcon19.png", "imgs/MonsterIcon20.png",
@@ -216,7 +216,7 @@ function generateMonsterHitPoints(modCheck : string[]) : number
         tempMonsterHP -= 10;
     }
 
-    if((modCheck[0] == "Freundlich") || (modCheck[1] == "Freundlich")){
+    if((modCheck[0] == "Harmlos") || (modCheck[1] == "Harmlos")){
         tempMonsterHP = 0;
     }
 
@@ -451,4 +451,4 @@ function getränkeVerteilen()                                                   
 //
 //  Mod "Super schwach"  --> -10 HitPoints
 //  Mod "Super stark"    --> +10 HitPoints
-//  Mod "Freundlich"     -->  =0 HitPoints
+//  Mod "Harmlos"     -->  =0 HitPoints
