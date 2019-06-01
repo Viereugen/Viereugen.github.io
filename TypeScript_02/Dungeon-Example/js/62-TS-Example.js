@@ -6,6 +6,8 @@
 // ------- Variablen -------- //
 // INSGESAMT EINGEBAUTE FEHLER bei den Variablen: I (1 / einer)     //Alle Fehler gefunden!
 let monsterHolder = "monsterHoldingCell"; // ID für das Haupt-Element, in welchem die Monster sich befinden werden. Wird vielleicht mehrfach in dem Skript gebraucht, deshalb einmalig definitiert.
+let highScore = 0; // Speichert den Highscore
+let givingUpButtonCheck = false; // Um zu checken ob ein givingUpButton existiert
 // Ein paar globale Variablen, welche den Spieler darstellen.
 let playerName = "Mario"; // Stellt den Spieler-Namen dar.
 let playerXP = 0; //FEHLER 1 GEFUNDEN!: Anfangswert wurde festgelegt    // Stellt die gesammelte Erfahrung des Spielers dar.
@@ -46,7 +48,7 @@ function generateMonster() {
         let newMonsterHitPoints = generateMonsterHitPoints(); // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
         let newMonsterXP = generateMonsterXP(); // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
         let newMonsterModifier = generateMonsterModifer(); // Eigens-gebaute Funktion, welche ein String-Array zurück gibt.
-        let newMonsterMoney = generateMonsterMoney(); // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
+        let newMonsterMoney = generateMonsterMoney(newMonsterType); // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
         let newMonsterItem = generateMonsterItem(); // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
         let newMonsterIcon = generateMonsterIcon(); // Eigens-gebaute Funktion, welche einen String zurück gibt.    // 🗹 Mindestanforderung Nr. 4
         let newMonster = {
@@ -66,12 +68,15 @@ function generateMonster() {
     }
     else {
         window.alert("Du hast nicht genug Geld!"); // Alert falls nicht genug Geld vorhanden ist
-        let givingUpButton = document.createElement("BUTTON"); // Generiere einen <buton> mit dem man Aufgeben kann
-        givingUpButton.setAttribute("id", "givingUpButton");
-        givingUpButton.innerHTML = "Aufgeben";
-        document.getElementById("buttonsDiv").appendChild(givingUpButton); // Füge den <button> dem <main> Element dazu
-        console.log("Selbstmord-Button erstellt");
-        givingUpButton.addEventListener("click", killPlayer); // Gib <button> einen Event-Listener der eine Funktion ausführt die den Spieler tötet
+        if (givingUpButtonCheck == false) { // Nur einen givigUpButton erstellen falls es noch keinen gibt
+            givingUpButtonCheck = true;
+            let givingUpButton = document.createElement("BUTTON"); // Generiere einen <buton> mit dem man Aufgeben kann
+            givingUpButton.setAttribute("id", "givingUpButton");
+            givingUpButton.innerHTML = "Aufgeben";
+            document.getElementById("buttonsDiv").appendChild(givingUpButton); // Füge den <button> dem <main> Element dazu
+            givingUpButton.addEventListener("click", killPlayer); // Gib <button> einen Event-Listener der eine Funktion ausführt die den Spieler tötet
+            console.log("Selbstmord-Button erstellt");
+        }
     }
 }
 // Generiert HTML-Elemente, welche dann einem Element untergeordnet werden. Erzeugt ebenfalls einen Event-Listener auf dem Button.
@@ -127,7 +132,7 @@ function generateMonsterName(Prefix) {
     // Monster-Mittelname
     let rngNumber = getRNGNumber(monsterName.length); // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Mitte) zu generieren.
     generatedMonsterName += monsterName[rngNumber]; // Füge den Monsternamen zusammen: nimm aus dem entsprechenden Array mit der zufallsgenerierten Zahl den entsprechenden Eintrag
-    //generatedMonsterName += monsterName[0];//FEHLER 5 GEFUNDEN!: Keine Ahnung was hier versucht wurde, aber es funktioniert so nicht
+    //generatedMonsterName += monsterName[0]; //FEHLER 5 GEFUNDEN!: Keine Ahnung was hier versucht wurde, aber es funktioniert so nicht
     // Monster-Titel
     rngNumber = getRNGNumber(suffix.length); // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Ende) zu generieren.
     generatedMonsterName += suffix[rngNumber]; // Füge den Monsternamen zusammen: nimm aus dem entsprechenden Array mit der zufallsgenerierten Zahl den entsprechenden Eintrag.
@@ -158,8 +163,11 @@ function generateMonsterModifer() {
 }
 // Wird für die Erstellung von Monster-Money aufgerufen.
 // Liefert eine variierende Zahl zurück.
-function generateMonsterMoney() {
-    let tempMonsterMoney = 100 + getRNGNumber(401); // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 400) + 100 zurück.
+function generateMonsterMoney(schwächlingCheck) {
+    let tempMonsterMoney = 200 + getRNGNumber(201); // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 200) + 100 zurück.
+    if (schwächlingCheck == "Schwächling") { // Monster vom Typ "Schwächling" sind leicht zu besiegen und haben daher sehr wenig Geld
+        tempMonsterMoney = 20;
+    }
     return tempMonsterMoney;
 }
 // Wird für die Erstellung vom Monster-Item aufgerufen
@@ -174,35 +182,39 @@ function generateMonsterIcon() {
 }
 // Aufgerufen, wenn man auf den Button klickt.
 // Der Spieler kämpft gegen das entsprechende Monster. Er erhält dann Erfahrungspunkte.
-function fightMonster(_index) {
+function fightMonster(index) {
     //console.log("Spieler kämpft gegen Monster und gewinnt!");                 // Ohne Logik mit if/else ist so etwas wie ein Kampf nicht leicht umzusetzen.
     //console.log("Das Monster weigert sich zu verschwinden.");                 // Wird nächste Stunde erweitert. --> (Hab mich schonmal dran versucht)
     if ( // Check ob der Spieler das richtige Item hat um ein Monster des gegebenen Typs zu besiegen        
-    playerItem == items[0] && monsterArray[_index - 1].monsterType == type[0] || // Ich bin mir sicher das geht 100% eleganter aber ich komm nicht darauf wie man es lösen könnte ohne den Code grundlegend zu ändern.
-        playerItem == items[1] && monsterArray[_index - 1].monsterType == type[1] ||
-        playerItem == items[2] && monsterArray[_index - 1].monsterType == type[2] ||
-        playerItem == items[3] && monsterArray[_index - 1].monsterType == type[3] ||
-        playerItem == items[4] && monsterArray[_index - 1].monsterType == type[4] ||
-        playerItem == items[5] && monsterArray[_index - 1].monsterType == type[5] ||
-        playerItem == items[6] && monsterArray[_index - 1].monsterType == type[6] ||
-        playerItem == items[7] && monsterArray[_index - 1].monsterType == type[7] ||
-        playerItem == items[8] && monsterArray[_index - 1].monsterType == type[8] ||
-        playerItem == items[9] && monsterArray[_index - 1].monsterType == type[9] ||
-        playerItem == "Allmächtiges Schwert" || monsterArray[_index - 1].monsterType == "Schwächling") //"Allmächtige Schwert" besiegt alle Typen. "Schwächling" kann mit allen Items besiegt werden.
+    playerItem == items[0] && monsterArray[index - 1].monsterType == type[0] || // Ich bin mir sicher das geht 100% eleganter aber ich komm nicht darauf wie man es lösen könnte ohne den Code grundlegend zu ändern.
+        playerItem == items[1] && monsterArray[index - 1].monsterType == type[1] ||
+        playerItem == items[2] && monsterArray[index - 1].monsterType == type[2] ||
+        playerItem == items[3] && monsterArray[index - 1].monsterType == type[3] ||
+        playerItem == items[4] && monsterArray[index - 1].monsterType == type[4] ||
+        playerItem == items[5] && monsterArray[index - 1].monsterType == type[5] ||
+        playerItem == items[6] && monsterArray[index - 1].monsterType == type[6] ||
+        playerItem == items[7] && monsterArray[index - 1].monsterType == type[7] ||
+        playerItem == items[8] && monsterArray[index - 1].monsterType == type[8] ||
+        playerItem == items[9] && monsterArray[index - 1].monsterType == type[9] ||
+        playerItem == "Allmächtiges Schwert" || monsterArray[index - 1].monsterType == "Schwächling") //"Allmächtige Schwert" besiegt alle Typen. "Schwächling" kann mit allen Items besiegt werden.
      {
-        playerXP += monsterArray[_index - 1].monsterExperience; // _index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
-        playerMoney += monsterArray[_index - 1].monsterMoney; // Spieler bekommt das Geld des besiegten Monsters.
-        playerItem = monsterArray[_index - 1].monsterItem; // Spieler tauscht sein Item gegen das des besiegten Monsters.
+        playerXP += monsterArray[index - 1].monsterExperience; // index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
+        playerMoney += monsterArray[index - 1].monsterMoney; // Spieler bekommt das Geld des besiegten Monsters.
+        playerItem = monsterArray[index - 1].monsterItem; // Spieler tauscht sein Item gegen das des besiegten Monsters.
         monsterArray = []; // monsterArray wird geleert
         document.getElementById("monsterHoldingCell").innerHTML = ""; // HTML wird geleert
         window.alert("Das Monster wurde besiegt! Alle anderen Monster sind geflohen!"); //🗹 Optionales Ziel Nr. 2
         console.log("Spieler: " + playerName + " hat das jetzt das Item: " + playerItem);
+        if (givingUpButtonCheck == true) { // Lösche den givingUpButton falls er existiert
+            givingUpButtonCheck = false;
+            document.getElementById("buttonsDiv").removeChild(document.getElementById("givingUpButton"));
+        }
     }
     else // Falls der Spieler nicht das richtige Item hat verliert er den Kampf
      {
-        playerMoney -= 100; // Der Spieler verliert Geld
-        playerHealthPoints -= monsterArray[_index - 1].monsterHitPoints; // Der Spieler verliert HealthPoints in höhe der HitPoints des Monsters
-        window.alert("Du kannst " + monsterArray[_index - 1].monsterType + "-Monster nicht mit einer/einem " + playerItem + " besiegen. Du nimmst Schaden und verlierst Geld");
+        playerMoney -= 50; // Der Spieler verliert Geld
+        playerHealthPoints -= monsterArray[index - 1].monsterHitPoints; // Der Spieler verliert HealthPoints in höhe der HitPoints des Monsters
+        window.alert("Du kannst " + monsterArray[index - 1].monsterType + "-Monster nicht mit einer/einem " + playerItem + " besiegen. Du nimmst Schaden und verlierst Geld");
     }
     updatePlayer();
 }
@@ -217,34 +229,48 @@ function updatePlayer() {
     document.getElementById("playerHPCounter").innerHTML = "HP: " + playerHealthPoints;
     document.getElementById("moneyCounter").innerHTML = "Geld: " + playerMoney;
     document.getElementById("itemHolder").innerHTML = "Item: " + playerItem;
-    // Spieler hat gewonnen!
-    if (tempLevel >= 10) {
-        window.alert("Du hast gewonnen und du hast dabei: " + playerMoney + "$ gesammelt!!!");
-        document.getElementById("highscoreDisplay").innerHTML = "Highscore: " + playerMoney + "$";
-        //Variablen-Reset um eine neuer Runde zu spielen
-        playerXP = 0;
-        playerMoney = 100;
-        playerItem = "Allmächtiges Schwert";
-        playerHealthPoints = 100;
-        document.getElementById("monsterHoldingCell").innerHTML = "";
-        monsterArray = [];
-        updatePlayer();
+    if (tempLevel >= 10) { // Spieler hat gewonnen!                                    
+        winTheGame();
     }
-    // Spieler hat verloren.
-    if (playerHealthPoints < 1) {
-        window.alert("Du bist leider gestorben.");
-        //Variablen-Reset um eine neuer Runde zu spielen                              
-        playerXP = 0;
-        playerMoney = 100;
-        playerItem = "Allmächtiges Schwert";
-        playerHealthPoints = 100;
-        document.getElementById("monsterHoldingCell").innerHTML = "";
-        monsterArray = [];
-        document.getElementById("buttonsDiv").removeChild(document.getElementById("givingUpButton")); // Löscht den givingUpButton 
-        console.log("Spieler: " + playerName + " ist gestorben");
-        updatePlayer();
+    if (playerHealthPoints < 1) { // Spieler hat verloren.
+        loseTheGame();
     }
     //console.log("Spieler: " + playerName + " hat nun Level " + tempLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)"); // Spieler-Level in der Konsole.
+}
+function winTheGame() {
+    window.alert("Du hast gewonnen und du hast dabei: " + playerMoney + "$ gesammelt!!!");
+    if (playerMoney > highScore) { // Fals ein neuer Highscore erreicht wurde
+        highScore = playerMoney;
+        document.getElementById("highscoreDisplay").innerHTML = "Highscore: " + highScore + "$"; // Schreib neuen Highscore in HTML
+    }
+    //Variablen-Reset um eine neuer Runde zu spielen
+    playerXP = 0;
+    playerMoney = 100;
+    playerItem = "Allmächtiges Schwert";
+    playerHealthPoints = 100;
+    document.getElementById("monsterHoldingCell").innerHTML = "";
+    monsterArray = [];
+    if (givingUpButtonCheck == true) { // Lösche den givingUpButton falls er existiert
+        givingUpButtonCheck = false;
+        document.getElementById("buttonsDiv").removeChild(document.getElementById("givingUpButton"));
+    }
+    updatePlayer();
+}
+function loseTheGame() {
+    window.alert("Du bist leider gestorben.");
+    //Variablen-Reset um eine neuer Runde zu spielen                              
+    playerXP = 0;
+    playerMoney = 100;
+    playerItem = "Allmächtiges Schwert";
+    playerHealthPoints = 100;
+    document.getElementById("monsterHoldingCell").innerHTML = "";
+    monsterArray = [];
+    console.log("Spieler: " + playerName + " ist gestorben");
+    if (givingUpButtonCheck == true) { // Lösche den givingUpButton falls er existiert
+        givingUpButtonCheck = false;
+        document.getElementById("buttonsDiv").removeChild(document.getElementById("givingUpButton"));
+    }
+    updatePlayer();
 }
 //🗹 Aufgabe: Weitere zu implementierende Funktionen-->                         
 let drinksCounter = 1;
