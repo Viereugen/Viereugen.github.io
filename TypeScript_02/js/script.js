@@ -332,11 +332,11 @@ function getränkeVerteilen() {
 //  SONDERFÄLLE:
 //
 //  Typ "Rentner"        --> +100$
-//  Typ "Schwächling"    --> -100$
+//  Typ "Schwächling"    --> =100$
 //  Mod "Super reich"    --> +100$
 //  Mod "Super arm"      --> -100$
 //
 //  Mod "Super schwach"  --> -10 HitPoints
 //  Mod "Super stark"    --> +10 HitPoints
-//  Mod "Freundlich"     -->   0 HitPoints
+//  Mod "Freundlich"     -->  =0 HitPoints
 //# sourceMappingURL=script.js.map
