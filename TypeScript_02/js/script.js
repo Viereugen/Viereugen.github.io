@@ -312,4 +312,4 @@ function getränkeVerteilen() {
     console.log(monsterModifers);
     drinksCounter += 1;
 }
-//# sourceMappingURL=62-TS-Example.js.map
+//# sourceMappingURL=script.js.map
