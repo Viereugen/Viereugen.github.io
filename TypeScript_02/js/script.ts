@@ -238,7 +238,7 @@ function generateMonsterMoney(typeCheck : string, modCheck: string[]) : number
     let tempMonsterMoney : number = 200 + getRNGNumber(101);                    // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 100) + 200 zurück.
 
     switch (typeCheck) {                                                        //Einige Modifikationen bei bestimmentn Monster-Typen
-        case "Schwächling": tempMonsterMoney -= 100;
+        case "Schwächling": tempMonsterMoney = 100;
         break;
         case "Rentner": tempMonsterMoney += 100;
         break;
