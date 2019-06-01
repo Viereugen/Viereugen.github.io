@@ -1,8 +1,4 @@
-// BEISPIEL UND AUFGABE:
-// Dieses Skript soll als Beispiel dazu dienen, wie Interfaces und Arrays genutzt werden können.
-// Hier wird ein ungefährer Aufbau eines simplen Klick-Spiels gezeigt. Der Nutzer kann dabei durch Button ein neues Monster erstellen.
-// Zu beginn werden hier zuerst Interfaces, danach Variablen deklariert.
-// Weiter unten kommen dann die Funktionen.
+//MARIOS'S DUNGEON
 // ------- Variablen -------- //
 // INSGESAMT EINGEBAUTE FEHLER bei den Variablen: I (1 / einer)                 //Alle Fehler gefunden!
 let monsterHolder = "monsterHoldingCell"; // ID für das Haupt-Element, in welchem die Monster sich befinden werden. Wird vielleicht mehrfach in dem Skript gebraucht, deshalb einmalig definitiert.

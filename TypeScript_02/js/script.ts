@@ -1,14 +1,4 @@
-// BEISPIEL UND AUFGABE:
-// Dieses Skript soll als Beispiel dazu dienen, wie Interfaces und Arrays genutzt werden können.
-// Hier wird ein ungefährer Aufbau eines simplen Klick-Spiels gezeigt. Der Nutzer kann dabei durch Button ein neues Monster erstellen.
-// Zu beginn werden hier zuerst Interfaces, danach Variablen deklariert.
-// Weiter unten kommen dann die Funktionen.
-
-// EINGEBAUTE FEHLER: Innerhalb jedes Programmteiles wurden ein paar fiese Fehler eingebaut!
-// Diese werden vermutlich erst in der Browser-Konsole angezeigt. 
-// Testet also alle Funktionen, jeden Button welchen ihr finden könnt!
-// Hilfe: Benutzt auf Verdacht ein Konsolen-Log oder ruft die Variable in der Konsole des Browsers auf.
-// Hilfe2: Betrachtet den umliegenden Code. Trackt die Werte von Variablen, falls euch etwas komisch vorkommt!
+//MARIOS'S DUNGEON
 
 // ------- interfaces --------- //
 // INSGESAMT EINGEBAUTE FEHLER beu den interfaces: Keine. (0 / null)
