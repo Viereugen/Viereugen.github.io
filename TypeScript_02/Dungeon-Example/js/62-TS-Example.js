@@ -279,11 +279,11 @@ function loseTheGame() {
 }
 //🗹 Aufgabe: Weitere zu implementierende Funktionen-->                         
 let drinksCounter = 1;
-function arrayPusher() {
+function getränkeVerteilen() {
     console.log("Array vorher:"); // Konsolenausgabe vorher
     console.log(monsterModifers);
-    monsterModifers.push("Hat schon " + drinksCounter + " Kaffee getrunken");
-    monsterModifers.push("Hat schon " + drinksCounter + " Bier getrunken");
+    monsterModifers.push("Hatte " + drinksCounter + " Kaffee");
+    monsterModifers.push("Hatte " + drinksCounter + " Bier");
     console.log("Array danach:"); // Konsolenausgabe danach
     console.log(monsterModifers);
     drinksCounter += 1;

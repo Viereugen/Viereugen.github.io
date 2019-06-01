@@ -376,12 +376,12 @@ function loseTheGame()                                                          
 
 //🗹 Aufgabe: Weitere zu implementierende Funktionen-->                         
 let drinksCounter : number = 1;
-function arrayPusher()                                                          // Diese Funktion pusht 2 neue Strings in das monsterModifers-Array
+function getränkeVerteilen()                                                          // Diese Funktion pusht 2 neue Strings in das monsterModifers-Array
 {
     console.log("Array vorher:");                                               // Konsolenausgabe vorher
     console.log(monsterModifers);
-    monsterModifers.push("Hat schon " + drinksCounter + " Kaffee getrunken");
-    monsterModifers.push("Hat schon " + drinksCounter + " Bier getrunken");
+    monsterModifers.push("Hatte " + drinksCounter + " Kaffee");
+    monsterModifers.push("Hatte " + drinksCounter + " Bier");
     console.log("Array danach:");                                               // Konsolenausgabe danach
     console.log(monsterModifers);
 
