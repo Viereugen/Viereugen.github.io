@@ -39,7 +39,7 @@ let playerHealthPoints : number = 100;                                          
 let type : string[] = ["Holz", "Wasser", "Rentner", "Metall", "Feuer", "Mini", "Idioten", "Vampir", "Baby", "Alkoholiker", "Schwächling"]; // length = 11, da 11 Einträge. Von 0-10.    //Wurde von "Prefix" zu "Typ" umfunktioniert    
 let monsterName : string[] = ["Ratte", "Spinne", "Käfer", "Hund", "Student", "Gremlin", "Roboter", "Geist"]; // length = 8, da 8 Einträge. Von 0-7.         // 🗹 Mindestanforderung Nr.5
 let suffix : string[] = [" des Verderbens", " aus der Hölle", " des Grauens", " mit Rheuma", " aus Furtwangen", " mit Minderwertigkeits-Komplexen", " vom Dorf", " aus der Wüste", " aus dem Wald", " aus Mordor", " des Todes"]; // length = 11, da hier 11 Einträge sind. Von 0-10.
-let monsterModifers : string[] = ["Super stark", "Super schwach","Super arm", "Super reich", "Bier-Connoisseur", "Verfehlt häufig", "Müde", "Nervig", "Verwirrt", "Linkshänder", "Harmlos"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster. length = 11 VOn 0-10
+let monsterModifers : string[] = ["Stark", "Schwach","Pleite", "Reich", "Bier-Connoisseur", "Verfehlt häufig", "Müde", "Nervig", "Verwirrt", "Linkshänder", "Harmlos"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster. length = 11 VOn 0-10
 let items : string[] = ["Flammenwerfer", "Fön", "IPhone", "Magnet", "Wasserpistole", "Fliegenklatsche", "Buch", "Knoblauch", "Schnuller", "Alkoholfreies-Bier", "Allmächtiges Schwert"]; //Eine Reihe von zufälligen "Verstärkern" für das Monster. leghth = 11 Von 0-10.
 let monsterIcons : string[] = ["imgs/MonsterIcon1.png", "imgs/MonsterIcon2.png", "imgs/MonsterIcon3.png", "imgs/MonsterIcon4.png", "imgs/MonsterIcon5.png", "imgs/MonsterIcon6.png", "imgs/MonsterIcon7.png", "imgs/MonsterIcon8.png", "imgs/MonsterIcon9.png", "imgs/MonsterIcon10.png",               // 🗹 Mindestanforderung Nr.2+3
 "imgs/MonsterIcon11.png", "imgs/MonsterIcon12.png", "imgs/MonsterIcon13.png", "imgs/MonsterIcon14.png", "imgs/MonsterIcon15.png", "imgs/MonsterIcon16.png", "imgs/MonsterIcon17.png", "imgs/MonsterIcon18.png", "imgs/MonsterIcon19.png", "imgs/MonsterIcon20.png",
@@ -208,11 +208,11 @@ function generateMonsterHitPoints(modCheck : string[]) : number
     // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 10) + 10 zurück.
     let tempMonsterHP : number = 10 + getRNGNumber(11);                         // Da HP jetzt als Hit-Points genutzt werden, wurde der Wert ein wenig angepasst
 
-    if ((modCheck[0] == "Super stark") || (modCheck[1] == "Super stark")) {                        // Einige Modifikationen bei bestimmentn Monster-Mods
+    if ((modCheck[0] == "Stark") || (modCheck[1] == "Stark")) {                        // Einige Modifikationen bei bestimmentn Monster-Mods
         tempMonsterHP += 10;
     }
 
-    if ((modCheck[0] == "Super schwach") || (modCheck[1] == "Super schwach")) {                                       
+    if ((modCheck[0] == "Schwach") || (modCheck[1] == "Schwach")) {                                       
         tempMonsterHP -= 10;
     }
 
@@ -247,11 +247,11 @@ function generateMonsterMoney(typeCheck : string, modCheck: string[]) : number
         break;
     }
 
-    if ((modCheck[0] == "Super arm") || (modCheck[1] == "Super arm")) {                          // Einige Modifikationen bei bestimmentn Monster-Mods
+    if ((modCheck[0] == "Pleite") || (modCheck[1] == "Pleite")) {                          // Einige Modifikationen bei bestimmentn Monster-Mods
         tempMonsterMoney -= 100;
     }
 
-    if ((modCheck[0] == "Super reich") || (modCheck[1] == "Super reich")) {                                
+    if ((modCheck[0] == "Reich") || (modCheck[1] == "Reich")) {                                
         tempMonsterMoney += 100;
     }
 
@@ -446,9 +446,9 @@ function getränkeVerteilen()                                                   
 //
 //  Typ "Rentner"        --> +100$
 //  Typ "Schwächling"    --> =100$
-//  Mod "Super reich"    --> +100$
-//  Mod "Super arm"      --> -100$
+//  Mod "Reich"    --> +100$
+//  Mod "Pleite"      --> -100$
 //
-//  Mod "Super schwach"  --> -10 HitPoints
-//  Mod "Super stark"    --> +10 HitPoints
+//  Mod "Schwach"  --> -10 HitPoints
+//  Mod "Stark"    --> +10 HitPoints
 //  Mod "Harmlos"     -->  =0 HitPoints
