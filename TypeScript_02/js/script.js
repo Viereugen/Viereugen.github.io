@@ -155,9 +155,9 @@ function generateMonsterHitPoints(modCheck) {
         case "Super schwach":
             tempMonsterHP -= 10;
             break;
-        case "Freundlich":
-            tempMonsterHP = 0;
-            break;
+    }
+    if (modCheck[0] || modCheck[1] == "Freundlich") {
+        tempMonsterHP = 0;
     }
     return tempMonsterHP;
 }
