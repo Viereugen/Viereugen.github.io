@@ -36,6 +36,7 @@ interface Monster {
 let monsterHolder : string = "monsterHoldingCell";                              // ID für das Haupt-Element, in welchem die Monster sich befinden werden. Wird vielleicht mehrfach in dem Skript gebraucht, deshalb einmalig definitiert.
 let highScore : number = 0;                                                     // Speichert den Highscore
 let givingUpButtonCheck : boolean = false;                                      // Um zu checken ob ein givingUpButton existiert
+
 // Ein paar globale Variablen, welche den Spieler darstellen.
 let playerName : string = "Mario";                                              // Stellt den Spieler-Namen dar.
 let playerXP : number = 0;//FEHLER 1 GEFUNDEN!: Anfangswert wurde festgelegt    // Stellt die gesammelte Erfahrung des Spielers dar.
@@ -67,7 +68,6 @@ window.onload = function () {
     document.getElementById("monsterSpawner").addEventListener("click", generateMonster, false);
     updatePlayer(); // Zu Anfang wird durch eine Funktion ein HTML-Element mit Inhalt befüllt.
 }
-
 //console.log(document.getElementById("monsterSpawner").innerHTML);//FEHLER 1 GEFUNDEN!:  Ziemlich unnötige consolen Ausgabe die Ich mal auskommentiert habe 
 
 // Die Hauptfunktion, um ein Monster zu erstellen. Wird von einem Button ausgerufen.
@@ -117,6 +117,7 @@ function generateMonster()
         }
     }
 }
+
 
 // Generiert HTML-Elemente, welche dann einem Element untergeordnet werden. Erzeugt ebenfalls einen Event-Listener auf dem Button.
 function monsterGenerateHTML()
@@ -169,6 +170,7 @@ function getRNGNumber(_maxNumber : number) : number
     //rngNumber = 0;//FEHLER 4 GEFUNDEN!                                        // Diese Zeile ist einer der drei(!?) Fehler in den Funktionen. Ich bin mal so frei und vermerke das hier. Einfach löschen und alles wird besser.
     //return rngNumber;                                                         // Gebe diese Zahl zurück, Funktion kann ähnlich einer Variable in Rechnungen genutzt werden.
 }
+
 
 // Wird für den Monster-Typ aufgerufen.
 // Liefert einen String zurück.
@@ -229,7 +231,7 @@ function generateMonsterModifer() : string[]
 }
 
 
-// Wird für die Erstellung von Monster-Money aufgerufen.
+// Wird für die Erstellung des Monster-Moneys aufgerufen.
 // Liefert eine variierende Zahl zurück.
 function generateMonsterMoney(schwächlingCheck : string) : number
 {
@@ -241,7 +243,7 @@ function generateMonsterMoney(schwächlingCheck : string) : number
 }
 
 
-// Wird für die Erstellung vom Monster-Item aufgerufen
+// Wird für die Erstellung der Monster-Items aufgerufen
 // Liefert einen String zurück.
 function generateMonsterItem() : string
 {
@@ -249,6 +251,9 @@ function generateMonsterItem() : string
     return items[rngNumber];             
 }
 
+
+// Wird für die Erstellung der Monster-Icons aufgerufen
+// Liefert einen String zurück.
 function generateMonsterIcon() : string
 {
     let rngNumber : number = getRNGNumber(monsterIcons.length);                 // Diese Funktion gibt einen zufälligen Bild-Pfad zurück.
@@ -256,15 +261,12 @@ function generateMonsterIcon() : string
 }
 
 
-
 // Aufgerufen, wenn man auf den Button klickt.
-// Der Spieler kämpft gegen das entsprechende Monster. Er erhält dann Erfahrungspunkte.
+// Der Spieler kämpft gegen das entsprechende Monster.
 function fightMonster(index : number)
 {
-
     //console.log("Spieler kämpft gegen Monster und gewinnt!");                 // Ohne Logik mit if/else ist so etwas wie ein Kampf nicht leicht umzusetzen.
     //console.log("Das Monster weigert sich zu verschwinden.");                 // Wird nächste Stunde erweitert. --> (Hab mich schonmal dran versucht)
-
     if(                                                                         // Check ob der Spieler das richtige Item hat um ein Monster des gegebenen Typs zu besiegen        
     playerItem == items[0] && monsterArray[index-1].monsterType == type[0] ||   // Ich bin mir sicher das geht 100% eleganter aber ich komm nicht darauf wie man es lösen könnte ohne den Code grundlegend zu ändern.
     playerItem == items[1] && monsterArray[index-1].monsterType == type[1] ||
@@ -290,16 +292,17 @@ function fightMonster(index : number)
             givingUpButtonCheck = false;
             document.getElementById("buttonsDiv").removeChild(document.getElementById("givingUpButton"));
         }          
-    }
-    else                                                                        // Falls der Spieler nicht das richtige Item hat verliert er den Kampf
-    {                                                                           
-        playerMoney -= 50;                                                      // Der Spieler verliert Geld
-        playerHealthPoints -= monsterArray[index - 1].monsterHitPoints;         // Der Spieler verliert HealthPoints in höhe der HitPoints des Monsters
-        window.alert("Du kannst " + monsterArray[index - 1].monsterType + "-Monster nicht mit einer/einem " + playerItem + " besiegen. Du nimmst Schaden und verlierst Geld");
-    }
+        }else                                                                        // Falls der Spieler nicht das richtige Item hat verliert er den Kampf
+        {                                                                           
+            playerMoney -= 50;                                                      // Der Spieler verliert Geld
+            playerHealthPoints -= monsterArray[index - 1].monsterHitPoints;         // Der Spieler verliert HealthPoints in höhe der HitPoints des Monsters
+            window.alert("Du kannst " + monsterArray[index - 1].monsterType + "-Monster nicht mit einer/einem " + playerItem + " besiegen. Du nimmst Schaden und verlierst Geld");
+        }
     updatePlayer();                                                         
 }
 
+
+//Aufgerufen wenn der Spieler Aufgibt
 function killPlayer()                                                           // Funktion tötet den Spieler
 {
     playerHealthPoints = 0;
@@ -326,6 +329,8 @@ function updatePlayer()
     //console.log("Spieler: " + playerName + " hat nun Level " + tempLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)"); // Spieler-Level in der Konsole.
 }
 
+
+// Aufgerufen falls Win-Conditions erfüllt sind
 function winTheGame()
 {
     window.alert("Du hast gewonnen und du hast dabei: " + playerMoney + "$ gesammelt!!!");
@@ -348,6 +353,8 @@ function winTheGame()
     updatePlayer();    
 }
 
+
+// Aufgerufen falls Lose-Conditions erfüllt sind
 function loseTheGame()                                                          //You just lost THE GAME btw.
 {
     window.alert("Du bist leider gestorben.");  

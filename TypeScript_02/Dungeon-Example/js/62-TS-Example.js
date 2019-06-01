@@ -161,7 +161,7 @@ function generateMonsterModifer() {
     tempMonsterMod[1] = monsterModifers[getRNGNumber(monsterModifers.length)]; // Setze Schublade 1 des Arrays auf einen Wert.
     return tempMonsterMod; // Gebe das hier zusammengesetzte Array wieder zurück.
 }
-// Wird für die Erstellung von Monster-Money aufgerufen.
+// Wird für die Erstellung des Monster-Moneys aufgerufen.
 // Liefert eine variierende Zahl zurück.
 function generateMonsterMoney(schwächlingCheck) {
     let tempMonsterMoney = 200 + getRNGNumber(201); // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 200) + 100 zurück.
@@ -170,18 +170,20 @@ function generateMonsterMoney(schwächlingCheck) {
     }
     return tempMonsterMoney;
 }
-// Wird für die Erstellung vom Monster-Item aufgerufen
+// Wird für die Erstellung der Monster-Items aufgerufen
 // Liefert einen String zurück.
 function generateMonsterItem() {
     let rngNumber = getRNGNumber(items.length); // Diese Funktion gibt einen zufälligen String aus dem Items-Array zurück.
     return items[rngNumber];
 }
+// Wird für die Erstellung der Monster-Icons aufgerufen
+// Liefert einen String zurück.
 function generateMonsterIcon() {
     let rngNumber = getRNGNumber(monsterIcons.length); // Diese Funktion gibt einen zufälligen Bild-Pfad zurück.
     return monsterIcons[rngNumber];
 }
 // Aufgerufen, wenn man auf den Button klickt.
-// Der Spieler kämpft gegen das entsprechende Monster. Er erhält dann Erfahrungspunkte.
+// Der Spieler kämpft gegen das entsprechende Monster.
 function fightMonster(index) {
     //console.log("Spieler kämpft gegen Monster und gewinnt!");                 // Ohne Logik mit if/else ist so etwas wie ein Kampf nicht leicht umzusetzen.
     //console.log("Das Monster weigert sich zu verschwinden.");                 // Wird nächste Stunde erweitert. --> (Hab mich schonmal dran versucht)
@@ -218,6 +220,7 @@ function fightMonster(index) {
     }
     updatePlayer();
 }
+//Aufgerufen wenn der Spieler Aufgibt
 function killPlayer() {
     playerHealthPoints = 0;
     updatePlayer();
@@ -237,6 +240,7 @@ function updatePlayer() {
     }
     //console.log("Spieler: " + playerName + " hat nun Level " + tempLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)"); // Spieler-Level in der Konsole.
 }
+// Aufgerufen falls Win-Conditions erfüllt sind
 function winTheGame() {
     window.alert("Du hast gewonnen und du hast dabei: " + playerMoney + "$ gesammelt!!!");
     if (playerMoney > highScore) { // Fals ein neuer Highscore erreicht wurde
@@ -256,6 +260,7 @@ function winTheGame() {
     }
     updatePlayer();
 }
+// Aufgerufen falls Lose-Conditions erfüllt sind
 function loseTheGame() {
     window.alert("Du bist leider gestorben.");
     //Variablen-Reset um eine neuer Runde zu spielen                              
