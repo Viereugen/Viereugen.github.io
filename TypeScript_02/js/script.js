@@ -148,15 +148,13 @@ function generateMonsterName(Prefix) {
 function generateMonsterHitPoints(modCheck) {
     // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 10) + 10 zurück.
     let tempMonsterHP = 10 + getRNGNumber(11); // Da HP jetzt als Hit-Points genutzt werden, wurde der Wert ein wenig angepasst
-    switch (modCheck[0] || modCheck[1]) { // Einige Modifikationen bei bestimmentn Monster-Mods
-        case "Super stark":
-            tempMonsterHP += 10;
-            break;
-        case "Super schwach":
-            tempMonsterHP -= 10;
-            break;
+    if ((modCheck[0] == "Super stark") || (modCheck[1] == "Super stark")) { // Einige Modifikationen bei bestimmentn Monster-Mods
+        tempMonsterHP += 10;
     }
-    if (modCheck[0] || modCheck[1] == "Freundlich") {
+    if ((modCheck[0] == "Super schwach") || (modCheck[1] == "Super schwach")) {
+        tempMonsterHP -= 10;
+    }
+    if ((modCheck[0] == "Freundlich") || (modCheck[1] == "Freundlich")) {
         tempMonsterHP = 0;
     }
     return tempMonsterHP;
@@ -180,13 +178,11 @@ function generateMonsterMoney(typeCheck, modCheck) {
             tempMonsterMoney += 100;
             break;
     }
-    switch (modCheck[0] || modCheck[1]) { // Einige Modifikationen bei bestimmentn Monster-Mods
-        case "Super arm":
-            tempMonsterMoney -= 100;
-            break;
-        case "Super reich":
-            tempMonsterMoney += 100;
-            break;
+    if ((modCheck[0] == "Super arm") || (modCheck[1] == "Super arm")) { // Einige Modifikationen bei bestimmentn Monster-Mods
+        tempMonsterMoney -= 100;
+    }
+    if ((modCheck[0] == "Super reich") || (modCheck[1] == "Super reich")) {
+        tempMonsterMoney += 100;
     }
     return tempMonsterMoney;
 }
@@ -251,7 +247,7 @@ function killPlayer() {
 // Aufgerufen, um das HTML-Element, welches das Spieler-Level darstellt, zu erneuern.
 function updatePlayer() {
     let tempLevel = Math.floor(playerXP / playerXPperLevel) + 1; // Spieler-Level = XP / XPproLevel
-    document.getElementById("xpCounter").innerHTML = "Player-Level: " + tempLevel + " (XP: " + playerXP + " / " + playerXPperLevel + ")"; // Baue den String für die Spieler-Info zusammen
+    document.getElementById("xpCounter").innerHTML = "Player-Level: " + tempLevel + " (XP: " + playerXP + " / " + tempLevel * playerXPperLevel + ")"; // Baue den String für die Spieler-Info zusammen
     document.getElementById("playerHPCounter").innerHTML = "HP: " + playerHealthPoints;
     document.getElementById("moneyCounter").innerHTML = "Geld: " + playerMoney;
     document.getElementById("itemHolder").innerHTML = "Item: " + playerItem;
@@ -309,7 +305,7 @@ function getränkeVerteilen() {
     monsterModifers.push("Hatte " + drinksCounter + " Bier");
     console.log("Array danach:"); // Konsolenausgabe danach
     console.log(monsterModifers);
-    drinksCounter += 1;
+    drinksCounter++;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //----------CHEAT-SHEET----------
