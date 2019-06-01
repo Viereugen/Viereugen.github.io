@@ -112,7 +112,7 @@ function getRNGNumber(_maxNumber) {
     //let rngNumber : number = Math.random();                                   // Macht folgendes: Generiere eine zufällige Komma-Zahl zwischen 0 - 1.
     //rngNumber = rngNumber * _maxNumber;                                       // Multipliziere diese Zahl mit der Länge des entsprechenden Array (hier: _maxNumber, ein Parameter, siehe in der runden Klammer der Funktion).
     //rngNumber = Math.floor(rngNumber);                                        // Floore diese Zahl, damit diese nun Ganzzahlig ist.
-    //rngNumber = 0;                                                            //FEHLER 4 GEFUNDEN! // Diese Zeile ist einer der drei(!?) Fehler in den Funktionen. Ich bin mal so frei und vermerke das hier. Einfach löschen und alles wird besser.
+    //rngNumber = 0;                                                            // FEHLER 4 GEFUNDEN! // Diese Zeile ist einer der drei(!?) Fehler in den Funktionen. Ich bin mal so frei und vermerke das hier. Einfach löschen und alles wird besser.
     //return rngNumber;                                                         // Gebe diese Zahl zurück, Funktion kann ähnlich einer Variable in Rechnungen genutzt werden.
 }
 // Wird für den Monster-Typ aufgerufen.
@@ -132,11 +132,11 @@ function generateMonsterModifer() {
 // Wird für die Monster-generierung verwendet!
 // Liefert einen zusammengesetzten String zurück.                               // Leicht geändert durch die umfunktion von "Prefix" zu "Type"
 function generateMonsterName(Prefix) {
-    let generatedMonsterName = Prefix + "-"; //Der Name wird deklariert. Er beginnt mit dem Typ und einem Bindestrich
+    let generatedMonsterName = Prefix + "-"; // Der Name wird deklariert. Er beginnt mit dem Typ und einem Bindestrich
     // Monster-Mittelname
     let rngNumber = getRNGNumber(monsterName.length); // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Mitte) zu generieren.
     generatedMonsterName += monsterName[rngNumber]; // Füge den Monsternamen zusammen: nimm aus dem entsprechenden Array mit der zufallsgenerierten Zahl den entsprechenden Eintrag
-    //generatedMonsterName += monsterName[0];                                   //FEHLER 5 GEFUNDEN!: Keine Ahnung was hier versucht wurde, aber es funktioniert so nicht
+    //generatedMonsterName += monsterName[0];                                   // FEHLER 5 GEFUNDEN!: Keine Ahnung was hier versucht wurde, aber es funktioniert so nicht
     // Monster-Titel
     rngNumber = getRNGNumber(suffix.length); // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Ende) zu generieren.
     generatedMonsterName += suffix[rngNumber]; // Füge den Monsternamen zusammen: nimm aus dem entsprechenden Array mit der zufallsgenerierten Zahl den entsprechenden Eintrag.
@@ -172,7 +172,7 @@ function generateMonsterXP() {
 // Liefert eine variierende Zahl zurück.
 function generateMonsterMoney(typeCheck, modCheck) {
     let tempMonsterMoney = 200 + getRNGNumber(101); // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 100) + 200 zurück.
-    switch (typeCheck) { //Einige Modifikationen bei bestimmentn Monster-Typen
+    switch (typeCheck) { // Einige Modifikationen bei bestimmentn Monster-Typen
         case "Schwächling":
             tempMonsterMoney = 100;
             break;
@@ -180,7 +180,7 @@ function generateMonsterMoney(typeCheck, modCheck) {
             tempMonsterMoney += 100;
             break;
     }
-    switch (modCheck[0] || modCheck[1]) { //Einige Modifikationen bei bestimmentn Monster-Mods
+    switch (modCheck[0] || modCheck[1]) { // Einige Modifikationen bei bestimmentn Monster-Mods
         case "Super arm":
             tempMonsterMoney -= 100;
             break;
@@ -223,12 +223,13 @@ function fightMonster(index) {
         playerXP += monsterArray[index - 1].monsterExperience; // index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
         playerMoney += monsterArray[index - 1].monsterMoney; // Spieler bekommt das Geld des besiegten Monsters.
         playerItem = monsterArray[index - 1].monsterItem; // Spieler tauscht sein Item gegen das des besiegten Monsters.
-        window.alert("Das Monster wurde besiegt!\nAlle anderen Monster sind geflohen!"); //🗹 Optionales Ziel Nr. 2
+        window.alert("Das Monster wurde besiegt!\nAlle anderen Monster sind geflohen!\n\n+ " +
+            monsterArray[index - 1].monsterMoney + " $\n+ " + monsterArray[index - 1].monsterExperience + " XP\n+ " + "Neues Item: " + playerItem);
         console.log(playerName + " + " + monsterArray[index - 1].monsterMoney + "Geld");
         console.log(playerName + " + " + monsterArray[index - 1].monsterExperience + "XP");
         console.log(playerName + " hat das jetzt das Item: " + playerItem);
-        monsterArray = []; // monsterArray wird geleert
-        document.getElementById("monsterHoldingCell").innerHTML = ""; // HTML wird geleert
+        monsterArray = []; // monsterArray wird geleert    
+        document.getElementById("monsterHoldingCell").innerHTML = ""; // HTML wird geleert    //🗹 Optionales Ziel Nr. 2
         if (givingUpButtonCheck == true) { // Lösche den givingUpButton falls er existiert
             givingUpButtonCheck = false;
             document.getElementById("buttonsDiv").removeChild(document.getElementById("givingUpButton"));
@@ -311,7 +312,7 @@ function getränkeVerteilen() {
     drinksCounter += 1;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//----------CHEAT-SHEET----------//
+//----------CHEAT-SHEET----------
 //
 //  Welche Monster kann man wie besiegen?:
 //
@@ -326,7 +327,7 @@ function getränkeVerteilen() {
 //  "Idioten"       -->  "Buch"
 //  "Vampir"        -->  "Knoblauch"
 //  "Baby"          -->  "Schnuller"
-//  "Alkoholiker"
+//  "Alkoholiker"   -->  "Alkoholfreies-Bier"
 //
 //
 //  SONDERFÄLLE:
