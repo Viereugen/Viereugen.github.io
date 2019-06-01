@@ -289,7 +289,8 @@ function fightMonster(index : number)
 {
     //console.log("Spieler kämpft gegen Monster und gewinnt!");                 // Ohne Logik mit if/else ist so etwas wie ein Kampf nicht leicht umzusetzen.
     //console.log("Das Monster weigert sich zu verschwinden.");                 // Wird nächste Stunde erweitert. --> (Hab mich schonmal dran versucht)
-    if(                                                                         // Check ob der Spieler das richtige Item hat um ein Monster des gegebenen Typs zu besiegen        
+
+    if(                                                                         // Falls der Spieler das richtige Item hat gewinnt er den Kampf
     playerItem == items[0] && monsterArray[index-1].monsterType == type[0] ||   // Ich bin mir sicher das geht 100% eleganter aber ich komm nicht darauf wie man es lösen könnte ohne den Code grundlegend zu ändern.
     playerItem == items[1] && monsterArray[index-1].monsterType == type[1] ||
     playerItem == items[2] && monsterArray[index-1].monsterType == type[2] ||
@@ -306,20 +307,25 @@ function fightMonster(index : number)
         playerMoney += monsterArray[index - 1].monsterMoney;                    // Spieler bekommt das Geld des besiegten Monsters.
         playerItem = monsterArray[index - 1].monsterItem;                       // Spieler tauscht sein Item gegen das des besiegten Monsters.
 
+        window.alert("Das Monster wurde besiegt! Alle anderen Monster sind geflohen!"); //🗹 Optionales Ziel Nr. 2
+        console.log(playerName + " + " + monsterArray[index - 1].monsterMoney + "Geld");
+        console.log(playerName + " + " + monsterArray[index - 1].monsterExperience + "XP");
+        console.log(playerName + " hat das jetzt das Item: " + playerItem);
+
         monsterArray = [];                                                      // monsterArray wird geleert
         document.getElementById("monsterHoldingCell").innerHTML = "";           // HTML wird geleert
-        window.alert("Das Monster wurde besiegt! Alle anderen Monster sind geflohen!"); //🗹 Optionales Ziel Nr. 2
-        console.log("Spieler: " + playerName + " hat das jetzt das Item: " + playerItem);
+
         if(givingUpButtonCheck == true){                                        // Lösche den givingUpButton falls er existiert
             givingUpButtonCheck = false;
             document.getElementById("buttonsDiv").removeChild(document.getElementById("givingUpButton"));
-        }          
-        }else                                                                        // Falls der Spieler nicht das richtige Item hat verliert er den Kampf
-        {                                                                           
-            playerMoney -= 50;                                                      // Der Spieler verliert Geld
-            playerHealthPoints -= monsterArray[index - 1].monsterHitPoints;         // Der Spieler verliert HealthPoints in höhe der HitPoints des Monsters
-            window.alert("Du kannst " + monsterArray[index - 1].monsterType + "-Monster nicht mit einer/einem " + playerItem + " besiegen. Du nimmst Schaden und verlierst Geld");
-        }
+        }   
+
+    }else                                                                       // Falls der Spieler nicht das richtige Item hat verliert er den Kampf
+    {                                                                           
+        playerMoney -= 40;                                                      // Der Spieler verliert Geld
+        playerHealthPoints -= monsterArray[index - 1].monsterHitPoints;         // Der Spieler verliert HealthPoints in höhe der HitPoints des Monsters
+        window.alert("Du kannst " + monsterArray[index - 1].monsterType + "-Monster nicht mit einer/einem " + playerItem + " besiegen. Du nimmst " + monsterArray[index - 1].monsterHitPoints + " Schaden und verlierst 40$");
+    }
     updatePlayer();                                                         
 }
 
@@ -409,3 +415,32 @@ function getränkeVerteilen()                                                   
 
     drinksCounter += 1;
 }
+
+//----------CHEAT-SHEET----------//
+//
+//  Welche Monster kann man wie besiegen?:
+//
+//  Jedes Monster wird mit dem "Allmächtigen Schwert" besiegt
+//  Jedes Item kann Monster vom Typ "Schwächling" besiegen
+//  "Holz"          -->  "Flammenwerfer"
+//  "Wasser"        -->  "Fön" 
+//  "Rentner        -->  "IPhone" 
+//  "Metall"        -->  "Magnet" 
+//  "Feuer"         -->  "Wasserpistole"
+//  "Mini"          -->  "Fliegenklatsche"
+//  "Idioten"       -->  "Buch"
+//  "Vampir"        -->  "Knoblauch"
+//  "Baby"          -->  "Schnuller"
+//  "Alkoholiker"
+//
+//
+//  SONDERFÄLLE:
+//
+//  Typ "Rentner"        --> +100$
+//  Typ "Schwächling"    --> -100$
+//  Mod "Super reich"    --> +100$
+//  Mod "Super arm"      --> -100$
+//
+//  Mod "Super schwach"  --> -10 HitPoints
+//  Mod "Super stark"    --> +10 HitPoints
+//  Mod "Freundlich"     -->   0 HitPoints
