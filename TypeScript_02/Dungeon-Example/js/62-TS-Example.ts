@@ -20,18 +20,18 @@
 
 interface Monster {
     monsterType : string; //Typ de Monsters, und damit auch seine Schwäche
+    monsterModifier : string []; // Monster-Verstärker. Diese sind in diesem Fall nur Text! (Da hier einfacher Zufall für die Auswahl genutzt wird, kann der gleiche Eintrag auch doppelt vorkommen)
     monsterName : string; // Name des Monsters
     monsterHitPoints : number; // ÄNDERUNG: Wird nicht als Lebenspunkte sondern als Hit-Points genutzt
     monsterExperience : number; // Erfahrungspunkte bei besiegen des Monsters
-    monsterModifier : string []; // Monster-Verstärker. Diese sind in diesem Fall nur Text! (Da hier einfacher Zufall für die Auswahl genutzt wird, kann der gleiche Eintrag auch doppelt vorkommen)
-    monsterMoney : number; // Geld bei besiegen des Monsters                                    // 🗹 Mindestanforderung Nr.1 
-    monsterItem : string; // Item welches der Spieler erhält bei besiegen des Monsters          //          
+    monsterMoney : number; // Geld bei besiegen des Monsters                    // 🗹 Mindestanforderung Nr.1 
+    monsterItem : string; // Item welches der Spieler erhält bei besiegen des Monsters         
     monsterIcon : string; // Bild des Monsters                                                  
 }
 
 
 // ------- Variablen -------- //
-// INSGESAMT EINGEBAUTE FEHLER bei den Variablen: I (1 / einer)     //Alle Fehler gefunden!
+// INSGESAMT EINGEBAUTE FEHLER bei den Variablen: I (1 / einer)                 //Alle Fehler gefunden!
 
 let monsterHolder : string = "monsterHoldingCell";                              // ID für das Haupt-Element, in welchem die Monster sich befinden werden. Wird vielleicht mehrfach in dem Skript gebraucht, deshalb einmalig definitiert.
 let highScore : number = 0;                                                     // Speichert den Highscore
@@ -41,7 +41,7 @@ let givingUpButtonCheck : boolean = false;                                      
 let playerName : string = "Mario";                                              // Stellt den Spieler-Namen dar.
 let playerXP : number = 0;//FEHLER 1 GEFUNDEN!: Anfangswert wurde festgelegt    // Stellt die gesammelte Erfahrung des Spielers dar.
 let playerXPperLevel : number = 500;                                            // Da es nur einen Spieler gibt, ergibt sich noch nicht viel Sinn darin, für den Spieler ein interface (im Sinne der Programmierung) zu erstellen.
-let playerMoney : number = 100;                                                 // Stellt das gesammelte Geld des Spielers dar
+let playerMoney : number = 200;                                                 // Stellt das gesammelte Geld des Spielers dar
 let playerItem : string = "Allmächtiges Schwert";                               // Stellt das Item des Spielers dar
 let playerHealthPoints : number = 100;                                          // Stellt die Health-Points des Spielers dar.
 
@@ -49,7 +49,7 @@ let playerHealthPoints : number = 100;                                          
 let type : string[] = ["Holz", "Wasser", "Rentner", "Metall", "Feuer", "Mini", "Idioten", "Vampir", "Baby", "Alkoholiker", "Schwächling"]; // length = 11, da 11 Einträge. Von 0-10.    //Wurde von "Prefix" zu "Typ" umfunktioniert    
 let monsterName : string[] = ["Ratte", "Spinne", "Käfer", "Hund", "Student", "Gremlin", "Roboter", "Geist"]; // length = 8, da 8 Einträge. Von 0-7.         // 🗹 Mindestanforderung Nr.5
 let suffix : string[] = [" des Verderbens", " aus der Hölle", " des Grauens", " mit Rheuma", " aus Furtwangen", " mit Minderwertigkeits-Komplexen", " vom Dorf", " aus der Wüste", " mit Schnupfen", " mit Depressionen", " des Todes"]; // length = 11, da hier 11 Einträge sind. Von 0-10.
-let monsterModifers : string[] = ["Ist nervig", "Linkshänder", "Bier-Connoisseur", "Verfehlt häufig", "Prokrastiniert", "Müde", "Verwirrt", "Wasserscheu", "Bipolar", "Hat Schnupfen", "Verläuft sich oft"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster. length = 11 VOn 0-10
+let monsterModifers : string[] = ["Super stark", "Super schwach","Super arm", "Super reich", "Bier-Connoisseur", "Verfehlt häufig", "Müde", "Ist nervig", "Verwirrt", "Hat Schnupfen", "Freundlich"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster. length = 11 VOn 0-10
 let items : string[] = ["Flammenwerfer", "Fön", "IPhone", "Magnet", "Wasserpistole", "Fliegenklatsche", "Buch", "Knoblauch", "Schnuller", "Alkoholfreies-Bier", "Allmächtiges Schwert"]; //Eine Reihe von zufälligen "Verstärkern" für das Monster. leghth = 11 Von 0-10.
 let monsterIcons : string[] = ["imgs/MonsterIcon1.png", "imgs/MonsterIcon2.png", "imgs/MonsterIcon3.png", "imgs/MonsterIcon4.png", "imgs/MonsterIcon5.png", "imgs/MonsterIcon6.png", "imgs/MonsterIcon7.png", "imgs/MonsterIcon8.png", "imgs/MonsterIcon9.png", "imgs/MonsterIcon10.png",               // 🗹 Mindestanforderung Nr.2+3
 "imgs/MonsterIcon11.png", "imgs/MonsterIcon12.png", "imgs/MonsterIcon13.png", "imgs/MonsterIcon14.png", "imgs/MonsterIcon15.png", "imgs/MonsterIcon16.png", "imgs/MonsterIcon17.png", "imgs/MonsterIcon18.png", "imgs/MonsterIcon19.png", "imgs/MonsterIcon20.png",
@@ -61,31 +61,31 @@ console.log(monsterArray); // Gebe das Monster-Array einmal zu beginn aus. Es so
 
 
 // ----------- Funktionen ----------- //
-// INSGESAMT EINGEBAUTE FEHLER bei den Funktionen: IIIII (5 / fünf) // Alle Fehler gefunden!
+// INSGESAMT EINGEBAUTE FEHLER bei den Funktionen: IIIII (5 / fünf)             // Alle Fehler gefunden!
 
 // Generelle onload-funktion um Event-Listener zum Dokument hinzuzufügen
 window.onload = function () {
     document.getElementById("monsterSpawner").addEventListener("click", generateMonster, false);
     updatePlayer(); // Zu Anfang wird durch eine Funktion ein HTML-Element mit Inhalt befüllt.
 }
-//console.log(document.getElementById("monsterSpawner").innerHTML);//FEHLER 1 GEFUNDEN!:  Ziemlich unnötige consolen Ausgabe die Ich mal auskommentiert habe 
+//console.log(document.getElementById("monsterSpawner").innerHTML);             //FEHLER 1 GEFUNDEN!:  Ziemlich unnötige consolen Ausgabe die Ich mal auskommentiert habe 
 
 // Die Hauptfunktion, um ein Monster zu erstellen. Wird von einem Button ausgerufen.
 // Generiert ein neues Monster. Dieses wird zu dem Monster-Array hinzugefügt.
 // Ruft eine Funktion auf, welche dann das entsprechende HTML erzeugt.
 function generateMonster()
 {
-    if(playerMoney>=10)                                                         // Nur ausführen wenn noch genug Geld vorhanden ist (Neue Monster kosten 10$)
+    if(playerMoney>=10)                                                         // Nur ausführen wenn noch genug Geld vorhanden ist (Neue Monster kosten 20$)
     {
-        playerMoney -= 10;                                                      // 10$ werden vom Geld abgezogen
+        playerMoney -= 20;                                                      // 20$ werden vom Geld abgezogen
         updatePlayer();                                                     
 
         let newMonsterType : string = generateMonsterType();                    // Eigens-gebaute Funktion, welche einen String zurück gibt.
-        let newMonsterName : string = generateMonsterName(newMonsterType);      // Eigens-gebaute Funktion, welche einen String zurück gibt.
-        let newMonsterHitPoints : number = generateMonsterHitPoints();          // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
-        let newMonsterXP : number = generateMonsterXP();                        // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
         let newMonsterModifier : string[] = generateMonsterModifer();           // Eigens-gebaute Funktion, welche ein String-Array zurück gibt.
-        let newMonsterMoney : number = generateMonsterMoney(newMonsterType);                  // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
+        let newMonsterName : string = generateMonsterName(newMonsterType);      // Eigens-gebaute Funktion, welche einen String zurück gibt.
+        let newMonsterHitPoints : number = generateMonsterHitPoints(newMonsterModifier);          // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
+        let newMonsterXP : number = generateMonsterXP();                        // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
+        let newMonsterMoney : number = generateMonsterMoney(newMonsterType,newMonsterModifier);// Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
         let newMonsterItem : string = generateMonsterItem();                    // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
         let newMonsterIcon : string = generateMonsterIcon();                    // Eigens-gebaute Funktion, welche einen String zurück gibt.    // 🗹 Mindestanforderung Nr. 4
 
@@ -95,7 +95,7 @@ function generateMonster()
             monsterHitPoints : newMonsterHitPoints,
             monsterExperience : newMonsterXP,
             monsterModifier : newMonsterModifier,
-            monsterMoney : newMonsterMoney,//FEHLER 2 GEFUNDEN! Mich dazu entschieden eine "Geld-Mechanik" zu integrieren
+            monsterMoney : newMonsterMoney,                                     //FEHLER 2 GEFUNDEN! Mich dazu entschieden eine "Geld-Mechanik" zu integrieren
             monsterItem : newMonsterItem,
             monsterIcon : newMonsterIcon
         };
@@ -167,7 +167,7 @@ function getRNGNumber(_maxNumber : number) : number
     //let rngNumber : number = Math.random();                                   // Macht folgendes: Generiere eine zufällige Komma-Zahl zwischen 0 - 1.
     //rngNumber = rngNumber * _maxNumber;                                       // Multipliziere diese Zahl mit der Länge des entsprechenden Array (hier: _maxNumber, ein Parameter, siehe in der runden Klammer der Funktion).
     //rngNumber = Math.floor(rngNumber);                                        // Floore diese Zahl, damit diese nun Ganzzahlig ist.
-    //rngNumber = 0;//FEHLER 4 GEFUNDEN!                                        // Diese Zeile ist einer der drei(!?) Fehler in den Funktionen. Ich bin mal so frei und vermerke das hier. Einfach löschen und alles wird besser.
+    //rngNumber = 0;                                                            //FEHLER 4 GEFUNDEN! // Diese Zeile ist einer der drei(!?) Fehler in den Funktionen. Ich bin mal so frei und vermerke das hier. Einfach löschen und alles wird besser.
     //return rngNumber;                                                         // Gebe diese Zahl zurück, Funktion kann ähnlich einer Variable in Rechnungen genutzt werden.
 }
 
@@ -177,46 +177,6 @@ function getRNGNumber(_maxNumber : number) : number
 function generateMonsterType() : string                                         // Diese Funktion gibt einen Zufälligen Monster-Typ zurück
 {
     return type[getRNGNumber(type.length)];                                   
-}
-
-
-// Diese Funktion gibt einen zusammengewürfelten Namen zurück.
-// Wird für die Monster-generierung verwendet!
-// Liefert einen zusammengesetzten String zurück.                               // Leicht geändert durch die umfunktion von "Prefix" zu "Type"
-function generateMonsterName(Prefix : string) : string                          // Der Funktion wird der Monster-Typ mitgegeben , um diesen als Prefix zu benutzen>
-{
-    let generatedMonsterName : string = Prefix + "-";                           //Der Name wird deklariert. Er beginnt mit dem Typ und einem Bindestrich
-    
-    // Monster-Mittelname
-    let rngNumber = getRNGNumber(monsterName.length);                           // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Mitte) zu generieren.
-    generatedMonsterName += monsterName[rngNumber];                             // Füge den Monsternamen zusammen: nimm aus dem entsprechenden Array mit der zufallsgenerierten Zahl den entsprechenden Eintrag
-    //generatedMonsterName += monsterName[0]; //FEHLER 5 GEFUNDEN!: Keine Ahnung was hier versucht wurde, aber es funktioniert so nicht
-
-    // Monster-Titel
-    rngNumber = getRNGNumber(suffix.length);                                    // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Ende) zu generieren.
-    generatedMonsterName += suffix[rngNumber];                                  // Füge den Monsternamen zusammen: nimm aus dem entsprechenden Array mit der zufallsgenerierten Zahl den entsprechenden Eintrag.
-    // 🗹 Mindestanforderung Nr.6
-    return generatedMonsterName;
-}
-
-
-// Wird für die Monster-Lebenspunkte aufgerufen.
-// Liefert eine variierende Zahl zurück.
-function generateMonsterHitPoints() : number
-{
-    // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 10) + 5 zurück.
-    let tempMonsterHP : number = 5 + getRNGNumber(11);                          // Da HP jetzt als Hit-Points genutzt werden, wurde der Wert ein wenig angepasst
-    return tempMonsterHP;
-}
-
-
-// Wird für die Erstellung der Monster-XP aufgerufen.
-// Liefert eine variierende Zahl zurück.
-function generateMonsterXP() : number
-{
-    // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 900) + 100 zurück.
-    let tempMonsterXP : number = 100 + getRNGNumber(901);                       // Wert wurde angepasst     // 🗹 Mindestanforderung Nr. 7
-    return tempMonsterXP;
 }
 
 
@@ -231,14 +191,76 @@ function generateMonsterModifer() : string[]
 }
 
 
+// Diese Funktion gibt einen zusammengewürfelten Namen zurück.
+// Wird für die Monster-generierung verwendet!
+// Liefert einen zusammengesetzten String zurück.                               // Leicht geändert durch die umfunktion von "Prefix" zu "Type"
+function generateMonsterName(Prefix : string) : string                          // Der Funktion wird der Monster-Typ mitgegeben , um diesen als Prefix zu benutzen>
+{
+    let generatedMonsterName : string = Prefix + "-";                           //Der Name wird deklariert. Er beginnt mit dem Typ und einem Bindestrich
+    
+    // Monster-Mittelname
+    let rngNumber = getRNGNumber(monsterName.length);                           // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Mitte) zu generieren.
+    generatedMonsterName += monsterName[rngNumber];                             // Füge den Monsternamen zusammen: nimm aus dem entsprechenden Array mit der zufallsgenerierten Zahl den entsprechenden Eintrag
+    //generatedMonsterName += monsterName[0];                                   //FEHLER 5 GEFUNDEN!: Keine Ahnung was hier versucht wurde, aber es funktioniert so nicht
+
+    // Monster-Titel
+    rngNumber = getRNGNumber(suffix.length);                                    // Der Rückgabewert der Funktion wird hier verwendet um den entsprechenden Teil des Namens (hier: Ende) zu generieren.
+    generatedMonsterName += suffix[rngNumber];                                  // Füge den Monsternamen zusammen: nimm aus dem entsprechenden Array mit der zufallsgenerierten Zahl den entsprechenden Eintrag.
+    // 🗹 Mindestanforderung Nr.6
+    return generatedMonsterName;
+}
+
+
+// Wird für die Monster-Hitpoints aufgerufen.
+// Liefert eine variierende Zahl zurück.
+function generateMonsterHitPoints(modCheck : string[]) : number
+{
+    // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 10) + 10 zurück.
+    let tempMonsterHP : number = 10 + getRNGNumber(11);                         // Da HP jetzt als Hit-Points genutzt werden, wurde der Wert ein wenig angepasst
+
+    switch (modCheck[0] || modCheck[1]) {                                       // Einige Modifikationen bei bestimmentn Monster-Mods
+        case "Super stark": tempMonsterHP += 10;
+        break;
+        case "Super schwach": tempMonsterHP -= 10;
+        break;
+        case "Freundlich": tempMonsterHP = 0;
+        break;
+    }
+
+    return tempMonsterHP;
+}
+
+
+// Wird für die Erstellung der Monster-XP aufgerufen.
+// Liefert eine variierende Zahl zurück.
+function generateMonsterXP() : number
+{
+    // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 900) + 100 zurück.
+    let tempMonsterXP : number = 100 + getRNGNumber(901);                       // Wert wurde angepasst     // 🗹 Mindestanforderung Nr. 7
+    return tempMonsterXP;
+}
+
+
 // Wird für die Erstellung des Monster-Moneys aufgerufen.
 // Liefert eine variierende Zahl zurück.
-function generateMonsterMoney(schwächlingCheck : string) : number
+function generateMonsterMoney(typeCheck : string, modCheck: string[]) : number
 {
-    let tempMonsterMoney : number = 200 + getRNGNumber(201);                    // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 200) + 100 zurück.
-    if(schwächlingCheck == "Schwächling"){                                      // Monster vom Typ "Schwächling" sind leicht zu besiegen und haben daher sehr wenig Geld
-        tempMonsterMoney = 20;                                                      
+    let tempMonsterMoney : number = 200 + getRNGNumber(101);                    // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 100) + 200 zurück.
+
+    switch (typeCheck) {                                                        //Einige Modifikationen bei bestimmentn Monster-Typen
+        case "Schwächling": tempMonsterMoney -= 100;
+        break;
+        case "Rentner": tempMonsterMoney += 100;
+        break;
     }
+
+    switch (modCheck[0] || modCheck[1]) {                                       //Einige Modifikationen bei bestimmentn Monster-Mods
+        case "Super arm": tempMonsterMoney -= 100;
+        break;
+        case "Super reich": tempMonsterMoney += 100;
+        break;
+    }
+
     return tempMonsterMoney;
 }
 
@@ -336,7 +358,7 @@ function winTheGame()
     window.alert("Du hast gewonnen und du hast dabei: " + playerMoney + "$ gesammelt!!!");
     if(playerMoney>highScore){                                                  // Fals ein neuer Highscore erreicht wurde
         highScore = playerMoney;                                               
-        document.getElementById("highscoreDisplay").innerHTML = "Highscore: " + highScore + "$"; // Schreib neuen Highscore in HTML
+        document.getElementById("highscoreDisplay").innerHTML = "Highscore: " + highScore + " $"; // Schreib neuen Highscore in HTML
     }
 
     //Variablen-Reset um eine neuer Runde zu spielen
