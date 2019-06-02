@@ -284,7 +284,7 @@ function fightMonster(index : number)
     //console.log("Spieler kämpft gegen Monster und gewinnt!");                 // Ohne Logik mit if/else ist so etwas wie ein Kampf nicht leicht umzusetzen.
     //console.log("Das Monster weigert sich zu verschwinden.");                 // Wird nächste Stunde erweitert. --> (Hab mich schonmal dran versucht)
 
-    if(                                                                         // Falls der Spieler das richtige Item hat gewinnt er den Kampf
+    if( // Falls der Spieler das richtige Item hat gewinnt er den Kampf
     playerItem == items[0] && monsterArray[index-1].monsterType == type[0] ||   // Ich bin mir sicher das geht 100% eleganter aber ich komm nicht darauf wie man es lösen könnte ohne den Code grundlegend zu ändern.
     playerItem == items[1] && monsterArray[index-1].monsterType == type[1] ||
     playerItem == items[2] && monsterArray[index-1].monsterType == type[2] ||
@@ -316,11 +316,11 @@ function fightMonster(index : number)
             document.getElementById("buttonsDiv").removeChild(document.getElementById("givingUpButton"));
         }   
 
-    }else                                                                       // Falls der Spieler nicht das richtige Item hat verliert er den Kampf
+    }else   // Falls der Spieler nicht das richtige Item hat verliert er den Kampf
     {                                                                           
         playerMoney -= 40;                                                      // Der Spieler verliert Geld
         playerHealthPoints -= monsterArray[index - 1].monsterHitPoints;         // Der Spieler verliert HealthPoints in höhe der HitPoints des Monsters
-        window.alert("Du kannst " + monsterArray[index - 1].monsterType + "-Monster nicht mit einer/einem " + playerItem + " besiegen.\nDu nimmst " + monsterArray[index - 1].monsterHitPoints + " Schaden und verlierst 40$");
+        window.alert("Du kannst " + monsterArray[index - 1].monsterType + "-Monster nicht mit einer/einem " + playerItem + " besiegen.\n- " + monsterArray[index - 1].monsterHitPoints + " HP\n- 40 $");
     }
     updatePlayer();                                                         
 }

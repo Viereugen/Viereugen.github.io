@@ -235,7 +235,7 @@ function fightMonster(index) {
      {
         playerMoney -= 40; // Der Spieler verliert Geld
         playerHealthPoints -= monsterArray[index - 1].monsterHitPoints; // Der Spieler verliert HealthPoints in höhe der HitPoints des Monsters
-        window.alert("Du kannst " + monsterArray[index - 1].monsterType + "-Monster nicht mit einer/einem " + playerItem + " besiegen.\nDu nimmst " + monsterArray[index - 1].monsterHitPoints + " Schaden und verlierst 40$");
+        window.alert("Du kannst " + monsterArray[index - 1].monsterType + "-Monster nicht mit einer/einem " + playerItem + " besiegen.\n- " + monsterArray[index - 1].monsterHitPoints + " HP\n- 40 $");
     }
     updatePlayer();
 }
