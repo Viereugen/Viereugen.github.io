@@ -1,4 +1,4 @@
-/* css für Codebeispiel 30 */
+/* css fÃ¼r Codebeispiel 30 */
 /* Einbettung font */ 
 @import url('https://fonts.googleapis.com/css?family=Courgette');
 
@@ -6,6 +6,8 @@
 body {
 	font-size: 1.0em;
 	font-family: "Courgette", sans-serif;
+	background-color: #14181c;
+	color:#acccdd;
 }
 
 button > img {
@@ -68,7 +70,7 @@ button {
   border-radius: 2px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
   
-  background-color: #2ecc71;
+  background-color: #4c6885;
   color: #ecf0f1;
   
   margin: auto;
@@ -76,6 +78,8 @@ button {
   
   /*! float: left; */
 }
+
+
 
 #button-green {
 	background-color: #2ecc71;
@@ -85,16 +89,13 @@ button {
 	background-color: #cc2e69;
 }
 
-#moneyCounter{
-	display:inline;
-}
-
-#playerHPCounter{
-	display:inline;
+#moneyCounter,#playerHPCounter,#itemHolder{
+	display: inline
 }
 
 #itemHolder{
   	font-weight: bold;
+  	margin-left:2em;
 }
 
 footer {
