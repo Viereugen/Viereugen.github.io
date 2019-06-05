@@ -12,7 +12,7 @@ let playerMoney = 200; // Stellt das gesammelte Geld des Spielers dar
 let playerItem = "Allmächtiges Schwert"; // Stellt das Item des Spielers dar
 let playerHealthPoints = 100; // Stellt die Health-Points des Spielers dar.
 // Mehrere Arrays, welche jeweils Bauteile für Namen oder Eigenschaften der Monster beinhalten.
-let type = ["Holz", "Wasser", "Rentner", "Metall", "Feuer", "Mini", "Idioten", "Vampir", "Baby", "Alkoholiker", "Schwächling"]; // length = 11, da 11 Einträge. Von 0-10.    //Wurde von "Prefix" zu "Typ" umfunktioniert    
+let MonsterType = ["Holz", "Wasser", "Rentner", "Metall", "Feuer", "Mini", "Idioten", "Vampir", "Baby", "Alkoholiker", "Schwächling"]; // length = 11, da 11 Einträge. Von 0-10.    //Wurde von "Prefix" zu "Typ" umfunktioniert    
 let monsterName = ["Ratte", "Spinne", "Käfer", "Hund", "Student", "Gremlin", "Roboter", "Geist"]; // length = 8, da 8 Einträge. Von 0-7.         // 🗹 Mindestanforderung Nr.5
 let suffix = [" des Verderbens", " aus der Hölle", " des Grauens", " mit Rheuma", " aus Furtwangen", " mit Minderwertigkeits-Komplexen", " vom Dorf", " aus der Wüste", " aus dem Wald", " aus Mordor", " des Todes"]; // length = 11, da hier 11 Einträge sind. Von 0-10.
 let monsterModifers = ["Stark", "Schwach", "Pleite", "Reich", "Bier-Connoisseur", "Verfehlt häufig", "Müde", "Nervig", "Verwirrt", "Linkshänder", "Harmlos"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster. length = 11 VOn 0-10
@@ -118,7 +118,7 @@ function getRNGNumber(_maxNumber) {
 // Wird für den Monster-Typ aufgerufen.
 // Liefert einen String zurück.
 function generateMonsterType() {
-    return type[getRNGNumber(type.length)];
+    return MonsterType[getRNGNumber(MonsterType.length)];
 }
 // Wird für die Erstellung der Monster-Modifizierer aufgerufen.
 // Liefert ein Array mit zwei Einträgen zurück.
@@ -204,16 +204,16 @@ function fightMonster(index) {
     //console.log("Spieler kämpft gegen Monster und gewinnt!");                 // Ohne Logik mit if/else ist so etwas wie ein Kampf nicht leicht umzusetzen.
     //console.log("Das Monster weigert sich zu verschwinden.");                 // Wird nächste Stunde erweitert. --> (Hab mich schonmal dran versucht)
     if ( // Falls der Spieler das richtige Item hat gewinnt er den Kampf
-    playerItem == items[0] && monsterArray[index - 1].monsterType == type[0] || // Ich bin mir sicher das geht 100% eleganter aber ich komm nicht darauf wie man es lösen könnte ohne den Code grundlegend zu ändern.
-        playerItem == items[1] && monsterArray[index - 1].monsterType == type[1] ||
-        playerItem == items[2] && monsterArray[index - 1].monsterType == type[2] ||
-        playerItem == items[3] && monsterArray[index - 1].monsterType == type[3] ||
-        playerItem == items[4] && monsterArray[index - 1].monsterType == type[4] ||
-        playerItem == items[5] && monsterArray[index - 1].monsterType == type[5] ||
-        playerItem == items[6] && monsterArray[index - 1].monsterType == type[6] ||
-        playerItem == items[7] && monsterArray[index - 1].monsterType == type[7] ||
-        playerItem == items[8] && monsterArray[index - 1].monsterType == type[8] ||
-        playerItem == items[9] && monsterArray[index - 1].monsterType == type[9] ||
+    playerItem == items[0] && monsterArray[index - 1].monsterType == MonsterType[0] || // Ich bin mir sicher das geht 100% eleganter aber ich komm nicht darauf wie man es lösen könnte ohne den Code grundlegend zu ändern.
+        playerItem == items[1] && monsterArray[index - 1].monsterType == MonsterType[1] ||
+        playerItem == items[2] && monsterArray[index - 1].monsterType == MonsterType[2] ||
+        playerItem == items[3] && monsterArray[index - 1].monsterType == MonsterType[3] ||
+        playerItem == items[4] && monsterArray[index - 1].monsterType == MonsterType[4] ||
+        playerItem == items[5] && monsterArray[index - 1].monsterType == MonsterType[5] ||
+        playerItem == items[6] && monsterArray[index - 1].monsterType == MonsterType[6] ||
+        playerItem == items[7] && monsterArray[index - 1].monsterType == MonsterType[7] ||
+        playerItem == items[8] && monsterArray[index - 1].monsterType == MonsterType[8] ||
+        playerItem == items[9] && monsterArray[index - 1].monsterType == MonsterType[9] ||
         playerItem == "Allmächtiges Schwert" || monsterArray[index - 1].monsterType == "Schwächling") //"Allmächtiges Schwert" besiegt alle Typen. "Schwächling" kann mit allen Items besiegt werden.
      {
         playerXP += monsterArray[index - 1].monsterExperience; // index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
