@@ -66,7 +66,7 @@ function generateMonster() {
         window.alert("Du hast nicht genug Geld!"); // Alert falls nicht genug Geld vorhanden ist
         if (givingUpButtonCheck == false) { // Nur einen givigUpButton erstellen falls es noch keinen gibt
             givingUpButtonCheck = true;
-            let givingUpButton = document.createElement("BUTTON"); // Generiere einen <buton> mit dem man Aufgeben kann
+            let givingUpButton = document.createElement("BUTTON"); // Generiere einen <buton> mit dem man aufgeben kann
             givingUpButton.setAttribute("id", "givingUpButton");
             givingUpButton.innerHTML = "Aufgeben?";
             document.getElementById("buttonsDiv").appendChild(givingUpButton); // Füge den <button> dem <main> Element dazu
