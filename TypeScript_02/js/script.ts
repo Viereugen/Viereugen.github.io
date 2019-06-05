@@ -446,9 +446,9 @@ function getränkeVerteilen()                                                   
 //
 //  Typ "Rentner"        --> +100$
 //  Typ "Schwächling"    --> =100$
-//  Mod "Reich"    --> +100$
-//  Mod "Pleite"      --> -100$
+//  Mod "Reich"          --> +100$
+//  Mod "Pleite"         --> -100$
 //
-//  Mod "Schwach"  --> -10 HitPoints
-//  Mod "Stark"    --> +10 HitPoints
-//  Mod "Harmlos"     -->  =0 HitPoints
+//  Mod "Schwach"        --> - 10 HitPoints
+//  Mod "Stark"          --> + 10 HitPoints
+//  Mod "Harmlos"        -->  = 0 HitPoints
