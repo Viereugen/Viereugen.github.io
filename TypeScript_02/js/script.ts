@@ -101,7 +101,7 @@ function generateMonster()
             let givingUpButton : HTMLElement = document.createElement("BUTTON");// Generiere einen <buton> mit dem man aufgeben kann
             givingUpButton.setAttribute("id", "givingUpButton");
             givingUpButton.innerHTML = "Aufgeben?";    
-            document.getElementById("buttonsDiv").appendChild(givingUpButton);  // Füge den <button> dem <main> Element dazu
+            document.getElementById("buttonsDiv").appendChild(givingUpButton);  // Füge den <button> dem "buttonsDiv" <div>Element hinzu
             givingUpButton.addEventListener("click", killPlayer);               // Gib <button> einen Event-Listener der eine Funktion ausführt die den Spieler tötet
             console.log("Selbstmord-Button erstellt");
         }
