@@ -254,10 +254,9 @@ function winTheGame() {
     }
     //Variablen-Reset um eine neue Runde zu spielen
     playerXP = 0;
-    playerMoney = 100;
+    playerMoney = 200;
     playerItem = "Allmächtiges Schwert";
     playerHealthPoints = 100;
-    document.getElementById("monsterHoldingCell").innerHTML = "";
     monsterArray = [];
     givingUpButtonSwitch(false);
     updatePlayer();
@@ -271,7 +270,6 @@ function loseTheGame() {
     playerMoney = 200;
     playerItem = "Allmächtiges Schwert";
     playerHealthPoints = 100;
-    document.getElementById("monsterHoldingCell").innerHTML = "";
     monsterArray = [];
     givingUpButtonSwitch(false);
     updatePlayer();
