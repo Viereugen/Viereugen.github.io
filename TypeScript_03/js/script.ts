@@ -180,7 +180,6 @@ function clearMonsterCell()                                                     
         if (monsterAnzeige.firstElementChild != null)                           // Nur ausführen falls schon die monster ANzeige schon children hat
             monsterAnzeige.removeChild(monsterAnzeige.firstElementChild);       // Lösche bei jedem durchgang das "firstChild"
     }
-
 }
 
 // Führt Funktionen clearMonsterCell() und dann monsterGenerateHTMLAll() aus
@@ -408,41 +407,4 @@ function getränkeVerteilen()                                                   
 
 
 
-
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-//----------CHEAT-SHEET----------
-//
-//  Welche Monster kann man wie besiegen?:
-//
-//  Jedes Monster wird mit dem "Allmächtigen Schwert" besiegt
-//  Jedes Item kann Monster vom Typ "Schwächling" besiegen
-//  "Holz"          -->  "Flammenwerfer"
-//  "Wasser"        -->  "Fön" 
-//  "Rentner        -->  "IPhone" 
-//  "Metall"        -->  "Magnet" 
-//  "Feuer"         -->  "Wasserpistole"
-//  "Mini"          -->  "Fliegenklatsche"
-//  "Idioten"       -->  "Buch"
-//  "Vampir"        -->  "Knoblauch"
-//  "Baby"          -->  "Schnuller"
-//  "Alkoholiker"   -->  "Alkoholfreies-Bier"
-//
-//
-//  SONDERFÄLLE:
-//
-//  Typ "Rentner"        --> +100$
-//  Typ "Schwächling"    --> =100$
-//  Mod "Reich"          --> +100$
-//  Mod "Pleite"         --> -100$
-//
-//  Mod "Schwach"        --> - 10 HitPoints
-//  Mod "Stark"          --> + 10 HitPoints
-//  Mod "Harmlos"        -->  = 0 HitPoints
