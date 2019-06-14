@@ -208,11 +208,11 @@ function generateMonsterIcon() {
 // Aufgerufen, wenn man auf den Button klickt.
 // Der Spieler kämpft gegen das entsprechende Monster.
 function fightMonster(index) {
-    if (Math.random() < 0.8) { // Gewinnchanse ist 80%
+    if (Math.random() < 0.8) { // Gewinnchance ist 80%
         playerXP += monsterArray[index - 1].monsterExperience; // Spieler bekommt die XP des besiegten Monsters.
         playerMoney += monsterArray[index - 1].monsterMoney; // Spieler bekommt das Geld des besiegten Monsters.
         playerItem = monsterArray[index - 1].monsterItem; // Spieler tauscht sein Item gegen das des besiegten Monsters.
-        window.alert("Das Monster wurde besiegt!\n\n+ " + monsterArray[index - 1].monsterMoney + " $\n+ " + monsterArray[index - 1].monsterExperience + " XP\n+ " + "Neues Item: " + playerItem);
+        console.log("Das Monster wurde besiegt!\n\n+ " + monsterArray[index - 1].monsterMoney + " $\n+ " + monsterArray[index - 1].monsterExperience + " XP\n+ " + "Neues Item: " + playerItem);
         monsterArray.splice(index - 1, 1); // 🗹 Änderung Nr.1 in "fightMonster" -> Löscht das bekämpfte Monster aus dem monsterArray
         givingUpButtonSwitch(false);
     }
