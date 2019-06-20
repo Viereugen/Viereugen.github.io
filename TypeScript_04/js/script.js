@@ -7,6 +7,7 @@ let givingUpButtonExists = false; // Checken ob ein givingUpButton existiert
 let playerName = "Mario"; // Stellt den Spieler-Namen dar.
 let playerXP = 0; // Stellt die gesammelte Erfahrung des Spielers dar.
 let playerXPperLevel = 500; // Stellt die XP dar, die man braucht um ein Level zu steigen
+let playerLevel = 1; // 🗹 VARIABLEN Änderung Nr.1 --> Stellt das Level des Spielers dar.
 let playerMoney = 200; // Stellt das gesammelte Geld des Spielers dar
 let playerItem = "Allmächtiges Schwert"; // Stellt das Item des Spielers dar
 let playerHealthPoints = 100; // Stellt die Health-Points des Spielers dar.
@@ -26,6 +27,9 @@ console.log(monsterArray);
 // Generelle onload-funktion um Event-Listener zum Dokument hinzuzufügen
 window.onload = function () {
     document.getElementById("monsterSpawner").addEventListener("click", generateMonsters, false);
+    document.getElementById("fightAllButton").addEventListener("click", fightAllMonsters, false);
+    document.getElementById("fightWeakButton").addEventListener("click", fightAllWeakMonsters, false);
+    document.getElementById("fightWeakestButton").addEventListener("click", fightWeakestMonster, false);
     updatePlayer();
     console.log("Seite & Event-listener wurden geladen");
 };
@@ -33,9 +37,9 @@ window.onload = function () {
 // Ruft eine Funktion auf, welche das das HTML erneuert
 function generateMonsters() {
     if (playerMoney >= 40) { // Genug Geld?
-        playerMoney -= 40; // 40$ werden vom Geld abgezogen
+        //playerMoney -= 40;                                                      // 40$ werden vom Geld abgezogen
         updatePlayer();
-        for (let i = getRNGNumber(3); i < 3; i++) { // 🗹 Änderung Nr.1 in "generateMonster" -> Führt die generierung 1-3 mal durch
+        for (let i = getRNGNumber(3); i < 3; i++) { // Führt die generierung 1-3 mal durch
             let newMonsterType = generateMonsterType(); // Eigens-gebaute Funktion, welche einen String zurück gibt.
             let newMonsterModifier = generateMonsterModifer(); // Eigens-gebaute Funktion, welche ein String-Array zurück gibt.
             let newMonsterName = generateMonsterName(newMonsterType); // Eigens-gebaute Funktion, welche einen String zurück gibt. -> Nutzt den Mnster-Typ als Prefix
@@ -44,6 +48,7 @@ function generateMonsters() {
             let newMonsterMoney = generateMonsterMoney(newMonsterType, newMonsterModifier); // Eigens-gebaute Funktion, welche eine Zahl zurück gibt. -> Nutzt den Monster-Typ und Monster-Mod für um manchen Monstern mehr/weniger Geld zu geben
             let newMonsterItem = generateMonsterItem(); // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
             let newMonsterIcon = generateMonsterIcon(); // Eigens-gebaute Funktion, welche einen String zurück gibt.
+            let newMonsterLevel = generateMonsterLevel(); // Eigens-gebaute Funktion, welche eine Numer zurück gibt.
             let newMonster = {
                 monsterType: newMonsterType,
                 monsterName: newMonsterName,
@@ -52,11 +57,12 @@ function generateMonsters() {
                 monsterModifier: newMonsterModifier,
                 monsterMoney: newMonsterMoney,
                 monsterItem: newMonsterItem,
-                monsterIcon: newMonsterIcon
+                monsterIcon: newMonsterIcon,
+                monsterLevel: newMonsterLevel
             };
             monsterArray.push(newMonster); // Monster wird erst in diesem Schritt zu dem Array hinzugefügt 
         }
-        updateHTML(); // 🗹 Änderung Nr.2 in "generateMonster" -> Refresh HTML Funktion wird aufgerufen
+        updateHTML(); // Refresh HTML Funktion wird aufgerufen
     }
     else { // Nicht genug Geld!
         window.alert("Du hast nicht genug Geld!");
@@ -83,7 +89,6 @@ function givingUpButtonSwitch(OnOrOff) {
 // Generiert HTML-Elemente, welche dann einem Element untergeordnet werden.
 // Parameter gibt die Nummer des neuen Monsters an
 function monsterGenerateHTML(monsterCount) {
-    // 🗹 Änderung Nr.1&3 in "monsterGenerateHTML"-> Alle Attribute in HTML generieren & Operator "monsterCount" statt "monsterArray.length" benutzen
     let holdingDiv = document.createElement("div"); // Erstelle ein neues HTML-Element vom typ <div>. Es ist jedoch noch nicht zu sehen!
     holdingDiv.setAttribute("id", "monster" + monsterCount); // Die ID jedes neu-erstellten Monsters entspricht der aktuellen Array-Länge.
     holdingDiv.setAttribute("class", "monster"); // Klasse für Visuals.
@@ -94,16 +99,19 @@ function monsterGenerateHTML(monsterCount) {
     let monsterMod = document.createElement("p"); // Generiere einen <p>
     monsterMod.innerHTML = monsterArray[monsterCount - 1].monsterModifier[0] + " & " + monsterArray[monsterCount - 1].monsterModifier[1]; // Inhalt des <p>: Monster-Modifizierer null und eins
     holdingDiv.appendChild(monsterMod); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
-    let monsterStats = document.createElement("p"); // Generiere einen <p>
-    monsterStats.innerHTML = monsterArray[monsterCount - 1].monsterHitPoints + " HP | " + monsterArray[monsterCount - 1].monsterExperience + " XP | " + monsterArray[monsterCount - 1].monsterMoney + " $"; // Inhalt des <p>: Monster-Item des letzten Monsters im Array.
-    holdingDiv.appendChild(monsterStats); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
+    //let monsterStats: HTMLElement = document.createElement("p");                // Generiere einen <p>
+    //monsterStats.innerHTML = monsterArray[monsterCount - 1].monsterHitPoints + " HP | " + monsterArray[monsterCount - 1].monsterExperience + " XP | " + monsterArray[monsterCount - 1].monsterMoney + " $"; // Inhalt des <p>: Monster-Item des letzten Monsters im Array.
+    //holdingDiv.appendChild(monsterStats);                                       // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
+    let monsterItem = document.createElement("p"); // Generiere einen <p>
+    monsterItem.innerHTML = "Mit " + monsterArray[monsterCount - 1].monsterItem; // Inhalt des <p>: Monster-Item des letzten Monsters im Array.
+    holdingDiv.appendChild(monsterItem); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
     let monsterImg = document.createElement("img"); // Erstelle ein <img>-Element
     monsterImg.setAttribute("src", monsterArray[monsterCount - 1].monsterIcon); // Wurde geändert da man jetzt auf ein Bild aus dem monsterIcon-Array zugreift
     monsterImg.setAttribute("alt", "Schreckliches Monster"); // Das alt für das Bild wird hier festgelegt.
     holdingDiv.appendChild(monsterImg); // Füge das Bild zu dem holding-div hinzu (<div>, welche ein paar Zeilen zuvor erstellt worden ist)
-    let monsterItem = document.createElement("p"); // Generiere einen <p>
-    monsterItem.innerHTML = "Mit " + monsterArray[monsterCount - 1].monsterItem; // Inhalt des <p>: Monster-Item des letzten Monsters im Array.
-    holdingDiv.appendChild(monsterItem); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
+    let monsterLvl = document.createElement("p"); // Generiere einen <p>
+    monsterLvl.innerHTML = "Level: " + monsterArray[monsterCount - 1].monsterLevel; // Inhalt des <p>: Monster-Item des letzten Monsters im Array.
+    holdingDiv.appendChild(monsterLvl); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
     let monsterBtn = document.createElement("BUTTON"); // Erstelle ein <button>-Element
     monsterBtn.innerHTML = "Monster bekämpfen!"; // Verändere den Inhalt des HTML-Elementes. Der genaue Text ist dabei euch überlassen.
     holdingDiv.appendChild(monsterBtn); // Füge den Button zu dem holding-div hinzu.
@@ -182,6 +190,11 @@ function generateMonsterXP() {
     let tempMonsterXP = 200 + getRNGNumber(701);
     return tempMonsterXP;
 }
+// Wird für die Erstellung des Monster-Levels aufgerufen.
+// Liefert eine variierende Zahl zurück.
+function generateMonsterLevel() {
+    return getRNGNumber(11);
+}
 // Wird für die Erstellung des Monster-Moneys aufgerufen.
 // Liefert eine variierende Zahl zurück.
 function generateMonsterMoney(typeCheck, modCheck) {
@@ -208,21 +221,55 @@ function generateMonsterIcon() {
 // Aufgerufen, wenn man auf den Button klickt.
 // Der Spieler kämpft gegen das entsprechende Monster.
 function fightMonster(index) {
-    if (Math.random() < 0.8) { // Gewinnchance ist 80%
-        playerXP += monsterArray[index - 1].monsterExperience; // Spieler bekommt die XP des besiegten Monsters.
+    if (monsterArray[index - 1].monsterLevel <= playerLevel) {
+        updatePlayerLevel(monsterArray[index - 1].monsterExperience);
         playerMoney += monsterArray[index - 1].monsterMoney; // Spieler bekommt das Geld des besiegten Monsters.
         playerItem = monsterArray[index - 1].monsterItem; // Spieler tauscht sein Item gegen das des besiegten Monsters.
         console.log("Das Monster wurde besiegt!\n+ " + monsterArray[index - 1].monsterMoney + " $\n+ " + monsterArray[index - 1].monsterExperience + " XP\n+ " + "Neues Item: " + playerItem);
-        monsterArray.splice(index - 1, 1); // 🗹 Änderung Nr.1 in "fightMonster" -> Löscht das bekämpfte Monster aus dem monsterArray
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!HIER LIEGT DER BUG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        monsterArray.splice(index - 1, 1); // Löscht das bekämpfte Monster aus dem monsterArray 
         givingUpButtonSwitch(false);
     }
     else {
+        updatePlayerLevel(0 - monsterArray[index - 1].monsterExperience);
         playerMoney -= 20; // Der Spieler verliert Geld
         playerHealthPoints -= monsterArray[index - 1].monsterHitPoints; // Der Spieler verliert HealthPoints in höhe der HitPoints des Monsters
-        window.alert("Du hast den Kampf verloren\n- 40$\n- " + monsterArray[index - 1].monsterHitPoints + "HP");
+        window.alert("Du hast den Kampf gegen " + monsterArray[index - 1].monsterName + " verloren\n- 40$\n- " + monsterArray[index - 1].monsterHitPoints + "HP");
     }
     updatePlayer();
-    updateHTML(); // 🗹 Änderung Nr.2 in "fightMonster" -> Ruft updateHTML() auf
+    updateHTML();
+}
+function updatePlayerLevel(XPChange) {
+    if (playerXP + XPChange > 0) {
+        playerXP += XPChange;
+    }
+    else {
+        playerXP = 0;
+    }
+    playerLevel = Math.floor(playerXP / playerXPperLevel) + 1;
+    if (playerLevel == 20) {
+        winTheGame();
+    }
+}
+function fightAllMonsters() {
+    for (let i = 0; i < monsterArray.length; i++) {
+        fightMonster(i + 1);
+    }
+}
+function fightAllWeakMonsters() {
+    for (let i = 0; i < monsterArray.length; i++) {
+        if (monsterArray[i].monsterLevel < playerLevel)
+            fightMonster(i + 1);
+    }
+}
+function fightWeakestMonster() {
+    let tempWeakestMonster = monsterArray[0];
+    let tempWeakestMonsterIndex = 0;
+    for (let i = 0; i < monsterArray.length; i++) {
+        if (monsterArray[i].monsterLevel < tempWeakestMonster.monsterLevel)
+            tempWeakestMonsterIndex = i + 1;
+    }
+    fightMonster(tempWeakestMonsterIndex);
 }
 //Gibt die Anzahl an Monstern zurück
 function getMonsterCount() {
@@ -235,13 +282,10 @@ function killPlayer() {
 }
 // Aufgerufen, um das HTML-Element, welches das Spieler-Level darstellt, zu erneuern.
 function updatePlayer() {
-    let tempLevel = Math.floor(playerXP / playerXPperLevel) + 1; // Spieler-Level = XP / XPproLevel
-    document.getElementById("xpCounter").innerHTML = "Player-Level: " + tempLevel + " (XP: " + playerXP + " / " + tempLevel * playerXPperLevel + ")"; // Baue den String für die Spieler-Info zusammen
+    document.getElementById("xpCounter").innerHTML = "Player-Level: " + playerLevel + " (XP: " + playerXP + " / " + playerLevel * playerXPperLevel + ")"; // Baue den String für die Spieler-Info zusammen
     document.getElementById("playerHPCounter").innerHTML = "HP: " + playerHealthPoints;
     document.getElementById("moneyCounter").innerHTML = "Geld: " + playerMoney;
     document.getElementById("itemHolder").innerHTML = "Item: " + playerItem;
-    if (tempLevel >= 10) // Win-Condition                                  
-        winTheGame();
     if (playerHealthPoints < 1) // Lose-Condition
         loseTheGame();
 }
