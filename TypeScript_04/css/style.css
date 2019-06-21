@@ -21,7 +21,8 @@ h1 {
 .monster {
 	max-width: 13em;
 	max-height: 20em;
-	margin-bottom: 0.5em;
+	margin-bottom: 0.8em;
+	margin-right: 0.8em;
 	text-align: center;
 }
 
@@ -36,6 +37,7 @@ h1 {
 	display: block;
 	margin: auto;
 	background-color:#dc2c2c;
+	font-size: 1em;
 }
 
 .monster p {
@@ -46,7 +48,11 @@ h1 {
 
 .monster p+p
 {
-  font-size: 0.7em;
+  font-size: 0.6em;
+}
+
+.monsterHealthBar{
+	font-size: 1.8em;
 }
 
 main div {
@@ -66,8 +72,8 @@ button {
   padding: 1em;
   overflow: hidden;
 
-	display: inline-block;
-  width:13em; 	
+  display: inline-block;
+  width:18em; 	
 
   border-width: 0;
   outline: none;
