@@ -30,7 +30,7 @@ window.onload = function () {
     document.getElementById("fightAllButton").addEventListener("click", fightAllMonsters, false);
     document.getElementById("fightWeakButton").addEventListener("click", fightAllWeakMonsters, false);
     document.getElementById("fightWeakestButton").addEventListener("click", fightWeakestMonster, false);
-    updatePlayer();
+    updatePlayer(0);
     console.log("Seite & Event-listener wurden geladen");
 };
 // Generiert ein neues Monster. Dieses wird zu dem Monster-Array hinzugefügt.
@@ -38,7 +38,7 @@ window.onload = function () {
 function generateMonsters() {
     if (playerMoney >= 10) { // Genug Geld?
         playerMoney -= 10; // 40$ werden vom Geld abgezogen
-        updatePlayer();
+        updatePlayer(0);
         for (let i = getRNGNumber(3); i < 3; i++) { // Führt die generierung 1-3 mal durch
             let newMonsterType = generateMonsterType(); // Eigens-gebaute Funktion, welche einen String zurück gibt.
             let newMonsterModifier = generateMonsterModifer(); // Eigens-gebaute Funktion, welche ein String-Array zurück gibt.
@@ -126,7 +126,7 @@ function monsterGenerateHTML(monsterCount) {
     let monsterBtn = document.createElement("BUTTON"); // Erstelle ein <button>-Element
     monsterBtn.innerHTML = "Monster bekämpfen!"; // Verändere den Inhalt des HTML-Elementes. Der genaue Text ist dabei euch überlassen.
     holdingDiv.appendChild(monsterBtn); // Füge den Button zu dem holding-div hinzu.
-    monsterBtn.addEventListener('click', function () { fightMonster(monsterCount); }, false); // Wenn das Monster erstellt wird erhält die fightMonster-Funktion einen Parameter, welcher der aktuellen Anzahl entspricht.                       
+    monsterBtn.addEventListener('click', function () { fightMonster(monsterCount - 1); }, false); // Wenn das Monster erstellt wird erhält die fightMonster-Funktion einen Parameter, welcher der aktuellen Anzahl entspricht.                       
 }
 // Führt die Funktion monsterGenerateHTML() für jedes Monster im monsterArray aus
 function monsterGenerateHTMLAll() {
@@ -236,49 +236,49 @@ function generateMonsterHealthpoints() {
 // Aufgerufen, wenn man auf den Button klickt.
 // Der Spieler kämpft gegen das entsprechende Monster.
 function fightMonster(index) {
-    console.log("Kampf gegen Monster Nr: " + index);
-    if (monsterArray[index - 1].monsterLevel <= playerLevel) {
-        monsterArray[index - 1].monsterHealthPoints -= 20;
-        if (monsterArray[index - 1].monsterHealthPoints < 1) {
-            updatePlayerLevel(monsterArray[index - 1].monsterExperience);
-            playerMoney += monsterArray[index - 1].monsterMoney; // Spieler bekommt das Geld des besiegten Monsters.
-            playerItem = monsterArray[index - 1].monsterItem; // Spieler tauscht sein Item gegen das des besiegten Monsters.
-            console.log("Gewonnen: +" + monsterArray[index - 1].monsterMoney + " $ , +" + monsterArray[index - 1].monsterExperience + " XP , " + "Item: " + playerItem);
-            monsterArray.splice(index - 1, 1); // Löscht das bekämpfte Monster aus dem monsterArray 
+    console.log("Kampf gegen Monster Nr: " + (index + 1));
+    if (monsterArray[index].monsterLevel <= playerLevel) {
+        monsterArray[index].monsterHealthPoints -= 20;
+        if (monsterArray[index].monsterHealthPoints < 1) {
+            updatePlayer(monsterArray[index].monsterExperience);
+            playerMoney += monsterArray[index].monsterMoney; // Spieler bekommt das Geld des besiegten Monsters.
+            playerItem = monsterArray[index].monsterItem; // Spieler tauscht sein Item gegen das des besiegten Monsters.
+            console.log("Gewonnen: +" + monsterArray[index].monsterMoney + " $ , +" + monsterArray[index].monsterExperience + " XP , " + "Item: " + playerItem);
+            monsterArray.splice(index, 1); // Löscht das bekämpfte Monster aus dem monsterArray 
         }
         givingUpButtonSwitch(false);
     }
     else {
-        updatePlayerLevel(0 - monsterArray[index - 1].monsterExperience);
+        updatePlayer(0 - monsterArray[index].monsterExperience);
         playerMoney -= 20; // Der Spieler verliert Geld
-        playerHealthPoints -= monsterArray[index - 1].monsterHitPoints; // Der Spieler verliert HealthPoints in höhe der HitPoints des Monsters
-        console.log("Verloren: -20$ ,  -" + monsterArray[index - 1].monsterExperience + "XP , -" + monsterArray[index - 1].monsterHitPoints + " HP");
+        playerHealthPoints -= monsterArray[index].monsterHitPoints; // Der Spieler verliert HealthPoints in höhe der HitPoints des Monsters
+        console.log("Verloren: -20$ ,  -" + monsterArray[index].monsterExperience + "XP , -" + monsterArray[index].monsterHitPoints + " HP");
         //window.alert("Du hast den Kampf gegen " + monsterArray[index-1].monsterName + " verloren\n- 40$\n- " + monsterArray[index - 1].monsterHitPoints + "HP");
     }
-    updatePlayer();
+    updatePlayer(0);
     updateHTML();
 }
 function fightAllMonsters() {
     for (let i = monsterArray.length - 1; i >= 0; i--) {
-        fightMonster(i + 1);
+        fightMonster(i);
     }
 }
 function fightAllWeakMonsters() {
     for (let i = monsterArray.length - 1; i >= 0; i--) {
-        if (monsterArray[i].monsterLevel < playerLevel)
-            fightMonster(i + 1);
+        if (monsterArray[i].monsterLevel <= playerLevel)
+            fightMonster(i);
     }
 }
 function fightWeakestMonster() {
     let tempWeakestMonster = monsterArray[0];
-    let tempWeakestMonsterIndex = 0;
+    let tempWeakestMonsterNr = 0;
     for (let i = 0; i < monsterArray.length; i++) {
         if (monsterArray[i].monsterLevel < tempWeakestMonster.monsterLevel) {
-            tempWeakestMonsterIndex = i + 1;
+            tempWeakestMonsterNr = i;
             tempWeakestMonster = monsterArray[i];
         }
     }
-    fightMonster(tempWeakestMonsterIndex);
+    fightMonster(tempWeakestMonsterNr);
 }
 //Gibt die Anzahl an Monstern zurück
 function getMonsterCount() {
@@ -287,30 +287,41 @@ function getMonsterCount() {
 //Tötet den Spieler
 function killPlayer() {
     playerHealthPoints = 0;
-    updatePlayer();
+    updatePlayer(0);
 }
 // Aufgerufen, um das HTML-Element, welches das Spieler-Level darstellt, zu erneuern.
-function updatePlayer() {
+function updatePlayer(XPChange) {
+    if (playerXP + XPChange > 0)
+        playerXP += XPChange;
+    else
+        playerXP = 0;
+    playerLevel = Math.floor(playerXP / playerXPperLevel) + 1;
+    if (playerLevel == 20)
+        winTheGame();
+    if (playerHealthPoints < 1) // Lose-Condition
+        loseTheGame();
     document.getElementById("xpCounter").innerHTML = "Player-Level: " + playerLevel + " (XP: " + playerXP + " / " + playerLevel * playerXPperLevel + ")"; // Baue den String für die Spieler-Info zusammen
     document.getElementById("playerHPCounter").innerHTML = "HP: " + playerHealthPoints;
     document.getElementById("moneyCounter").innerHTML = "Geld: " + playerMoney;
     document.getElementById("itemHolder").innerHTML = "Item: " + playerItem;
-    if (playerHealthPoints < 1) // Lose-Condition
-        loseTheGame();
 }
-function updatePlayerLevel(XPChange) {
-    if (playerXP + XPChange > 0) {
+/*
+function updatePlayer(XPChange: number)
+{
+    if(playerXP + XPChange > 0){
         playerXP += XPChange;
-    }
-    else {
+    } else {
         playerXP = 0;
     }
+
     playerLevel = Math.floor(playerXP / playerXPperLevel) + 1;
-    if (playerLevel == 20) {
+
+    if(playerLevel == 20){
         winTheGame();
     }
     updatePlayer();
 }
+*/
 // Aufgerufen falls Win-Condition erfüllt sind
 function winTheGame() {
     window.alert("!!!GLÜCKWUNSCH!!!\n!!!DU HAST GEWONNEN!!!\nDu hast dabei: " + playerMoney + "$ gesammelt!");
@@ -326,7 +337,7 @@ function winTheGame() {
     playerHealthPoints = 100;
     monsterArray = [];
     givingUpButtonSwitch(false);
-    updatePlayer();
+    updatePlayer(0);
     updateHTML();
 }
 // Aufgerufen falls Lose-Conditions erfüllt sind
@@ -339,7 +350,7 @@ function loseTheGame() {
     playerHealthPoints = 100;
     monsterArray = [];
     givingUpButtonSwitch(false);
-    updatePlayer();
+    updatePlayer(0);
     updateHTML();
 }
 // ----------- Zusatz Funktion ----------- //
