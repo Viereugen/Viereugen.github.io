@@ -7,7 +7,7 @@ let givingUpButtonExists = false; // Checken ob ein givingUpButton existiert
 let playerName = "Mario"; // Stellt den Spieler-Namen dar.
 let playerXP = 0; // Stellt die gesammelte Erfahrung des Spielers dar.
 let playerXPperLevel = 500; // Stellt die XP dar, die man braucht um ein Level zu steigen
-let playerLevel = 1; // 🗹 VARIABLEN Änderung Nr.1 --> Stellt das Level des Spielers dar.
+let playerLevel = 1; // 🗹 VARIABLE Nr.1 zugefügt  --> Stellt das Level des Spielers dar.
 let playerMoney = 200; // Stellt das gesammelte Geld des Spielers dar
 let playerItem = "Allmächtiges Schwert"; // Stellt das Item des Spielers dar
 let playerHealthPoints = 100; // Stellt die Health-Points des Spielers dar.
@@ -47,7 +47,7 @@ function generateMonsters() {
             let newMonsterMoney = generateMonsterMoney(newMonsterType, newMonsterModifier); // Eigens-gebaute Funktion, welche eine Zahl zurück gibt. -> Nutzt den Monster-Typ und Monster-Mod für um manchen Monstern mehr/weniger Geld zu geben
             let newMonsterItem = generateMonsterItem(); // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
             let newMonsterIcon = generateMonsterIcon(); // Eigens-gebaute Funktion, welche einen String zurück gibt.
-            let newMonsterLevel = generateMonsterLevel(); // Eigens-gebaute Funktion, welche eine Numer zurück gibt.
+            let newMonsterLevel = generateMonsterLevel(); // 🗹 VARIABLE Nr.2 zugefügt  --> Eigens-gebaute Funktion, welche eine Nummer (0-10) zurück gibt.
             let newMonsterHealthpoints = generateMonsterHealthpoints();
             let newMonster = {
                 monsterType: newMonsterType,
@@ -151,10 +151,11 @@ function generateMonsterHealthpoints() {
 // Der Spieler kämpft gegen das entsprechende Monster.
 function fightMonster(index) {
     console.log("Kampf gegen Monster Nr: " + (index + 1));
-    if (monsterArray[index].monsterLevel <= playerLevel) { // Kampf gewonnen
+    if (monsterArray[index].monsterLevel <= playerLevel) // 🗹 Änderung in dieser FUNKTION Nr.1
+     { // Kampf gewonnen                                                         // 🗹 Änderung in dieser FUNKTION Nr.3
         monsterArray[index].monsterHealthPoints -= 20; // Monster nimmt -20HP Schaden
         if (monsterArray[index].monsterHealthPoints < 1) { //Das Monster stirbt
-            updatePlayer(monsterArray[index].monsterExperience); // Spieler bekommt die MonsterXP zugerechnet
+            updatePlayer(monsterArray[index].monsterExperience); // 🗹 Änderung in dieser FUNKTION Nr.4 --> Spieler bekommt die MonsterXP zugerechnet
             playerMoney += monsterArray[index].monsterMoney; // Spieler bekommt das Geld des besiegten Monsters.
             playerItem = monsterArray[index].monsterItem; // Spieler tauscht sein Item gegen das des besiegten Monsters.
             console.log("Gewonnen: +" + monsterArray[index].monsterMoney + " $ , +" + monsterArray[index].monsterExperience + " XP , " + "Item: " + playerItem);
@@ -162,8 +163,8 @@ function fightMonster(index) {
         }
         givingUpButtonSwitch(false);
     }
-    else { //Kampf verloren
-        updatePlayer(0 - monsterArray[index].monsterExperience); // Spieler bekommt die MonsterXP abgezogen (negativer parameter)
+    else { //Kampf verloren                                                     // 🗹 Änderung in dieser FUNKTION Nr.2
+        updatePlayer(0 - monsterArray[index].monsterExperience); // 🗹 Änderung in dieser FUNKTION Nr.4 --> Spieler bekommt die MonsterXP abgezogen (negativer parameter)
         playerMoney -= 10; // Spieler verliert Geld
         playerHealthPoints -= monsterArray[index].monsterHitPoints; // Spieler verliert HealthPoints in höhe der HitPoints des Monsters
         console.log("Verloren: -10$ ,  -" + monsterArray[index].monsterExperience + "XP , -" + monsterArray[index].monsterHitPoints + " HP");
@@ -196,12 +197,12 @@ function fightWeakestMonster() {
 // ----------------- Funktionen die den Status des Spielers verändern ------------------- //
 // Aufgerufen, um das HTML-Element, welches das Spieler-Level darstellt, zu erneuern.
 function updatePlayer(XPChange) {
-    if (playerXP + XPChange > 0) // XP werden geändert, falls sie nicht unter 0 fallen                                                
+    if (playerXP + XPChange > 0) // 🗹 Änderung in dieser FUNKTION Nr.2 --> XP werden geändert, falls sie nicht unter 0 fallen                                                
         playerXP += XPChange;
     else
         playerXP = 0;
-    playerLevel = Math.floor(playerXP / playerXPperLevel) + 1; // Berechnung des neuen Spieler-Levels
-    if (playerLevel == 20) // Win-Condition
+    playerLevel = Math.floor(playerXP / playerXPperLevel) + 1; // 🗹 Änderung in dieser FUNKTION Nr.4 --> Berechnung des neuen Spieler-Levels
+    if (playerLevel == 20) // 🗹 Änderung in dieser FUNKTION Nr.3 --> Win-Condition
         winTheGame();
     if (playerHealthPoints < 1) // Lose-Condition
         loseTheGame();
@@ -279,7 +280,7 @@ function monsterGenerateHTML(monsterNr) {
     monsterHealthBar.style.borderRadius = "5px";
     monsterHealthBar.style.margin = "0% 10% 0% 10%";
     monsterHealthBar.innerHTML = monsterArray[monsterNr].monsterHealthPoints + "";
-    monsterHealthBar.style.width = monsterArray[monsterNr].monsterHealthPoints + "%"; // Die Breite des Balkens entspricht den Healthpoints in %.
+    monsterHealthBar.style.width = monsterArray[monsterNr].monsterHealthPoints + "%"; // 🗹 OPTIONALES ZIEL Nr.3 --> Die Breite des Balkens entspricht den Healthpoints in %.
     let monsterBtn = document.createElement("BUTTON"); // Erstelle ein <button>-Element
     monsterBtn.innerHTML = "Monster bekämpfen!"; // Verändere den Inhalt des HTML-Elementes. Der genaue Text ist dabei euch überlassen.
     holdingDiv.appendChild(monsterBtn); // Füge den Button zu dem holding-div hinzu.
