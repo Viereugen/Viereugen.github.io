@@ -34,7 +34,6 @@ window.onload = function () {
     console.log("Seite & Event-listener wurden geladen");
 };
 // Generiert ein neues Monster. Dieses wird zu dem Monster-Array hinzugefügt.
-// Ruft eine Funktion auf, welche das das HTML erneuert
 function generateMonsters() {
     if (playerMoney >= 10) { // Genug Geld?
         playerMoney -= 10; // Geld wird bezahlt
@@ -70,69 +69,6 @@ function generateMonsters() {
         window.alert("Du hast nicht genug Geld!");
         givingUpButtonSwitch(true);
     }
-}
-// ----------------- Funktionen für das HTML ------------------- //
-// Generiert HTML-Elemente, welche dann einem Element untergeordnet werden.
-// Parameter gibt die Nummer des neuen Monsters an
-function monsterGenerateHTML(monsterNr) {
-    let holdingDiv = document.createElement("div"); // Erstelle ein neues HTML-Element vom typ <div>. Es ist jedoch noch nicht zu sehen!
-    holdingDiv.setAttribute("id", "monster" + (monsterNr + 1)); // Die ID jedes neu-erstellten Monsters entspricht der aktuellen Array-Länge.
-    holdingDiv.setAttribute("class", "monster"); // Klasse für Visuals.
-    document.getElementById(monsterHolder).appendChild(holdingDiv); // Das HTML-Element muss erst noch zu einem Objekt hinzugefügt werden, in diesem Fall mit der id "monsterHoldingCell"
-    let monsterName = document.createElement("p"); // Generiere einen <p>
-    monsterName.innerHTML = monsterArray[monsterNr].monsterName; // Inhalt des <p>: Monster-Name des letzten Monsters im Array.
-    holdingDiv.appendChild(monsterName); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
-    let monsterMod = document.createElement("p"); // Generiere einen <p>
-    monsterMod.innerHTML = monsterArray[monsterNr].monsterModifier[0] + " & " + monsterArray[monsterNr].monsterModifier[1]; // Inhalt des <p>: Monster-Modifizierer null und eins
-    holdingDiv.appendChild(monsterMod); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
-    //let monsterStats: HTMLElement = document.createElement("p");              // Generiere einen <p>
-    //monsterStats.innerHTML = monsterArray[monsterCount - 1].monsterHitPoints + " HP | " + monsterArray[monsterCount - 1].monsterExperience + " XP | " + monsterArray[monsterCount - 1].monsterMoney + " $"; // Inhalt des <p>: Monster-Item des letzten Monsters im Array.
-    //holdingDiv.appendChild(monsterStats);                                     // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
-    let monsterItem = document.createElement("p"); // Generiere einen <p>
-    monsterItem.innerHTML = "Mit " + monsterArray[monsterNr].monsterItem; // Inhalt des <p>: Monster-Item des letzten Monsters im Array.
-    holdingDiv.appendChild(monsterItem); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
-    let monsterImg = document.createElement("img"); // Erstelle ein <img>-Element
-    monsterImg.setAttribute("src", monsterArray[monsterNr].monsterIcon); // Wurde geändert da man jetzt auf ein Bild aus dem monsterIcon-Array zugreift
-    monsterImg.setAttribute("alt", "Schreckliches Monster"); // Das alt für das Bild wird hier festgelegt.
-    holdingDiv.appendChild(monsterImg); // Füge das Bild zu dem holding-div hinzu (<div>, welche ein paar Zeilen zuvor erstellt worden ist)
-    let monsterLvl = document.createElement("p"); // Generiere einen <p>
-    monsterLvl.innerHTML = "Level: " + monsterArray[monsterNr].monsterLevel; // Inhalt des <p>: Monster-Item des letzten Monsters im Array.
-    holdingDiv.appendChild(monsterLvl); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
-    let monsterHealthBar = document.createElement("p"); // Generiere einen <p>
-    holdingDiv.appendChild(monsterHealthBar); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
-    monsterHealthBar.style.backgroundColor = "green"; // Füge Stylings zu dem Balken hinzu
-    monsterHealthBar.style.fontSize = "0.9em";
-    monsterHealthBar.style.textAlign = "left";
-    monsterHealthBar.style.borderRadius = "5px";
-    monsterHealthBar.style.margin = "0% 10% 0% 10%";
-    monsterHealthBar.innerHTML = monsterArray[monsterNr].monsterHealthPoints + "";
-    monsterHealthBar.style.width = monsterArray[monsterNr].monsterHealthPoints + "%"; // Die Breite des Balkens entspricht den Healthpoints in %.
-    let monsterBtn = document.createElement("BUTTON"); // Erstelle ein <button>-Element
-    monsterBtn.innerHTML = "Monster bekämpfen!"; // Verändere den Inhalt des HTML-Elementes. Der genaue Text ist dabei euch überlassen.
-    holdingDiv.appendChild(monsterBtn); // Füge den Button zu dem holding-div hinzu.
-    monsterBtn.addEventListener('click', function () { fightMonster(monsterNr); }, false); // Wenn das Monster erstellt wird erhält die fightMonster-Funktion einen Parameter, welcher der aktuellen Anzahl entspricht.                       
-}
-// Führt die Funktion monsterGenerateHTML() für jedes Monster im monsterArray aus
-function monsterGenerateHTMLAll() {
-    for (let i = 0; i < monsterArray.length; i++) {
-        monsterGenerateHTML(i);
-    }
-}
-// Löscht alle Children von "monsterHoldingCell" aus dem HTML
-function clearMonsterCell() {
-    let monsterAnzeige = document.getElementById("monsterHoldingCell");
-    let children = monsterAnzeige.children;
-    let childCount = children.length;
-    for (let i = 0; i < childCount; i++) { // Schleife die alle children in der monsterAnzeige abtastet
-        if (monsterAnzeige.firstElementChild != null) // Nur ausführen falls schon die monster ANzeige schon children hat
-            monsterAnzeige.removeChild(monsterAnzeige.firstElementChild); // Lösche bei jedem durchgang das "firstChild"
-    }
-}
-// Führt Funktionen clearMonsterCell() und dann monsterGenerateHTMLAll() aus
-function updateHTML() {
-    clearMonsterCell();
-    monsterGenerateHTMLAll();
-    console.log("Anzahl der Monster: " + getMonsterCount());
 }
 // ----------------- Funktionen die Monsteratribute generieren ------------------- //
 // Wird für den Monster-Typ aufgerufen.
@@ -307,6 +243,69 @@ function loseTheGame() {
 function killPlayer() {
     playerHealthPoints = 0;
     updatePlayer(0);
+}
+// ----------------- Funktionen für das HTML ------------------- //
+// Generiert HTML-Elemente, welche dann einem Element untergeordnet werden.
+// Parameter gibt die Nummer des neuen Monsters an
+function monsterGenerateHTML(monsterNr) {
+    let holdingDiv = document.createElement("div"); // Erstelle ein neues HTML-Element vom typ <div>. Es ist jedoch noch nicht zu sehen!
+    holdingDiv.setAttribute("id", "monster" + (monsterNr + 1)); // Die ID jedes neu-erstellten Monsters entspricht der aktuellen Array-Länge.
+    holdingDiv.setAttribute("class", "monster"); // Klasse für Visuals.
+    document.getElementById(monsterHolder).appendChild(holdingDiv); // Das HTML-Element muss erst noch zu einem Objekt hinzugefügt werden, in diesem Fall mit der id "monsterHoldingCell"
+    let monsterName = document.createElement("p"); // Generiere einen <p>
+    monsterName.innerHTML = monsterArray[monsterNr].monsterName; // Inhalt des <p>: Monster-Name des letzten Monsters im Array.
+    holdingDiv.appendChild(monsterName); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
+    let monsterMod = document.createElement("p"); // Generiere einen <p>
+    monsterMod.innerHTML = monsterArray[monsterNr].monsterModifier[0] + " & " + monsterArray[monsterNr].monsterModifier[1]; // Inhalt des <p>: Monster-Modifizierer null und eins
+    holdingDiv.appendChild(monsterMod); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
+    //let monsterStats: HTMLElement = document.createElement("p");              // Generiere einen <p>
+    //monsterStats.innerHTML = monsterArray[monsterCount - 1].monsterHitPoints + " HP | " + monsterArray[monsterCount - 1].monsterExperience + " XP | " + monsterArray[monsterCount - 1].monsterMoney + " $"; // Inhalt des <p>: Monster-Item des letzten Monsters im Array.
+    //holdingDiv.appendChild(monsterStats);                                     // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
+    let monsterItem = document.createElement("p"); // Generiere einen <p>
+    monsterItem.innerHTML = "Mit " + monsterArray[monsterNr].monsterItem; // Inhalt des <p>: Monster-Item des letzten Monsters im Array.
+    holdingDiv.appendChild(monsterItem); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
+    let monsterImg = document.createElement("img"); // Erstelle ein <img>-Element
+    monsterImg.setAttribute("src", monsterArray[monsterNr].monsterIcon); // Wurde geändert da man jetzt auf ein Bild aus dem monsterIcon-Array zugreift
+    monsterImg.setAttribute("alt", "Schreckliches Monster"); // Das alt für das Bild wird hier festgelegt.
+    holdingDiv.appendChild(monsterImg); // Füge das Bild zu dem holding-div hinzu (<div>, welche ein paar Zeilen zuvor erstellt worden ist)
+    let monsterLvl = document.createElement("p"); // Generiere einen <p>
+    monsterLvl.innerHTML = "Level: " + monsterArray[monsterNr].monsterLevel; // Inhalt des <p>: Monster-Item des letzten Monsters im Array.
+    holdingDiv.appendChild(monsterLvl); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
+    let monsterHealthBar = document.createElement("p"); // Generiere einen <p>
+    holdingDiv.appendChild(monsterHealthBar); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
+    monsterHealthBar.style.backgroundColor = "green"; // Füge Stylings zu dem Balken hinzu
+    monsterHealthBar.style.fontSize = "0.9em";
+    monsterHealthBar.style.textAlign = "left";
+    monsterHealthBar.style.borderRadius = "5px";
+    monsterHealthBar.style.margin = "0% 10% 0% 10%";
+    monsterHealthBar.innerHTML = monsterArray[monsterNr].monsterHealthPoints + "";
+    monsterHealthBar.style.width = monsterArray[monsterNr].monsterHealthPoints + "%"; // Die Breite des Balkens entspricht den Healthpoints in %.
+    let monsterBtn = document.createElement("BUTTON"); // Erstelle ein <button>-Element
+    monsterBtn.innerHTML = "Monster bekämpfen!"; // Verändere den Inhalt des HTML-Elementes. Der genaue Text ist dabei euch überlassen.
+    holdingDiv.appendChild(monsterBtn); // Füge den Button zu dem holding-div hinzu.
+    monsterBtn.addEventListener('click', function () { fightMonster(monsterNr); }, false); // Wenn das Monster erstellt wird erhält die fightMonster-Funktion einen Parameter, welcher der aktuellen Anzahl entspricht.                       
+}
+// Führt die Funktion monsterGenerateHTML() für jedes Monster im monsterArray aus
+function monsterGenerateHTMLAll() {
+    for (let i = 0; i < monsterArray.length; i++) {
+        monsterGenerateHTML(i);
+    }
+}
+// Löscht alle Children von "monsterHoldingCell" aus dem HTML
+function clearMonsterCell() {
+    let monsterAnzeige = document.getElementById("monsterHoldingCell");
+    let children = monsterAnzeige.children;
+    let childCount = children.length;
+    for (let i = 0; i < childCount; i++) { // Schleife die alle children in der monsterAnzeige abtastet
+        if (monsterAnzeige.firstElementChild != null) // Nur ausführen falls schon die monster ANzeige schon children hat
+            monsterAnzeige.removeChild(monsterAnzeige.firstElementChild); // Lösche bei jedem durchgang das "firstChild"
+    }
+}
+// Führt Funktionen clearMonsterCell() und dann monsterGenerateHTMLAll() aus
+function updateHTML() {
+    clearMonsterCell();
+    monsterGenerateHTMLAll();
+    console.log("Anzahl der Monster: " + getMonsterCount());
 }
 // ----------------- Diverse weiter Funktionen ------------------- //
 // Wird für den Zugriff auf eine zufällige Stelle in einem Array aufgerufen.
