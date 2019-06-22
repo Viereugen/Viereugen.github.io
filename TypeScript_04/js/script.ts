@@ -117,7 +117,7 @@ function generateMonsters() {
 
 
 
-// ----------------- Funktionen die Monsteratribute generieren ------------------- //
+// ----------------- Funktionen die Monster-Atribute generieren ------------------- //
 
 // Wird für den Monster-Typ aufgerufen.
 // Liefert einen String zurück.
