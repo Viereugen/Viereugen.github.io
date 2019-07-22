@@ -316,7 +316,7 @@ function getRNGNumber(_maxNumber) {
 }
 // Generiert oder Erstellt einen givingUpButton 
 function givingUpButtonSwitch(OnOrOff) {
-    if (OnOrOff == true && givingUpButtonExists == false) { // Generiere den Button falls er nicht nicht existiert
+    if (OnOrOff == true && givingUpButtonExists == false) { // Generiere den Button falls er nicht existiert
         let givingUpButton = document.createElement("BUTTON");
         givingUpButton.setAttribute("id", "givingUpButton");
         givingUpButton.innerHTML = "Aufgeben?";
