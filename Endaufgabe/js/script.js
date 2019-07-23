@@ -3,7 +3,10 @@ let compHandArray = [];
 let deckArray = [];
 let discardPileArray = [];
 let playersTurn = true;
+let showCompHand = false;
 window.onload = function () {
+    document.getElementById("rulesButton").addEventListener("click", turnOverlayOn, false);
+    document.getElementById("overlay").addEventListener("click", turnOverlayOff, false);
     generateNewDeck();
     shuffleDeck();
     dealCards();
@@ -99,27 +102,35 @@ function generatePlayerHandHTML(CardNr) {
     cardDiv.appendChild(cardValueP2);
 }
 function generateCompHandHTML(CardNr) {
-    let tempCardValue = compHandArray[CardNr].cardValue + "";
-    switch (compHandArray[CardNr].specialProperty) {
-        case "Plus 2":
-            tempCardValue = "+2";
-            break;
-        case "Plus 4":
-            tempCardValue = "+4";
-            break;
+    if (!showCompHand) {
+        let cardDiv = document.createElement("div");
+        cardDiv.setAttribute("id", "compCard" + (CardNr + 1));
+        cardDiv.setAttribute("class", "hiddenCard");
+        document.getElementById("compHand").appendChild(cardDiv);
     }
-    let cardDiv = document.createElement("div");
-    cardDiv.setAttribute("id", "compCard" + (CardNr + 1));
-    cardDiv.setAttribute("class", "card");
-    document.getElementById("compHand").appendChild(cardDiv);
-    let cardValueP1 = document.createElement("p");
-    cardValueP1.innerHTML = tempCardValue + "";
-    cardValueP1.setAttribute("class", compHandArray[CardNr].cardColor);
-    cardDiv.appendChild(cardValueP1);
-    let cardValueP2 = document.createElement("p");
-    cardValueP2.innerHTML = tempCardValue + "";
-    cardValueP2.setAttribute("class", compHandArray[CardNr].cardColor);
-    cardDiv.appendChild(cardValueP2);
+    else {
+        let tempCardValue = compHandArray[CardNr].cardValue + "";
+        switch (compHandArray[CardNr].specialProperty) {
+            case "Plus 2":
+                tempCardValue = "+2";
+                break;
+            case "Plus 4":
+                tempCardValue = "+4";
+                break;
+        }
+        let cardDiv = document.createElement("div");
+        cardDiv.setAttribute("id", "compCard" + (CardNr + 1));
+        cardDiv.setAttribute("class", "card");
+        document.getElementById("compHand").appendChild(cardDiv);
+        let cardValueP1 = document.createElement("p");
+        cardValueP1.innerHTML = tempCardValue + "";
+        cardValueP1.setAttribute("class", compHandArray[CardNr].cardColor);
+        cardDiv.appendChild(cardValueP1);
+        let cardValueP2 = document.createElement("p");
+        cardValueP2.innerHTML = tempCardValue + "";
+        cardValueP2.setAttribute("class", compHandArray[CardNr].cardColor);
+        cardDiv.appendChild(cardValueP2);
+    }
 }
 function generateDiscardPileHTML(CardNr) {
     let tempCardValue = discardPileArray[CardNr].cardValue + "";
@@ -134,7 +145,7 @@ function generateDiscardPileHTML(CardNr) {
     let cardDiv = document.createElement("div");
     cardDiv.setAttribute("id", "discardPile" + (CardNr + 1));
     cardDiv.setAttribute("class", "card");
-    cardDiv.style.left = CardNr * 5 + 250 + "px";
+    cardDiv.style.left = CardNr * 5 + 230 + "px";
     cardDiv.style.transform = "rotate(" + (Math.random() * 31 - 20) + "deg)";
     document.getElementById("playArea").appendChild(cardDiv);
     let cardValueP1 = document.createElement("p");
@@ -148,13 +159,10 @@ function generateDiscardPileHTML(CardNr) {
 }
 function generateDeckHTML() {
     let cardDiv = document.createElement("div");
-    cardDiv.setAttribute("id", "discardPile");
-    cardDiv.setAttribute("class", "card");
+    cardDiv.setAttribute("id", "topDeckCard");
+    cardDiv.setAttribute("class", "hiddenCard");
     cardDiv.addEventListener('click', function () { drawCard(playersTurn); }, false);
     document.getElementById("deckArea").appendChild(cardDiv);
-    let cardValueP1 = document.createElement("p");
-    cardValueP1.innerHTML = deckArray.length + "";
-    cardDiv.appendChild(cardValueP1);
 }
 function generateAllHTML() {
     for (let i = 0; i < compHandArray.length; i++) {
@@ -217,7 +225,7 @@ function playCard(playedCardNr, tempPlayersTurn) {
                 endGame(true);
             }
             else {
-                computersTurn();
+                setTimeout(computersTurn, 500);
             }
         }
     }
@@ -245,7 +253,7 @@ function drawCard(tempPlayersTurn) {
     if (tempPlayersTurn == true) {
         playerHandArray.push(deckArray[0]);
         deckArray.splice(0, 1);
-        computersTurn();
+        setTimeout(computersTurn, 500);
     }
     else {
         compHandArray.push(deckArray[0]);
@@ -333,5 +341,15 @@ function useSpecialProperty(tempCard, tempPlayersTurn) {
         }
     }
     updateHTML();
+}
+function flipCompHand() {
+    showCompHand = !showCompHand;
+    updateHTML();
+}
+function turnOverlayOn() {
+    document.getElementById("overlay").style.display = "block";
+}
+function turnOverlayOff() {
+    document.getElementById("overlay").style.display = "none";
 }
 //# sourceMappingURL=script.js.map
