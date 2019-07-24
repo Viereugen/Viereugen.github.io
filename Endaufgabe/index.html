@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="de">
+
     <head>
-        <meta charset="utf-8">
-        <title>Mario Sillmann TS_Aufgabe_04</title>
+		<title>Kartenspiel Endaufgabe</title>
+		<meta name="author" content="Mario Sillmann">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script src="js/script.js"></script>
-    </head>
+	</head>
+	
     <body>
 	
     	<header>
@@ -13,35 +18,26 @@
 		</header>
 
         <main>
-		
-			<div id="compHand" class="handArea">
-			</div>	
-		
-			<div id="playArea">
-			</div>
-
-			<div id="deckArea">
-			</div>
-
-			<div id="playerHand" class="handArea">
-			</div>
-
+			<div id="compHand" class="handArea"></div>	
+			<div id="playArea"></div>
+			<div id="deckArea"></div>
+			<div id="playerHand" class="handArea"></div>
 		</main>
 
 		<div id="overlay">
-				<div id="overlayText">
-					Der Spieler kann pro Runde entweder eine Karte spielen, oder eine Karte ziehen.<br><br>
-					Klicke auf eine Karte um sie zu spielen, oder auf das Deck um zu ziehen.<br><br>
-					Eine Karte kann gespielt werden, falls sie die gleiche Zahl oder Farbe hat.<br><br>
-					Sonderkarten wie "+2" oder "+4" können immer gelegt werden.<br><br>
-					Wenn das Deck leer ist, wird der Ablagestapel gemischt und zum neuen Deck.<br><br><br>
-					Der Spieler der zuerst keine Karten mehr auf der Hand hat, gewinnt das Spiel.
-				</div>
+			<div id="overlayText">
+				Klicke auf eine Karte um sie zu spielen, oder auf das Deck um eine Karte zu ziehen.<br><br>
+				Eine Karte kann gespielt werden, falls sie die gleiche Zahl oder Farbe hat.<br><br>
+				Sonderkarten wie "+2" oder "+4" können immer gelegt werden.<br><br>
+				Wenn das Deck leer ist, wird der Ablagestapel als neues Deck gemischt.<br><br>
+				Der Spieler der zuerst keine Karten mehr auf der Hand hat, gewinnt das Spiel!
 			</div>
+		</div>
 	
 	    <footer>
-				<button id="rulesButton">Spielregeln</button>
+			<p id="rulesButton">Spielregeln</p>
 		</footer>    
 
-    </body>
+	</body>
+	
 </html>
