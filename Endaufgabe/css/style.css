@@ -106,10 +106,10 @@ main {
 
 /*---------- Karten insgesammt ----------*/
 .card, .hiddenCard {
-	height: 7rem;
+	height: 6rem;
 	margin-bottom: 5px;
 	
-	width: 5rem;
+	width: 4.2rem;
 	margin-right: 5px;
 
 	border: 3px solid black;
@@ -131,7 +131,7 @@ main {
 
 /*---------- Karten Inhalt ----------*/
 .card p {
-	font-size: 3em;
+	font-size: 2.5em;
 	text-shadow:  1px  1px 1px black, 1px -1px 1px black, -1px  1px 1px black, -1px -1px 1px black;
 }
 .card p:nth-child(2){ transform: rotate(180deg);}
