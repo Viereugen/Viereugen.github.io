@@ -380,6 +380,8 @@ function useSpecialProperty(tempCard, tempPlayersTurn) {
             // Bei "Plus 2" zieht der Computer2 Karten.
             case "Plus 2":
                 for (let i = 0; i < 2; i++) {
+                    if (deckArray.length < 1)
+                        refillDeck();
                     compHandArray.push(deckArray[0]);
                     deckArray.splice(0, 1);
                 }
@@ -387,10 +389,10 @@ function useSpecialProperty(tempCard, tempPlayersTurn) {
             // Bei "Plus 4" zieht der Computer 4 Karten.
             case "Plus 4":
                 for (let i = 0; i < 4; i++) {
-                    compHandArray.push(deckArray[0]);
-                    deckArray.splice(0, 1);
                     if (deckArray.length < 1)
                         refillDeck();
+                    compHandArray.push(deckArray[0]);
+                    deckArray.splice(0, 1);
                 }
                 break;
         }
@@ -399,12 +401,16 @@ function useSpecialProperty(tempCard, tempPlayersTurn) {
         switch (tempCard.specialProperty) {
             case "Plus 2":
                 for (let i = 0; i < 2; i++) {
+                    if (deckArray.length < 1)
+                        refillDeck();
                     playerHandArray.push(deckArray[0]);
                     deckArray.splice(0, 1);
                 }
                 break;
             case "Plus 4":
                 for (let i = 0; i < 4; i++) {
+                    if (deckArray.length < 1)
+                        refillDeck();
                     playerHandArray.push(deckArray[0]);
                     deckArray.splice(0, 1);
                 }
