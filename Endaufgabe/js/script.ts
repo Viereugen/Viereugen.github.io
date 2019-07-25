@@ -34,8 +34,9 @@ window.onload = function () {
     shuffleDeck();
     dealCards();
     updateHTML();
-}
 
+    console.log("******************************");
+}
 
 
 
@@ -81,11 +82,12 @@ function generateNewDeck() {
         }
         let newCard: card = {                                         
             specialProperty: newSpecialProperty,
-            cardValue: 10,
-            cardColor: "black"
+            cardValue: 0,
+            cardColor: "allColors"
         };
         deckArray.push(newCard);
     }        
+    console.log("Neues Deck wurde generiert.");
 }
 
 
@@ -94,6 +96,8 @@ function shuffleDeck(){
     deckArray.sort(function(a, b){          // .sort sortiert immer je nach positivem oder negativem Parameter.
         return 0.5 - Math.random()          // gibt der .sort Methode eine zufällig positive oder negative Zahl.
     });
+    console.log('Das Deck wurde gemischt.');
+    console.log(deckArray);
 }
 
 //---------------------------------------- Teilt beiden Spielern 7 Karten aus und legt eine Karte auf den Ablagestapel ----------------------------------------//
@@ -108,6 +112,12 @@ function dealCards(){
     
     discardPileArray.push(deckArray[0]);
     deckArray.splice(0,1);
+
+    console.log('Karten wurden ausgeteilt.');
+    console.log(compHandArray);
+    console.log(playerHandArray);
+    console.log(deckArray);
+    console.log(discardPileArray);
 }
 
 
@@ -311,20 +321,22 @@ function playCard (playedCardNr:number, tempPlayersTurn:boolean){
         (playerHandArray[playedCardNr].cardColor==discardPileArray[discardPileArray.length-1].cardColor) ||     // Gleiche Farbe?
         (discardPileArray[discardPileArray.length-1].specialProperty!= "none")||                                // Zuletzt gelegte Karte ist eine Sonderkarte?
         (playerHandArray[playedCardNr].specialProperty!= "none")){                                              // Geklickte Karte ist eine Sonderkarte?
-            
-            //Sonderfunktion wird ausgeführt
-            useSpecialProperty(playerHandArray[playedCardNr],playersTurn);
 
             // Karte wird gespielt.
             discardPileArray.push(playerHandArray[playedCardNr]);
             playerHandArray.splice(playedCardNr,1);
+            console.log('Player hat Karte: "' + discardPileArray[discardPileArray.length-1].cardValue +" "+ discardPileArray[discardPileArray.length-1].cardColor + '" gespielt.');
             updateHTML();
-            
+
+            //Sonderfunktion wird ausgeführt
+            useSpecialProperty(discardPileArray[discardPileArray.length-1],playersTurn);
+                        
             // Falls der Player keine Karten mehr auf der Hand hat, beende das Spiel.
             if (playerHandArray.length<1){endGame(true);}
             // Sonst ist der Computer dran. + Kleine Zeitverzögerung, zum besseren Verständniss des Spielablaufs.
-            else{setTimeout(computersTurn,350);}    
-        }
+            else {setTimeout(computersTurn,350);}    
+
+        }else {console.log("Karte darf nicht gespielt werden.");}
 
     } else{                     // Falls der Computer eine Karte spielen will.
 
@@ -333,19 +345,21 @@ function playCard (playedCardNr:number, tempPlayersTurn:boolean){
         (discardPileArray[discardPileArray.length-1].specialProperty != "none")||
         (compHandArray[playedCardNr].specialProperty!= "none")){
             
-            //Sonderfunktion wird ausgeführt
-            useSpecialProperty(compHandArray[playedCardNr],playersTurn);
-
             // Karte wird gespielt.
             discardPileArray.push(compHandArray[playedCardNr]);
             compHandArray.splice(playedCardNr,1);
+            console.log('Computer hat Karte: "' + discardPileArray[discardPileArray.length-1].cardValue +" "+ discardPileArray[discardPileArray.length-1].cardColor + '" gespielt.');
             updateHTML();
+
+            //Sonderfunktion wird ausgeführt
+            useSpecialProperty(discardPileArray[discardPileArray.length-1],playersTurn);
 
             // Falls der Computer keine Karten mehr auf der Hand hat, beende das Spiel.
             if (compHandArray.length<1){endGame(false);}
             // Sonst ist der Player dran.
-            else{playersTurn=true;}
-        }
+            else {playersTurn=true;}
+
+        }else {console.log("Karte darf nicht gespielt werden.");}
     }
 }
 
@@ -363,17 +377,23 @@ function drawCard(tempPlayersTurn: boolean){
     if (tempPlayersTurn==true){                    
         playerHandArray.push(deckArray[0]);
         deckArray.splice(0,1);
+        console.log('Spieler hat Karte: "' + playerHandArray[playerHandArray.length-1].cardValue +" "+ playerHandArray[playerHandArray.length-1].cardColor+ '" gezogen.');
+        updateHTML();
+
         setTimeout(computersTurn,350);
     } else{
         compHandArray.push(deckArray[0]);
         deckArray.splice(0,1);
+        console.log('Computer hat Karte: "' + compHandArray[compHandArray.length-1].cardValue +" "+ compHandArray[compHandArray.length-1].cardColor + '" gezogen.');
+        updateHTML();
+
         playersTurn=true;
     }
-    updateHTML();
 }
 
 //---------------------------------------- Der Spielzug des Computers ----------------------------------------//
 function computersTurn(){
+    console.log("******************************");
     playersTurn = false;
 
     // Jede Karte auf der Computer-Hand wird zu spielen versucht.
@@ -386,6 +406,8 @@ function computersTurn(){
         drawCard(playersTurn);
     }
     playersTurn=true;
+
+    console.log("******************************");
 }
 
 
@@ -401,6 +423,7 @@ function computersTurn(){
 //---------------------------------------- Das Spiel wird beendet und ein neues Spiel wird begonnen ----------------------------------------//
 // Parameter= Wurde das Spiel gewonnen oder Verloren
 function endGame(wonTheGame:boolean){
+    console.log('Spiel wurde beendet.');
 
     // Ein Alert ausgegeben, je nachdem ob gewonnen oder verloren wurde.
     if(wonTheGame){ 
@@ -414,6 +437,9 @@ function endGame(wonTheGame:boolean){
     while(playerHandArray.length>0) {playerHandArray.pop();}
     while(deckArray.length>0) {deckArray.pop();}
     while(discardPileArray.length>0) {discardPileArray.pop();}
+    console.log('Arrays wurden geleert.');
+    console.log('("******************************");');
+
     generateNewDeck();
     shuffleDeck();
     dealCards();
@@ -433,6 +459,7 @@ function refillDeck(){
         discardPileArray.pop();
     }
     discardPileArray.push(topCard);
+    console.log('Ablagestapel wurde zum neuen Deck');
 
     shuffleDeck();
 }
@@ -444,22 +471,24 @@ function useSpecialProperty(tempCard:card, tempPlayersTurn:boolean){
     if(tempPlayersTurn){        // Wenn der Player am Zug ist.
         switch(tempCard.specialProperty){
 
-            // Bei "Plus 2" zieht der Computer2 Karten.
+            // Bei "Plus 2" zieht der Computer 2 Karten.
             case "Plus 2":
                 for(let i:number=0; i<2; i++){
-                if(deckArray.length<1)refillDeck();
-                compHandArray.push(deckArray[0]);
-                deckArray.splice(0,1);
+                    if(deckArray.length<1) {refillDeck();}
+                    compHandArray.push(deckArray[0]);
+                    deckArray.splice(0,1);
                 }
+                console.log('Computer musste 2 Karten ziehen.');
             break;
 
             // Bei "Plus 4" zieht der Computer 4 Karten.
             case "Plus 4":
                 for(let i:number=0; i<4; i++){
-                    if(deckArray.length<1)refillDeck();
+                    if(deckArray.length<1) {refillDeck();}
                     compHandArray.push(deckArray[0]);
                     deckArray.splice(0,1);
                 }
+                console.log('Computer musste 4 Karten ziehen.');
             break;
         }
 
@@ -467,17 +496,19 @@ function useSpecialProperty(tempCard:card, tempPlayersTurn:boolean){
         switch(tempCard.specialProperty){
             case "Plus 2":
                 for(let i:number=0; i<2; i++){
-                    if(deckArray.length<1)refillDeck();
-                    playerHandArray.push(deckArray[0]);
-                    deckArray.splice(0,1);
+                    if(deckArray.length<1) {refillDeck();}
+                        playerHandArray.push(deckArray[0]);
+                        deckArray.splice(0,1);
                 }
+                console.log('Player musste 2 Karten ziehen.');
             break;
             case "Plus 4":
                 for(let i:number=0; i<4; i++){
-                    if(deckArray.length<1)refillDeck();
-                    playerHandArray.push(deckArray[0]);
-                    deckArray.splice(0,1);
+                    if(deckArray.length<1) {refillDeck();}
+                        playerHandArray.push(deckArray[0]);
+                        deckArray.splice(0,1);
                 }
+                console.log('Player musste 4 Karten ziehen.');
             break;
         }
     }
@@ -487,6 +518,7 @@ function useSpecialProperty(tempCard:card, tempPlayersTurn:boolean){
 //---------------------------------------- Drehe die Karten der Computer-Hand um ----------------------------------------//
 function flipCompHand(){
     compHandVisible = !compHandVisible;
+    console.log('Die Karten des Computers wurden umgedreht.');
     updateHTML();
 }
 
@@ -497,4 +529,5 @@ function switchOverlay(visible:boolean){
     document.getElementById("overlay").style.display = "none"; 
     else        
     document.getElementById("overlay").style.display = "block";
+    console.log('Das Spielregeln-Overlay wurde an/ausgeschalten');
 }

@@ -140,7 +140,7 @@ main {
 .yellow {color:yellow;}
 .green {color: green;}
 .blue {color: blue;}
-.black {
+.allColors {
 	animation-name: wackeln ;
 	animation-duration: 0.2s;
 	animation-timing-function: linear;
