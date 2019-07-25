@@ -82,7 +82,7 @@ function generateNewDeck() {
         let newCard: card = {                                         
             specialProperty: newSpecialProperty,
             cardValue: 10,
-            cardColor: "all"
+            cardColor: "black"
         };
         deckArray.push(newCard);
     }        

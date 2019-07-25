@@ -66,7 +66,7 @@ function generateNewDeck() {
         let newCard = {
             specialProperty: newSpecialProperty,
             cardValue: 10,
-            cardColor: "all"
+            cardColor: "black"
         };
         deckArray.push(newCard);
     }

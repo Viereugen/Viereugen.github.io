@@ -135,10 +135,23 @@ main {
 	text-shadow:  1px  1px 1px black, 1px -1px 1px black, -1px  1px 1px black, -1px -1px 1px black;
 }
 .card p:nth-child(2){ transform: rotate(180deg);}
+
 .red {color: red;}
-.blue {color: blue;}
-.green {color: green;}
 .yellow {color:yellow;}
+.green {color: green;}
+.blue {color: blue;}
+.black {
+	animation-name: wackeln ;
+	animation-duration: 0.2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+@keyframes wackeln {
+	from {font-size: 2.5em;}
+	to {font-size: 2.6em;}
+}
+
 
 
 
@@ -167,7 +180,7 @@ main {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	font-size: 2em;
+	font-size: 1.5em;
 	color: white;
 	transform: translate(-50%,-50%);
 	-ms-transform: translate(-50%,-50%);
@@ -187,3 +200,4 @@ main {
 	top:40%;
 	cursor: default;
 }
+
