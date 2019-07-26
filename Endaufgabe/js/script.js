@@ -382,8 +382,7 @@ function endGame(wonTheGame) {
         discardPileArray.pop();
     }
     console.log('Arrays wurden geleert.');
-    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    console.log("  ");
+    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
     generateNewDeck();
     shuffleDeck();
     dealCards();

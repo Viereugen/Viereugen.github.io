@@ -440,8 +440,7 @@ function endGame(wonTheGame:boolean){
     while(deckArray.length>0) {deckArray.pop();}
     while(discardPileArray.length>0) {discardPileArray.pop();}
     console.log('Arrays wurden geleert.');
-    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    console.log("  ");
+    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
     generateNewDeck();
     shuffleDeck();
@@ -456,7 +455,7 @@ function refillDeck(){
     // Zwischenspeichern der obersten Karte des Ablagestapels.
     let topCard:card = discardPileArray[discardPileArray.length-1];
     discardPileArray.pop();
-    
+
     // Alle Karten des Ablagestapels werden in das Deck geschrieben und dann aus dem Ablagestapel gelöscht.
     while(discardPileArray.length>0){
         deckArray.push(discardPileArray[discardPileArray.length-1])
