@@ -12,8 +12,6 @@ window.onload = function () {
     // Zwei Eventlistener um die Spielregeln anzuzeigen/auszublenden.
     document.getElementById("rulesButton").addEventListener('click', function () { switchOverlay(false); }, false);
     document.getElementById("overlay").addEventListener('click', function () { switchOverlay(true); }, false);
-    // Eventlistener um Karten zu ziehen
-    document.getElementById("topDeckCard").addEventListener('click', function () { drawCard(playersTurn); }, false);
     // Zu Beginn wird das Deck erzeugt, gemischt, Karten ausgeteilt, und das HTML erstellt.
     generateNewDeck();
     shuffleDeck();
@@ -198,6 +196,15 @@ function generateDiscardPileHTML(CardNr) {
     cardValueP2.setAttribute("class", discardPileArray[CardNr].cardColor);
     cardDiv.appendChild(cardValueP2);
 }
+//---------------------------------------- Erzeugt das HTML des Decks ----------------------------------------//
+function generateDeckHTML() {
+    // Erstellen des Karten-<div> mit Eventlistener.
+    let cardDiv = document.createElement("div");
+    cardDiv.setAttribute("id", "topDeckCard");
+    cardDiv.setAttribute("class", "hiddenCard");
+    cardDiv.addEventListener('click', function () { drawCard(playersTurn); }, false);
+    document.getElementById("deckArea").appendChild(cardDiv);
+}
 //---------------------------------------- Ruft die HTML-Funktionen auf bis alle Karten dargestellt werden ----------------------------------------//
 function generateAllHTML() {
     for (let i = 0; i < compHandArray.length; i++) {
@@ -209,6 +216,7 @@ function generateAllHTML() {
     for (let k = 0; k < discardPileArray.length; k++) {
         generateDiscardPileHTML(k);
     }
+    generateDeckHTML();
 }
 //---------------------------------------- Löscht alle erzeugten HTML-Elemente ----------------------------------------//
 function clearAllHTML() {
@@ -228,14 +236,18 @@ function clearAllHTML() {
         if (divToEmpty.firstElementChild != null)
             divToEmpty.removeChild(divToEmpty.firstElementChild);
     }
-    // Lösche alle HTML-Elemente des Ablage-Stapels.
-    divToEmpty = document.getElementById("playArea");
+    // Lösche alle HTML-Elemente des Decks.
+    divToEmpty = document.getElementById("deckArea");
     children = divToEmpty.children;
     childCount = children.length;
     for (let i = 0; i < childCount; i++) {
         if (divToEmpty.firstElementChild != null)
             divToEmpty.removeChild(divToEmpty.firstElementChild);
     }
+    // Lösche alle HTML-Elemente des Ablage-Stapels.
+    divToEmpty = document.getElementById("playArea");
+    if (divToEmpty.firstElementChild != null)
+        divToEmpty.removeChild(divToEmpty.firstElementChild);
 }
 //---------------------------------------- Refreshe das komplette HTML ----------------------------------------//
 function updateHTML() {
