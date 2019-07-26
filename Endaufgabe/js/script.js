@@ -17,7 +17,7 @@ window.onload = function () {
     shuffleDeck();
     dealCards();
     updateHTML();
-    console.log("******************************");
+    console.log("****************************************");
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////// SETUP-FUNKTIONEN ///////////////////////////////////////////////////////////////////
@@ -341,7 +341,7 @@ function drawCard(tempPlayersTurn) {
 }
 //---------------------------------------- Der Spielzug des Computers ----------------------------------------//
 function computersTurn() {
-    console.log("******************************");
+    console.log("****************************************");
     playersTurn = false;
     // Jede Karte auf der Computer-Hand wird zu spielen versucht.
     for (let i = 0; (i < compHandArray.length) && (playersTurn == false); i++) {
@@ -352,7 +352,7 @@ function computersTurn() {
         drawCard(playersTurn);
     }
     playersTurn = true;
-    console.log("******************************");
+    console.log("****************************************");
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////// ZUSATZ-FUNKTIONEN ///////////////////////////////////////////////////////////////////
@@ -382,8 +382,8 @@ function endGame(wonTheGame) {
         discardPileArray.pop();
     }
     console.log('Arrays wurden geleert.');
-    console.log(" ");
-    console.log(" ");
+    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    console.log("  ");
     generateNewDeck();
     shuffleDeck();
     dealCards();
@@ -394,6 +394,7 @@ function endGame(wonTheGame) {
 function refillDeck() {
     // Zwischenspeichern der obersten Karte des Ablagestapels.
     let topCard = discardPileArray[discardPileArray.length - 1];
+    discardPileArray.pop();
     // Alle Karten des Ablagestapels werden in das Deck geschrieben und dann aus dem Ablagestapel gelöscht.
     while (discardPileArray.length > 0) {
         deckArray.push(discardPileArray[discardPileArray.length - 1]);

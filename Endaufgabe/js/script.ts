@@ -37,7 +37,7 @@ window.onload = function () {
     dealCards();
     updateHTML();
 
-    console.log("******************************");
+    console.log("****************************************");
 }
 
 
@@ -395,7 +395,7 @@ function drawCard(tempPlayersTurn: boolean){
 
 //---------------------------------------- Der Spielzug des Computers ----------------------------------------//
 function computersTurn(){
-    console.log("******************************");
+    console.log("****************************************");
     playersTurn = false;
 
     // Jede Karte auf der Computer-Hand wird zu spielen versucht.
@@ -409,7 +409,7 @@ function computersTurn(){
     }
     playersTurn=true;
 
-    console.log("******************************");
+    console.log("****************************************");
 }
 
 
@@ -440,8 +440,8 @@ function endGame(wonTheGame:boolean){
     while(deckArray.length>0) {deckArray.pop();}
     while(discardPileArray.length>0) {discardPileArray.pop();}
     console.log('Arrays wurden geleert.');
-    console.log(" ");
-    console.log(" ");
+    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    console.log("  ");
 
     generateNewDeck();
     shuffleDeck();
@@ -452,10 +452,11 @@ function endGame(wonTheGame:boolean){
 
 //---------------------------------------- Der Ablagestapel wird zum Deck, dann wird das Deck gemischt ----------------------------------------//
 function refillDeck(){
-
+    
     // Zwischenspeichern der obersten Karte des Ablagestapels.
     let topCard:card = discardPileArray[discardPileArray.length-1];
-
+    discardPileArray.pop();
+    
     // Alle Karten des Ablagestapels werden in das Deck geschrieben und dann aus dem Ablagestapel gelöscht.
     while(discardPileArray.length>0){
         deckArray.push(discardPileArray[discardPileArray.length-1])
