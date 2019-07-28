@@ -157,9 +157,7 @@ main {
 /*
 * ============================= CURSOR-VERHALTEN =============================
 */
-#playerHand .card{background-color: rgb(227, 225, 233);}
 #playerHand .card:hover {
-	background-color: white;
 	box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.600);
 	cursor: pointer;
 }
