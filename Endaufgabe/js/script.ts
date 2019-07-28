@@ -352,7 +352,6 @@ function drawCard(tempPlayersTurn: boolean){
     // Falls das Deck leer ist wird der Ablagestapel zum neuen Deck.
     if(deckArray.length<1){
         refillDeck();
-        updateHTML();
     }
 
     // Der Spieler der am Zug ist, zieht eine Karte. Dann ist der Andere am Zug.
@@ -445,6 +444,7 @@ function refillDeck(){
     console.log('Ablagestapel wurde zum neuen Deck');
 
     shuffleDeck();
+    updateHTML();
 }
 
 //---------------------------------------- Die Sonderfunktion einer Karte wird benutzt ----------------------------------------//
